@@ -1,0 +1,142 @@
+{
+  "locations": [
+    {
+      "id": 1,
+      "code": "udine",
+      "lat": 46.067972927343796,
+      "long": 13.223908544183098,
+      "detail": {
+        "title": "Udine, Italy"
+      }
+    },
+    {
+      "id": 2,
+      "code": "milano",
+      "lat": 45.47587419475043,
+      "long": 9.22748120713425,
+      "detail": {
+        "title": "Milano, Italy"
+      }
+    },
+    {
+      "id": 3,
+      "code": "valencia",
+      "lat": 39.480695351340025,
+      "long": -0.34020292438611577,
+      "detail": {
+        "title": "Valencia, Spain"
+      }
+    },
+    {
+      "id": 4,
+      "code": "trento",
+      "lat": 46.06695421306352,
+      "long": 11.151185982747508,
+      "detail": {
+        "title": "Trento, Italy"
+      }
+    }
+  ],
+  "periods": [
+    {
+      "id": 1,
+      "code": "start",
+      "from": null,
+      "to": "2013-10-01",
+      "detail": {
+        "title": "Starting Point of My Journey",
+        "place": "My Parents House",
+        "type": "",
+        "achievements": []
+      },
+      "locationId": 1
+    },
+    {
+      "id": 2,
+      "code": "bachelor_1",
+      "from": "2013-10-01",
+      "to": "2015-09-01",
+      "detail": {
+        "title": "B.Sc. Computer Science & Engineering",
+        "place": "Politecnico di Milano",
+        "type": "Education"
+      },
+      "locationId": 2
+    },
+    {
+      "id": 3,
+      "code": "erasmus",
+      "from": "2015-09-01",
+      "to": "2016-02-01",
+      "detail": {
+        "title": "Erasmus+ Study",
+        "place": "Universitat Politecnica de Valencia",
+        "type": "Education"
+      },
+      "locationId": 3
+    },
+    {
+      "id": 4,
+      "code": "bachelor_2",
+      "from": "2016-02-01",
+      "to": "2016-10-01",
+      "detail": {
+        "title": "B.Sc. Computer Science & Engineering",
+        "place": "Politecnico di Milano",
+        "type": "Education",
+        "achievements": []
+      },
+      "locationId": 2
+    },
+    {
+      "id": 5,
+      "code": "master",
+      "from": "2016-10-01",
+      "to": "2019-05-01",
+      "detail": {
+        "title": "M.Sc. Computer Science & Engineering",
+        "place": "Politecnico di Milano",
+        "type": "Education",
+        "achievements": []
+      },
+      "locationId": 2
+    },
+    {
+      "id": 6,
+      "code": "fbk",
+      "from": "2019-05-01",
+      "to": "2021-05-01",
+      "detail": {
+        "title": "Software & Data Engineer",
+        "place": "Fondazione Bruno Kessler",
+        "type": "Experience",
+        "achievements": [
+          "Worked in an interdisciplinary team and actively participated to various research projects that resulted in scientific papers",
+          "Designed and developed scalable processing pipelines to analyze, integrate and efficiently store data coming from multiple sources and in different formats",
+          "Deeply dived into data visualization techniques specific formation courses",
+          "Designed and developed a full-stack application to process, store and dynamically visualize NLP analyzed text data with dynamic and interactive charts and maps",
+          "Designed and deployed the cloud infrastructure to host different interconnected Linux based VMs for high computing tasks"
+        ]
+      },
+      "locationId": 4
+    },
+    {
+      "id": 7,
+      "code": "overit",
+      "from": "2021-05-01",
+      "to": null,
+      "detail": {
+        "title": "Technical Analyst",
+        "place": "OverIT S.p.A.",
+        "type": "Experience",
+        "achievements": [
+          "Worked closely with business analysts to interpret and write technical requirements and collect feedbacks and bug reports for new software functionalities",
+          "Collaborated with development teams to design the data and object models, process flows, user experience, page layouts and system integration structures",
+          "Distributed development tasks across multiple developers and carried on code reviews on development outputs",
+          "Tested and reviewed technical documents and conducted hands-on practical sessions with international partners"
+        ]
+      },
+      "locationId": 1
+    }
+  ]
+}
