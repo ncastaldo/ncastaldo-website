@@ -2,25 +2,27 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 
-import { timeFormat } from 'd3-time-format'
+import { timeFormat } from "d3-time-format";
 
 export default {
   setup() {
-    const format = timeFormat('%B %Y')
+    const format = timeFormat("%B %Y");
 
     const store = useStore();
 
     const period = computed(() => store.getters.getPeriod);
 
-    const detail = computed(() => period.value.detail)
+    const detail = computed(() => period.value.detail);
 
-    const interval = computed(() => period.value.fromDate
-      ? `${format(period.value.fromDate)} - ${format(period.value.toDate)}`
-      : format(period.value.toDate))
+    const interval = computed(() =>
+      period.value.fromDate
+        ? `${format(period.value.fromDate)} - ${format(period.value.toDate)}`
+        : format(period.value.toDate)
+    );
 
     return {
       detail,
-      interval
+      interval,
     };
   },
 };
@@ -32,7 +34,9 @@ export default {
     <h4 class="description-subtitle">{{ detail.place }}</h4>
     <h5 class="description-caption">{{ interval }}</h5>
     <div class="description-content">
-      <p v-for="(achievement, i) in detail.achievements" :key="i">{{ achievement }}</p>
+      <p v-for="(achievement, i) in detail.achievements" :key="i">
+        {{ achievement }}
+      </p>
     </div>
   </div>
 </template>

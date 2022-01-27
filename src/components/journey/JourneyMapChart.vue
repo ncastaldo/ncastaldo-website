@@ -6,7 +6,7 @@ import { geoMercator, geoPath } from "d3-geo";
 import { zoom, zoomIdentity } from "d3-zoom";
 import { select } from "d3-selection";
 import { feature } from "topojson-client";
-import { lineString } from '@turf/turf'
+import { lineString } from "@turf/turf";
 
 const MAP_URL =
   "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
@@ -22,21 +22,28 @@ export default {
     const activeLocations = computed(() => store.getters.getActiveLocations);
     const activeRoutes = computed(() => store.getters.getActiveRoutes);
 
-    const chartViewPoint = computed(() => [location.value.long, location.value.lat]);
-    const chartPoints = computed(() => activeLocations.value
-      .map(d => [d.long, d.lat]))
-    const chartRoutes = computed(() => activeRoutes.value
-      .map(({ fromLocation, toLocation }) => lineString([
-        [fromLocation.long, fromLocation.lat],
-        [toLocation.long, toLocation.lat]
-      ])));
+    const chartViewPoint = computed(() => [
+      location.value.long,
+      location.value.lat,
+    ]);
+    const chartPoints = computed(() =>
+      activeLocations.value.map((d) => [d.long, d.lat])
+    );
+    const chartRoutes = computed(() =>
+      activeRoutes.value.map(({ fromLocation, toLocation }) =>
+        lineString([
+          [fromLocation.long, fromLocation.lat],
+          [toLocation.long, toLocation.lat],
+        ])
+      )
+    );
     const chartFeature = ref(null);
 
     const useChart = (selection) => {
       const projection = geoMercator();
       const path = geoPath().projection(projection);
 
-      const g = selection.append('g')
+      const g = selection.append("g");
 
       let map = g.append("g").selectAll("path");
       let routes = g.append("g").selectAll("path");
@@ -70,7 +77,8 @@ export default {
         const scale = 20;
 
         const target = firstDraw
-          ? selection.transition().duration(750) : selection
+          ? selection.transition().duration(750)
+          : selection;
 
         target.call(
           zoomBehavior.transform,
@@ -82,43 +90,48 @@ export default {
       };
 
       const updateRoutes = () => {
-        routes = routes.data(chartRoutes.value)
+        routes = routes
+          .data(chartRoutes.value)
           .join(
-            enter => enter.append('path')
-              .attr('opacity', 0)
-              .transition()
-              .attr('opacity', 1),
-            update => update,
-            exit => exit
-              .transition()
-              .attr('opacity', 0)
-              .remove()
+            (enter) =>
+              enter
+                .append("path")
+                .attr("opacity", 0)
+                .transition()
+                .attr("opacity", 1),
+            (update) => update,
+            (exit) => exit.transition().attr("opacity", 0).remove()
           )
-          .attr('d', path)
-          .attr('stroke-width', 4)
+          .attr("d", path)
+          .attr("stroke-width", 4)
           .attr("vector-effect", "non-scaling-stroke")
-          .attr('stroke', '#888')
+          .attr("stroke", "#888");
 
-        points = points.data(chartPoints.value)
+        points = points
+          .data(chartPoints.value)
           .join(
-            enter => enter.append('circle')
-              .attr('opacity', 0)
-              .attr('fill', (d, i, array) => i == array.length - 1 ? '#49b787' : '#888')
-              .transition()
-              .attr('opacity', 1),
-            update => update
-              .transition()
-              .attr('fill', (d, i, array) => i == array.length - 1 ? '#49b787' : '#888'),
-            exit => exit
-              .transition()
-              .attr('opacity', 0)
-              .remove()
+            (enter) =>
+              enter
+                .append("circle")
+                .attr("opacity", 0)
+                .attr("fill", (d, i, array) =>
+                  i == array.length - 1 ? "#42a07e" : "#888"
+                )
+                .transition()
+                .attr("opacity", 1),
+            (update) =>
+              update
+                .transition()
+                .attr("fill", (d, i, array) =>
+                  i == array.length - 1 ? "#42a07e" : "#888"
+                ),
+            (exit) => exit.transition().attr("opacity", 0).remove()
           )
-          .attr('cx', d => projection(d)[0])
-          .attr('cy', d => projection(d)[1])
-          .attr('r', 6 / 20)
-          .attr("vector-effect", "non-scaling-size")
-      }
+          .attr("cx", (d) => projection(d)[0])
+          .attr("cy", (d) => projection(d)[1])
+          .attr("r", 6 / 20)
+          .attr("vector-effect", "non-scaling-size");
+      };
 
       updateMap();
       updateZoom();

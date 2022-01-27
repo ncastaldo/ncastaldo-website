@@ -21,7 +21,10 @@ export default {
 
     const useChart = (selection) => {
       const xScale = scaleTime()
-        .domain([min(periods.value, d => d.fromDate), max(periods.value, d => d.toDate)])
+        .domain([
+          min(periods.value, (d) => d.fromDate),
+          max(periods.value, (d) => d.toDate),
+        ])
         .range([0 + padding.left, width - padding.right]);
 
       const yScale = scaleLinear()
@@ -38,30 +41,33 @@ export default {
       let bars = selection.append("g").selectAll("rect");
 
       const update = () => {
-        const t = transition().duration(500)
+        const t = transition().duration(500);
 
         bars = bars
           .data(activePeriods.value, (d) => d.id)
           .join(
-            (enter) => enter
-              .append("rect")
-              .attr("opacity", 0)
-              .attr('fill', (d, i, array) => i == array.length - 1 ? '#49b787' : '#888')
-              .transition(t)
-              .attr("opacity", 1),
-            (update) => update
-              .transition(t)
-              .attr("opacity", 1)
-              .attr('fill', (d, i, array) => i == array.length - 1 ? '#49b787' : '#888'),
-            (exit) => exit
-              .transition(t)
-              .attr("opacity", 0)
-              .remove()
+            (enter) =>
+              enter
+                .append("rect")
+                .attr("opacity", 0)
+                .attr("fill", (d, i, array) =>
+                  i == array.length - 1 ? "#42a07e" : "#888"
+                )
+                .transition(t)
+                .attr("opacity", 1),
+            (update) =>
+              update
+                .transition(t)
+                .attr("opacity", 1)
+                .attr("fill", (d, i, array) =>
+                  i == array.length - 1 ? "#42a07e" : "#888"
+                ),
+            (exit) => exit.transition(t).attr("opacity", 0).remove()
           )
           .attr("x", (d) => xScale(d.fromDate))
           .attr("width", (d) => xScale(d.toDate) - xScale(d.fromDate))
           .attr("height", (d) => yScale.range()[0] - yScale(1))
-          .attr("y", (d) => yScale.range()[1])
+          .attr("y", (d) => yScale.range()[1]);
       };
 
       update();

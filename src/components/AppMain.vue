@@ -1,18 +1,16 @@
 <script setup>
-import Journey from './journey/JourneySection.vue';
-import JourneySection from './journey/JourneySection.vue';
-
+import IntroSection from "./intro/IntroSection.vue";
+import JourneySection from "./journey/JourneySection.vue";
 </script>
 
 <template>
   <main class="main">
+    <IntroSection />
     <JourneySection />
   </main>
 </template>
 
 <style>
 .main {
-  display: flexbox;
-  padding: 1rem 3rem;
 }
 </style>

@@ -3,7 +3,6 @@ import JourneyButtons from "./JourneyButtons.vue";
 import JourneyMapChart from "./JourneyMapChart.vue";
 import JourneyDescription from "./JourneyDescription.vue";
 import JourneyTimeChart from "./JourneyTimeChart.vue";
-
 </script>
 
 <template>
@@ -37,6 +36,5 @@ import JourneyTimeChart from "./JourneyTimeChart.vue";
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  min-height: 400px;
 }
 </style>

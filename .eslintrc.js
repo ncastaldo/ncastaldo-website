@@ -8,5 +8,6 @@ module.exports = {
     // 'vue/no-unused-vars': 'error'
     "vue/require-default-prop": "off",
     "no-unused-vars": "off",
+    "no-func-assign": "off",
   },
 };
