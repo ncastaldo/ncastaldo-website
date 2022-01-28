@@ -9,12 +9,17 @@ export default {
       {
         name: 'LinkedIn',
         icon: ['fab', 'linkedin'],
-        link: 'https://www.linkedin.com/in/ncastaldo/'
+        link: 'https://www.linkedin.com/in/ncastaldo'
       },
       {
         name: 'GitHub',
         icon: ['fab', 'github'],
         link: 'https://github.com/ncastaldo'
+      },
+      {
+        name: 'Observable',
+        icon: ['fab', 'observable'],
+        link: 'https://observablehq.com/@ncastaldo'
       }]
 
     return {
@@ -49,7 +54,11 @@ export default {
         </h2>
       </div>
       <div class="intro-socials">
-        <fa v-for="(social, i) in socials" :key="i" :icon="social.icon"></fa>
+        <span v-for="(social, i) in socials" :key="i" class="intro-socials-element">
+          <a class="intro-socials-element-link" :href="social.link">
+            <fa :icon="social.icon" size="2x"></fa>
+          </a>
+        </span>
       </div>
     </div>
   </section>
@@ -89,6 +98,18 @@ export default {
 
 .intro-position-heading--separator {
   padding: 0 0.8rem;
+  color: #42a07e;
+}
+
+.intro-socials-element {
+  padding: 0 0.7rem;
+}
+
+.intro-socials-element-link {
+  color: #2c3e50;
+}
+
+.intro-socials-element-link:hover {
   color: #42a07e;
 }
 </style>
