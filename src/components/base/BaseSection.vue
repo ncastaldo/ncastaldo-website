@@ -1,5 +1,4 @@
-<script>
-</script>
+<script></script>
 
 <template>
   <section class="section">
@@ -15,18 +14,18 @@
 
 <style scoped>
 .section {
-  padding: 1rem;
+  padding: 1rem 4rem;
   background-color: #eeeeee;
 }
 
 .section-title {
   font-size: 3rem;
   padding-bottom: 1rem;
+  text-align: center;
 }
 
 .section-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
+  margin: 0 auto;
+  max-width: 40rem;
 }
 </style>

@@ -39,19 +39,6 @@
   ],
   "periods": [
     {
-      "id": 1,
-      "code": "start",
-      "from": null,
-      "to": "2013-10-01",
-      "detail": {
-        "title": "Starting Point of My Journey",
-        "place": "My Parents House",
-        "type": "",
-        "achievements": []
-      },
-      "locationId": 1
-    },
-    {
       "id": 2,
       "code": "bachelor_1",
       "from": "2013-10-01",
@@ -59,7 +46,10 @@
       "detail": {
         "title": "B.Sc. Computer Science & Engineering",
         "place": "Politecnico di Milano",
-        "type": "Education"
+        "type": "Education",
+        "achievements": [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non diam. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Tincidunt dui ut ornare lectus sit amet est placerat. Orci dapibus ultrices in iaculis nunc. Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Sed risus ultricies tristique nulla aliquet enim tortor at. Pulvinar proin gravida hendrerit lectus a. Nunc congue nisi vitae suscipit. Diam quam nulla porttitor massa id neque aliquam. Euismod in pellentesque massa placerat. Tincidunt praesent semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum nisi. Facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus. Ultricies tristique nulla aliquet enim. Enim nec dui nunc mattis enim ut tellus."
+        ]
       },
       "locationId": 2
     },
@@ -71,7 +61,10 @@
       "detail": {
         "title": "Erasmus+ Study",
         "place": "Universitat Politecnica de Valencia",
-        "type": "Education"
+        "type": "Education",
+        "achievements": [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non diam. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Tincidunt dui ut ornare lectus sit amet est placerat. Orci dapibus ultrices in iaculis nunc. Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Sed risus ultricies tristique nulla aliquet enim tortor at. Pulvinar proin gravida hendrerit lectus a. Nunc congue nisi vitae suscipit. Diam quam nulla porttitor massa id neque aliquam. Euismod in pellentesque massa placerat. Tincidunt praesent semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum nisi. Facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus. Ultricies tristique nulla aliquet enim. Enim nec dui nunc mattis enim ut tellus."
+        ]
       },
       "locationId": 3
     },
@@ -84,7 +77,9 @@
         "title": "B.Sc. Computer Science & Engineering",
         "place": "Politecnico di Milano",
         "type": "Education",
-        "achievements": []
+        "achievements": [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non diam. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Tincidunt dui ut ornare lectus sit amet est placerat. Orci dapibus ultrices in iaculis nunc. Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Sed risus ultricies tristique nulla aliquet enim tortor at. Pulvinar proin gravida hendrerit lectus a. Nunc congue nisi vitae suscipit. Diam quam nulla porttitor massa id neque aliquam. Euismod in pellentesque massa placerat. Tincidunt praesent semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum nisi. Facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus. Ultricies tristique nulla aliquet enim. Enim nec dui nunc mattis enim ut tellus."
+        ]
       },
       "locationId": 2
     },
@@ -97,7 +92,9 @@
         "title": "M.Sc. Computer Science & Engineering",
         "place": "Politecnico di Milano",
         "type": "Education",
-        "achievements": []
+        "achievements": [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non diam. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Tincidunt dui ut ornare lectus sit amet est placerat. Orci dapibus ultrices in iaculis nunc. Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Sed risus ultricies tristique nulla aliquet enim tortor at. Pulvinar proin gravida hendrerit lectus a. Nunc congue nisi vitae suscipit. Diam quam nulla porttitor massa id neque aliquam. Euismod in pellentesque massa placerat. Tincidunt praesent semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum nisi. Facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus. Ultricies tristique nulla aliquet enim. Enim nec dui nunc mattis enim ut tellus."
+        ]
       },
       "locationId": 2
     },

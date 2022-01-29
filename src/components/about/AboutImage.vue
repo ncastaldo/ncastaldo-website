@@ -1,16 +1,15 @@
-<script>
-</script>
+<script></script>
 
 <template>
-  <div>
+  <div class="about-image-container">
     <img class="about-image static" src="/assets/img/nc.jpeg" />
-    <img class="about-image active" src="/assets/img/nc.gif" />
+    <img class="about-image active" src="/assets/img/nc_loop.gif" />
   </div>
 </template>
 
 <style>
 .about-image-container {
-  max-width: 30rem;
+  text-align: center;
 }
 
 .about-image {
@@ -20,9 +19,7 @@
 
 .static {
   position: absolute;
-  background: white;
 }
-
 .static:hover {
   opacity: 0;
 }

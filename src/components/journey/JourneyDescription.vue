@@ -10,33 +10,29 @@ export default {
 
     const store = useStore();
 
-    const period = computed(() => store.getters.getPeriod);
+    const periods = computed(() => store.getters.getPeriods);
 
-    const detail = computed(() => period.value.detail);
+    const getPeriodInterval = period =>
+      period.fromDate
+        ? `${format(period.fromDate)} - ${format(period.toDate)}`
+        : format(period.toDate)
 
-    const interval = computed(() =>
-      period.value.fromDate
-        ? `${format(period.value.fromDate)} - ${format(period.value.toDate)}`
-        : format(period.value.toDate)
-    );
 
     return {
-      detail,
-      interval,
+      periods,
+      getPeriodInterval,
     };
   },
 };
 </script>
 
 <template>
-  <div class="description">
-    <h3 class="description-title">{{ detail.title }}</h3>
-    <h4 class="description-subtitle">{{ detail.place }}</h4>
-    <h5 class="description-caption">{{ interval }}</h5>
+  <div v-for="period in periods" :key="period.id" class="description">
+    <h3 class="description-title">{{ period.detail.title }}</h3>
+    <h4 class="description-subtitle">{{ period.detail.place }}</h4>
+    <h5 class="description-caption">{{ getPeriodInterval(period) }}</h5>
     <div class="description-content">
-      <p v-for="(achievement, i) in detail.achievements" :key="i">
-        {{ achievement }}
-      </p>
+      <p v-for="(achievement, i) in period.detail.achievements" :key="i">{{ achievement }}</p>
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script>
-import IntroNameChart from "./IntroNameChart.vue"
+import IntroNameChart from "./IntroNameChart.vue";
 
 export default {
   components: { IntroNameChart },
@@ -7,28 +7,28 @@ export default {
     const positions = ["Software", "Data", "Full Stack", "Engineer"];
     const socials = [
       {
-        name: 'LinkedIn',
-        icon: ['fab', 'linkedin'],
-        link: 'https://www.linkedin.com/in/ncastaldo'
+        name: "LinkedIn",
+        icon: ["fab", "linkedin"],
+        link: "https://www.linkedin.com/in/ncastaldo",
       },
       {
-        name: 'GitHub',
-        icon: ['fab', 'github'],
-        link: 'https://github.com/ncastaldo'
+        name: "GitHub",
+        icon: ["fab", "github"],
+        link: "https://github.com/ncastaldo",
       },
       {
-        name: 'Observable',
-        icon: ['fab', 'observable'],
-        link: 'https://observablehq.com/@ncastaldo'
-      }]
+        name: "Observable",
+        icon: ["fab", "observable"],
+        link: "https://observablehq.com/@ncastaldo",
+      },
+    ];
 
     return {
       positions,
-      socials
+      socials,
     };
   },
-}
-
+};
 </script>
 
 <template>
@@ -41,9 +41,8 @@ export default {
         </h1>
       </div>
       <div class="intro-subtitle">
-        <h2 class="intro-subtitle-heading">and</h2>
+        <h2 class="intro-subtitle-heading">and also</h2>
         <IntroNameChart />
-        <h2 class="intro-subtitle-heading">too</h2>
       </div>
       <div class="intro-positions">
         <h2 class="intro-position-heading">
@@ -106,7 +105,7 @@ export default {
 }
 
 .intro-socials-element-link {
-  color: #2c3e50;
+  color: #1e1e1e;
 }
 
 .intro-socials-element-link:hover {

@@ -13,40 +13,41 @@ const MAP_URL =
 
 export default {
   setup() {
-    const [width, height] = [600, 300];
+    const [width, height] = [600, 150];
 
     const svgRef = ref(null);
 
     const store = useStore();
     const location = computed(() => store.getters.getLocation);
-    const activeLocations = computed(() => store.getters.getActiveLocations);
-    const activeRoutes = computed(() => store.getters.getActiveRoutes);
+    const locations = computed(() => store.getters.getLocations);
+
+    const setLocationId = (locationId) => store.dispatch('setLocationId', locationId)
 
     const chartViewPoint = computed(() => [
       location.value.long,
       location.value.lat,
     ]);
-    const chartPoints = computed(() =>
-      activeLocations.value.map((d) => [d.long, d.lat])
+    const chartLocations = computed(() =>
+      locations.value.map((d) => ({
+        id: d.id,
+        point: [d.long, d.lat],
+        current: location.value === d
+      }))
     );
-    const chartRoutes = computed(() =>
-      activeRoutes.value.map(({ fromLocation, toLocation }) =>
-        lineString([
-          [fromLocation.long, fromLocation.lat],
-          [toLocation.long, toLocation.lat],
-        ])
-      )
-    );
+
     const chartFeature = ref(null);
 
     const useChart = (selection) => {
       const projection = geoMercator();
       const path = geoPath().projection(projection);
 
+
+      const colorScale = d => d.current ? "#42a07e" : "#bbb"
+
+
       const g = selection.append("g");
 
       let map = g.append("g").selectAll("path");
-      let routes = g.append("g").selectAll("path");
       let points = g.append("g").selectAll("circle");
 
       const zoomed = ({ transform }) => {
@@ -76,7 +77,7 @@ export default {
         const [x, y] = projection(chartViewPoint.value);
         const scale = 20;
 
-        const target = firstDraw
+        const target = !firstDraw
           ? selection.transition().duration(750)
           : selection;
 
@@ -89,57 +90,39 @@ export default {
         );
       };
 
-      const updateRoutes = () => {
-        routes = routes
-          .data(chartRoutes.value)
-          .join(
-            (enter) =>
-              enter
-                .append("path")
-                .attr("opacity", 0)
-                .transition()
-                .attr("opacity", 1),
-            (update) => update,
-            (exit) => exit.transition().attr("opacity", 0).remove()
-          )
-          .attr("d", path)
-          .attr("stroke-width", 4)
-          .attr("vector-effect", "non-scaling-stroke")
-          .attr("stroke", "#888");
+      const updatePoints = () => {
 
         points = points
-          .data(chartPoints.value)
+          .data(chartLocations.value)
           .join(
             (enter) =>
               enter
                 .append("circle")
                 .attr("opacity", 0)
-                .attr("fill", (d, i, array) =>
-                  i == array.length - 1 ? "#42a07e" : "#888"
-                )
+                .attr("fill", colorScale)
                 .transition()
                 .attr("opacity", 1),
             (update) =>
               update
                 .transition()
-                .attr("fill", (d, i, array) =>
-                  i == array.length - 1 ? "#42a07e" : "#888"
-                ),
+                .attr("fill", colorScale),
             (exit) => exit.transition().attr("opacity", 0).remove()
           )
-          .attr("cx", (d) => projection(d)[0])
-          .attr("cy", (d) => projection(d)[1])
+          .attr("cx", (d) => projection(d.point)[0])
+          .attr("cy", (d) => projection(d.point)[1])
           .attr("r", 6 / 20)
-          .attr("vector-effect", "non-scaling-size");
+          .attr("vector-effect", "non-scaling-size")
+          .style("cursor", "pointer")
+          .on('click', (event, d) => setLocationId(d.id));
       };
 
       updateMap();
-      updateZoom();
-      updateRoutes();
+      updateZoom(true);
+      updatePoints();
+
 
       watch(() => chartFeature.value, updateMap);
-      watch(() => chartViewPoint.value, updateZoom);
-      watch(() => chartRoutes.value, updateRoutes);
+      watch(() => chartViewPoint.value, () => { updateZoom(false); updatePoints() });
     };
 
     onMounted(async () => {

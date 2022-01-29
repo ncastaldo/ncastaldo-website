@@ -1,15 +1,15 @@
 <script setup>
-import BaseSection from '../base/BaseSection.vue';
-import AboutImage from './AboutImage.vue';
-
+import BaseSection from "../base/BaseSection.vue";
+import AboutImage from "./AboutImage.vue";
+import AboutDescription from "./AboutDescription.vue";
 </script>
 
 <template>
   <BaseSection>
-    <template v-slot:title>About</template>
-    <template v-slot>
+    <template #title>About</template>
+    <template #default>
       <AboutImage />
+      <AboutDescription />
     </template>
   </BaseSection>
 </template>
-

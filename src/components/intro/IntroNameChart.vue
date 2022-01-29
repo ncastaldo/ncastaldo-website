@@ -1,25 +1,23 @@
 <script>
 import { computed, onBeforeMount, onMounted, ref, watch } from "vue";
 
-import opentype from 'opentype.js'
+import opentype from "opentype.js";
 
 import { select, pointer } from "d3-selection";
 import { forceSimulation, forceManyBody, forceX, forceY } from "d3-force";
 
-const FONT_URL = '/assets/fonts/register.ttf'
+const FONT_URL = "/assets/fonts/register.ttf";
 
 export default {
   setup(props) {
-
-    const fontSize = 35
+    const fontSize = 35;
 
     const text = "@ncastaldo";
 
-    const textHeight = fontSize
-    const textWidth = text.length * fontSize * 2 / 3
+    const textHeight = fontSize;
+    const textWidth = (text.length * fontSize * 2) / 3;
 
     const [width, height] = [textWidth * 1.2, textHeight * 1.5];
-
 
     const color = "#42a07e";
 
@@ -29,12 +27,11 @@ export default {
     const useChart = (selection) => {
       const context = selection.node().getContext("2d");
 
-      let textNodes = []
+      let textNodes = [];
 
       const ticked = () => {
         context.clearRect(0, 0, width, height);
         context.save();
-
 
         for (const d of simulation.nodes()) {
           context.beginPath();
@@ -56,7 +53,7 @@ export default {
           "charge",
           forceManyBody().strength((d) => ("pointer" in d ? -50 : 0))
         )
-        .on("tick", ticked)
+        .on("tick", ticked);
 
       // event listeners
 
@@ -64,19 +61,19 @@ export default {
 
       const onMove = (event) => {
         const [x, y] = pointer(event);
-        pointerNode.fx = x
-        pointerNode.fy = y
+        pointerNode.fx = x;
+        pointerNode.fy = y;
       };
 
       const onEnter = (event) => {
         const [x, y] = pointer(event);
         pointerNode.fx = x;
         pointerNode.fy = y;
-        simulation.nodes([...textNodes, pointerNode])
+        simulation.nodes([...textNodes, pointerNode]);
       };
 
       const onOut = (event) => {
-        simulation.nodes([...textNodes])
+        simulation.nodes([...textNodes]);
       };
 
       selection
@@ -88,38 +85,37 @@ export default {
       // updates
 
       const updateTextNodes = () => {
-
-        const x = (width - textWidth) / 2
-        const y = (height / 2) + (textHeight / 100 * 33)
+        const x = (width - textWidth) / 2;
+        const y = height / 2 + (textHeight / 100) * 33;
 
         const path = font.value.getPath(text, x, y, fontSize);
 
-        textNodes = []
+        textNodes = [];
 
-        let curPath = new opentype.Path()
+        let curPath = new opentype.Path();
         for (const command of path.commands) {
-          curPath.commands.push(command)
-          if (command.type === 'Z') {
+          curPath.commands.push(command);
+          if (command.type === "Z") {
+            const bbox = curPath.getBoundingBox();
 
-            const bbox = curPath.getBoundingBox()
+            const rBold = 1.7;
 
-            const rBold = 1.7
+            const x = +((bbox.x1 + bbox.x2) / 2).toFixed(3);
+            const y = +((bbox.y1 + bbox.y2) / 2).toFixed(3);
 
-            const x = +((bbox.x1 + bbox.x2) / 2).toFixed(3)
-            const y = +((bbox.y1 + bbox.y2) / 2).toFixed(3)
+            const r =
+              +((bbox.x2 - bbox.x1 + bbox.y2 - bbox.y2) / 2).toFixed(3) * rBold;
 
-            const r = +((bbox.x2 - bbox.x1 + bbox.y2 - bbox.y2) / 2).toFixed(3) * rBold
+            const forceX = x;
+            const forceY = y;
 
-            const forceX = x
-            const forceY = y
+            textNodes.push({ x, y, r, forceX, forceY });
 
-            textNodes.push({ x, y, r, forceX, forceY })
-
-            curPath = new opentype.Path()
+            curPath = new opentype.Path();
           }
         }
 
-        simulation.nodes([...textNodes])
+        simulation.nodes([...textNodes]);
       };
 
       updateTextNodes();

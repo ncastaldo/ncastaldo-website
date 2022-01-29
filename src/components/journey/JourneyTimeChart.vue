@@ -10,14 +10,22 @@ import { axisBottom } from "d3-axis";
 
 export default {
   setup() {
-    const [width, height] = [600, 80];
+    const [width, height] = [600, 60];
     const padding = { top: 10, right: 10, bottom: 30, left: 10 };
 
     const svgRef = ref(null);
 
     const store = useStore();
+
+    const setPeriodId = (periodId) => store.commit("setPeriodId", periodId);
+
+    const period = computed(() => store.getters.getPeriod);
     const periods = computed(() => store.getters.getPeriods);
-    const activePeriods = computed(() => store.getters.getActivePeriods);
+
+    const chartPeriods = computed(() => periods.value.map(d => ({
+      ...d,
+      current: d === period.value
+    })));
 
     const useChart = (selection) => {
       const xScale = scaleTime()
@@ -30,6 +38,8 @@ export default {
       const yScale = scaleLinear()
         .domain([0, 1])
         .range([height - padding.bottom, padding.top]);
+
+      const colorScale = d => d.current ? "#42a07e" : "#bbb"
 
       const xAxis = axisBottom().scale(xScale);
 
@@ -44,35 +54,33 @@ export default {
         const t = transition().duration(500);
 
         bars = bars
-          .data(activePeriods.value, (d) => d.id)
+          .data(chartPeriods.value, (d) => d.id)
           .join(
             (enter) =>
               enter
                 .append("rect")
                 .attr("opacity", 0)
-                .attr("fill", (d, i, array) =>
-                  i == array.length - 1 ? "#42a07e" : "#888"
-                )
+                .attr("fill", colorScale)
                 .transition(t)
                 .attr("opacity", 1),
             (update) =>
               update
                 .transition(t)
                 .attr("opacity", 1)
-                .attr("fill", (d, i, array) =>
-                  i == array.length - 1 ? "#42a07e" : "#888"
-                ),
+                .attr("fill", colorScale),
             (exit) => exit.transition(t).attr("opacity", 0).remove()
           )
           .attr("x", (d) => xScale(d.fromDate))
           .attr("width", (d) => xScale(d.toDate) - xScale(d.fromDate))
           .attr("height", (d) => yScale.range()[0] - yScale(1))
-          .attr("y", (d) => yScale.range()[1]);
+          .attr("y", (d) => yScale.range()[1])
+          .style("cursor", "pointer")
+          .on('click', (event, d) => { console.log(d); setPeriodId(d.id) });
       };
 
       update();
 
-      watch(() => activePeriods.value, update);
+      watch(() => chartPeriods.value, update);
     };
 
     onMounted(() => {

@@ -9,8 +9,8 @@ import SkillsSection from "./skills/SkillsSection.vue";
   <main class="main">
     <IntroSection />
     <AboutSection />
-    <SkillsSection />
     <JourneySection />
+    <SkillsSection />
   </main>
 </template>
 
