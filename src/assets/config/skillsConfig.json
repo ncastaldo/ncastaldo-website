@@ -1,39 +1,202 @@
-
-software
-data
-full stack
-
-javascript
-python3
-java
-sql
-c
-
-functional programming
-oop
-algorithms
-software engineer
-technical analysis
-algorithms
-data engineering
-data visualization
-NLP analysis
-
-D3
-HTML
-CSS
-Vue
-Vuetify
-Leaflet
-Node
-MongoDB
-MySQL
-Jupyter
-pandas
-geopandas
-Jira
-Confluence
-Docker
-
-
-databa
+{
+  "id": "skill",
+  "children": [
+    {
+      "id": "area",
+      "children": [
+        {
+          "id": "software",
+          "value": 10
+        },
+        {
+          "id": "data",
+          "value": 10
+        },
+        {
+          "id": "full-stack",
+          "value": 10
+        }
+      ]
+    },
+    {
+      "id": "language",
+      "children": [
+        {
+          "id": "javascript",
+          "value": 3
+        },
+        {
+          "id": "python3",
+          "value": 3
+        },
+        {
+          "id": "java",
+          "value": 3
+        },
+        {
+          "id": "sql",
+          "value": 3
+        },
+        {
+          "id": "bash",
+          "value": 3
+        },
+        {
+          "id": "c",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "method",
+      "children": [
+        {
+          "id": "functional-programming",
+          "value": 2
+        },
+        {
+          "id": "oop",
+          "value": 2
+        },
+        {
+          "id": "algorithms",
+          "value": 2
+        },
+        {
+          "id": "data-structures",
+          "value": 2
+        },
+        {
+          "id": "technical-analysis",
+          "value": 2
+        },
+        {
+          "id": "algorithms",
+          "value": 2
+        },
+        {
+          "id": "pipelines",
+          "value": 2
+        },
+        {
+          "id": "visualization",
+          "value": 2
+        },
+        {
+          "id": "nlp",
+          "value": 2
+        },
+        {
+          "id": "database",
+          "value": 2
+        },
+        {
+          "id": "rest-api",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "library",
+      "children": [
+        {
+          "id": "D3",
+          "value": 2
+        },
+        {
+          "id": "HTML",
+          "value": 2
+        },
+        {
+          "id": "CSS",
+          "value": 2
+        },
+        {
+          "id": "Vue",
+          "value": 2
+        },
+        {
+          "id": "Vuetify",
+          "value": 2
+        },
+        {
+          "id": "Leaflet",
+          "value": 2
+        },
+        {
+          "id": "Node",
+          "value": 2
+        },
+        {
+          "id": "MongoDB",
+          "value": 2
+        },
+        {
+          "id": "MySQL",
+          "value": 2
+        },
+        {
+          "id": "Jupyter",
+          "value": 2
+        },
+        {
+          "id": "pandas",
+          "value": 2
+        },
+        {
+          "id": "geopandas",
+          "value": 2
+        },
+        {
+          "id": "Jira",
+          "value": 2
+        },
+        {
+          "id": "Confluence",
+          "value": 2
+        },
+        {
+          "id": "Git",
+          "value": 2
+        },
+        {
+          "id": "Docker",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "project",
+      "children": [
+        {
+          "id": "covid19obs",
+          "value": 3
+        },
+        {
+          "id": "wecare-website",
+          "value": 3
+        },
+        {
+          "id": "aodv-iot",
+          "value": 3
+        },
+        {
+          "id": "data-explorer-bot",
+          "value": 3
+        },
+        {
+          "id": "emolab",
+          "value": 3
+        },
+        {
+          "id": "d3nic",
+          "value": 3
+        },
+        {
+          "id": "council-of-Four",
+          "value": 3
+        }
+      ]
+    }
+  ]
+}

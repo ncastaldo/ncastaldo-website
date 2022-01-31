@@ -1,0 +1,24 @@
+{
+  "programming": [
+    {
+      "id": "javascript",
+      "value": 9
+    },
+    {
+      "id": "python3",
+      "value": 8
+    },
+    {
+      "id": "java",
+      "value": 8
+    },
+    {
+      "id": "sql",
+      "value": 7
+    },
+    {
+      "id": "bash",
+      "value": 6
+    }
+  ]
+}

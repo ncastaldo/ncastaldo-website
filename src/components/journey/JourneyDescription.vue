@@ -24,6 +24,7 @@ export default {
       const centerY = window.innerHeight / 2;
       const pair = descriptionRefPeriods
         .find(([descriptionRef, period]) => {
+          console.log(descriptionRef)
           const rect = descriptionRef.getBoundingClientRect();
           return rect.top < centerY && centerY < rect.top + rect.height;
         });
@@ -35,7 +36,7 @@ export default {
       }
     };
     onMounted(() => {
-      window.addEventListener("scroll", onScroll);
+      // window.addEventListener("scroll", onScroll);
     });
     return {
       setDescriptionRef,
@@ -51,8 +52,8 @@ export default {
   <BaseItem
     v-for="period in periods"
     :key="period.id"
-    class="description"
     :ref="(ref) => setDescriptionRef(ref, period)"
+    class="description"
   >
     <template #logo>
       <BaseLogo :src="period.detail.logo" />
