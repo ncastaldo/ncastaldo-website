@@ -13,7 +13,7 @@ const MAP_URL =
 
 export default {
   setup() {
-    const [width, height] = [600, 150];
+    const [width, height] = [600, 300];
 
     const svgRef = ref(null);
 
@@ -143,5 +143,5 @@ export default {
 </script>
 
 <template>
-  <svg ref="svgRef" :viewBox="`0 0 ${width} ${height}`" />
+  <svg id="journey-map-chart" ref="svgRef" :viewBox="`0 0 ${width} ${height}`" />
 </template>

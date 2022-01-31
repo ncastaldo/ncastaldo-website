@@ -1,11 +1,33 @@
-<script setup>
+<script>
 import BaseSection from "../base/BaseSection.vue";
-import JourneyButtons from "./JourneyButtons.vue";
 import JourneyMapChart from "./JourneyMapChart.vue";
-import JourneyDescription from "./JourneyDescription.vue";
 import JourneyTimeChart from "./JourneyTimeChart.vue";
+import JourneyDescription from "./JourneyDescription.vue";
+import { onMounted, ref } from "vue";
 
-// http://www.garysheng.com/
+export default {
+  components: {
+    BaseSection,
+    JourneyMapChart,
+    JourneyTimeChart,
+    JourneyDescription
+  },
+  setup() {
+    const section = ref(null)
+
+    const onScroll = (event) => {
+      console.log(section.value.getBoundingClientRect(), window.scrollY)
+    }
+
+    onMounted(() => {
+      // window.addEventListener('scroll', onScroll)
+    })
+
+    return {
+      section
+    }
+  }
+}
 
 </script>
 
@@ -13,20 +35,25 @@ import JourneyTimeChart from "./JourneyTimeChart.vue";
   <BaseSection>
     <template #title>My Journey</template>
     <template #default>
-      <JourneyTimeChart />
-
-      <JourneyMapChart />
-
-      <JourneyDescription />
+      <div class="sticky">
+        <JourneyTimeChart />
+        <JourneyMapChart />
+      </div>
+      <div style="z-index: 2;">
+        awewew
+        <JourneyDescription />
+      </div>
     </template>
   </BaseSection>
 </template>
 
 <style scoped>
-.journey-time-chart-outside {
-  position: relative;
+.sticky {
+  position: sticky;
+  top: 0;
 }
-.journey-time-chart-inside {
-  position: absolute;
+
+.ahead-sticky {
+  z-index: 1;
 }
 </style>

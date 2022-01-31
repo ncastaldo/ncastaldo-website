@@ -1,5 +1,5 @@
 <script>
-import { computed } from "vue";
+import { computed, onBeforeUpdate, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 
 import { timeFormat } from "d3-time-format";
@@ -10,7 +10,9 @@ export default {
 
     const store = useStore();
 
+    const setPeriodId = (periodId) => store.commit("setPeriodId", periodId);
     const periods = computed(() => store.getters.getPeriods);
+    const currentPeriod = computed(() => store.getters.getPeriod);
 
     const getPeriodInterval = period =>
       period.fromDate
@@ -18,7 +20,34 @@ export default {
         : format(period.toDate)
 
 
+    const descriptionRefPeriods = []
+    const setDescriptionRef = (descriptionRef, period) => { descriptionRefPeriods.push([descriptionRef, period]) }
+    // onBeforeUpdate not needed here
+
+    const onScroll = (event) => {
+      const centerY = window.innerHeight / 2
+
+      const pair = descriptionRefPeriods
+        .find(([descriptionRef, period]) => {
+          const rect = descriptionRef.getBoundingClientRect()
+          return rect.top < centerY && centerY < rect.top + rect.height
+        })
+
+      if (pair !== null && pair.length === 2) {
+        const period = pair[1]
+        if (period !== currentPeriod.value) {
+          setPeriodId(period.id)
+        }
+      }
+    }
+
+    onMounted(() => {
+      window.addEventListener('scroll', onScroll)
+    })
+
     return {
+      setDescriptionRef,
+      currentPeriod,
       periods,
       getPeriodInterval,
     };
@@ -27,8 +56,15 @@ export default {
 </script>
 
 <template>
-  <div v-for="period in periods" :key="period.id" class="description">
-    <h3 class="description-title">{{ period.detail.title }}</h3>
+  <div
+    v-for="period in periods"
+    :key="period.id"
+    class="description"
+    :ref="(ref) => setDescriptionRef(ref, period)"
+  >
+    <h3
+      :class="`description-title ${currentPeriod === period ? 'current' : ''}`"
+    >{{ period.detail.title }}</h3>
     <h4 class="description-subtitle">{{ period.detail.place }}</h4>
     <h5 class="description-caption">{{ getPeriodInterval(period) }}</h5>
     <div class="description-content">
@@ -41,10 +77,15 @@ export default {
 .description {
   padding: 1rem;
 }
+
 .description-title {
   padding-top: 0.1rem;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.3rem;
   font-size: 1.5rem;
+}
+.description-title.current {
+  text-decoration: underline #42a07e;
+  text-underline-offset: 0.4rem;
 }
 
 .description-subtitle {
