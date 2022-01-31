@@ -62,7 +62,7 @@ export default {
         map = map
           .data([chartFeature.value])
           .join("path")
-          .attr("fill", "#eee")
+          .attr("fill-opacity", 0)
           .attr("stroke", "#023858")
           .attr("stroke-width", 0.5)
           .attr("vector-effect", "non-scaling-stroke")

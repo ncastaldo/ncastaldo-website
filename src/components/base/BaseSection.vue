@@ -26,6 +26,6 @@
 
 .section-content {
   margin: 0 auto;
-  max-width: 40rem;
+  max-width: 50rem;
 }
 </style>

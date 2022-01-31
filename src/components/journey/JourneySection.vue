@@ -40,7 +40,6 @@ export default {
         <JourneyMapChart />
       </div>
       <div style="z-index: 2;">
-        awewew
         <JourneyDescription />
       </div>
     </template>

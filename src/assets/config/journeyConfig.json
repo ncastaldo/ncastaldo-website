@@ -46,6 +46,7 @@
       "detail": {
         "title": "B.Sc. Computer Science & Engineering",
         "place": "Politecnico di Milano",
+        "logo": "/assets/logos/polimi-logo.svg",
         "type": "Education",
         "achievements": [
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non diam. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Tincidunt dui ut ornare lectus sit amet est placerat. Orci dapibus ultrices in iaculis nunc. Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Sed risus ultricies tristique nulla aliquet enim tortor at. Pulvinar proin gravida hendrerit lectus a. Nunc congue nisi vitae suscipit. Diam quam nulla porttitor massa id neque aliquam. Euismod in pellentesque massa placerat. Tincidunt praesent semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum nisi. Facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus. Ultricies tristique nulla aliquet enim. Enim nec dui nunc mattis enim ut tellus."
@@ -61,6 +62,7 @@
       "detail": {
         "title": "Erasmus+ Study",
         "place": "Universitat Politecnica de Valencia",
+        "logo": "/assets/logos/upv-logo-2.svg",
         "type": "Education",
         "achievements": [
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non diam. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Tincidunt dui ut ornare lectus sit amet est placerat. Orci dapibus ultrices in iaculis nunc. Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Sed risus ultricies tristique nulla aliquet enim tortor at. Pulvinar proin gravida hendrerit lectus a. Nunc congue nisi vitae suscipit. Diam quam nulla porttitor massa id neque aliquam. Euismod in pellentesque massa placerat. Tincidunt praesent semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum nisi. Facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus. Ultricies tristique nulla aliquet enim. Enim nec dui nunc mattis enim ut tellus."
@@ -76,6 +78,7 @@
       "detail": {
         "title": "B.Sc. Computer Science & Engineering",
         "place": "Politecnico di Milano",
+        "logo": "/assets/logos/polimi-logo.svg",
         "type": "Education",
         "achievements": [
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non diam. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Tincidunt dui ut ornare lectus sit amet est placerat. Orci dapibus ultrices in iaculis nunc. Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Sed risus ultricies tristique nulla aliquet enim tortor at. Pulvinar proin gravida hendrerit lectus a. Nunc congue nisi vitae suscipit. Diam quam nulla porttitor massa id neque aliquam. Euismod in pellentesque massa placerat. Tincidunt praesent semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum nisi. Facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus. Ultricies tristique nulla aliquet enim. Enim nec dui nunc mattis enim ut tellus."
@@ -91,6 +94,7 @@
       "detail": {
         "title": "M.Sc. Computer Science & Engineering",
         "place": "Politecnico di Milano",
+        "logo": "/assets/logos/polimi-logo.svg",
         "type": "Education",
         "achievements": [
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non diam. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Tincidunt dui ut ornare lectus sit amet est placerat. Orci dapibus ultrices in iaculis nunc. Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Sed risus ultricies tristique nulla aliquet enim tortor at. Pulvinar proin gravida hendrerit lectus a. Nunc congue nisi vitae suscipit. Diam quam nulla porttitor massa id neque aliquam. Euismod in pellentesque massa placerat. Tincidunt praesent semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum nisi. Facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus. Ultricies tristique nulla aliquet enim. Enim nec dui nunc mattis enim ut tellus."
@@ -106,6 +110,7 @@
       "detail": {
         "title": "Software & Data Engineer",
         "place": "Fondazione Bruno Kessler",
+        "logo": "/assets/logos/fbk-logo.svg",
         "type": "Experience",
         "achievements": [
           "Worked in an interdisciplinary team and actively participated to various research projects that resulted in scientific papers",
@@ -125,6 +130,7 @@
       "detail": {
         "title": "Technical Analyst",
         "place": "OverIT S.p.A.",
+        "logo": "/assets/logos/overit-logo.svg",
         "type": "Experience",
         "achievements": [
           "Worked closely with business analysts to interpret and write technical requirements and collect feedbacks and bug reports for new software functionalities",

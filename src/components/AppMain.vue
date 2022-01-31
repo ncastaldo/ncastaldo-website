@@ -3,6 +3,7 @@ import IntroSection from "./intro/IntroSection.vue";
 import JourneySection from "./journey/JourneySection.vue";
 import AboutSection from "./about/AboutSection.vue";
 import SkillsSection from "./skills/SkillsSection.vue";
+import PublicationsSection from "./publications/PublicationsSection.vue";
 
 </script>
 
@@ -12,6 +13,7 @@ import SkillsSection from "./skills/SkillsSection.vue";
     <AboutSection />
     <SkillsSection />
     <JourneySection />
+    <PublicationsSection />
   </main>
 </template>
 
