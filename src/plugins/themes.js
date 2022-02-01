@@ -15,5 +15,4 @@ const themes = {
   contrastColor,
 };
 
-
 export { cssThemes, themes };

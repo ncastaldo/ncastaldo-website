@@ -47,13 +47,19 @@ export default {
       <div class="intro-positions">
         <h2 class="intro-position-heading">
           <span v-for="(position, i) in positions" :key="i">
-            <span v-if="i !== 0" class="intro-position-heading--separator">|</span>
+            <span v-if="i !== 0" class="intro-position-heading--separator"
+              >|</span
+            >
             <span>{{ position }}</span>
           </span>
         </h2>
       </div>
       <div class="intro-socials">
-        <span v-for="(social, i) in socials" :key="i" class="intro-socials-element">
+        <span
+          v-for="(social, i) in socials"
+          :key="i"
+          class="intro-socials-element"
+        >
           <a class="intro-socials-element-link" :href="social.link">
             <fa :icon="social.icon" size="2x"></fa>
           </a>

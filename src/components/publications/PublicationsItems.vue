@@ -1,17 +1,16 @@
 <script>
-import publications from '../../assets/config/publicationsConfig.json'
-import BaseItem from '../base/BaseItem.vue'
-import BaseLogo from '../base/BaseLogo.vue';
+import publications from "../../assets/config/publicationsConfig.json";
+import BaseItem from "../base/BaseItem.vue";
+import BaseLogo from "../base/BaseLogo.vue";
 
 export default {
   components: { BaseItem, BaseLogo },
   setup() {
     return {
-      publications
+      publications,
     };
   },
-}
-
+};
 </script>
 
 <template>

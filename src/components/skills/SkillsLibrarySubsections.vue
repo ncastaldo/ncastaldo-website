@@ -1,16 +1,15 @@
-
 <script>
-import skillsLibraryConfig from '../../assets/config/skillsLibraryConfig.json'
-import BaseSubsection from '../base/BaseSubsection.vue'
+import skillsLibraryConfig from "../../assets/config/skillsLibraryConfig.json";
+import BaseSubsection from "../base/BaseSubsection.vue";
 
 export default {
   setup() {
     return {
-      skillsPartitionsConfig
+      skillsPartitionsConfig,
     };
   },
-  components: { BaseSubsection }
-}
+  components: { BaseSubsection },
+};
 </script>
 
 <template>
@@ -18,7 +17,11 @@ export default {
     <template #title>{{ partition.name }}</template>
     <template #default>
       <div class="skills-library">
-        <div v-for="library in partition.libraries" :key="library.id" class="skills-library-item">
+        <div
+          v-for="library in partition.libraries"
+          :key="library.id"
+          class="skills-library-item"
+        >
           <span class="skills-library-item--content">{{ library.name }}</span>
           <span class="skills-library-item--delimiter"></span>
         </div>

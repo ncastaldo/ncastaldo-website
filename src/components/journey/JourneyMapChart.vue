@@ -21,7 +21,8 @@ export default {
     const location = computed(() => store.getters.getLocation);
     const locations = computed(() => store.getters.getLocations);
 
-    const setLocationId = (locationId) => store.dispatch('setLocationId', locationId)
+    const setLocationId = (locationId) =>
+      store.dispatch("setLocationId", locationId);
 
     const chartViewPoint = computed(() => [
       location.value.long,
@@ -31,7 +32,7 @@ export default {
       locations.value.map((d) => ({
         id: d.id,
         point: [d.long, d.lat],
-        current: location.value === d
+        current: location.value === d,
       }))
     );
 
@@ -41,9 +42,7 @@ export default {
       const projection = geoMercator();
       const path = geoPath().projection(projection);
 
-
-      const colorScale = d => d.current ? "#42a07e" : "#bbb"
-
+      const colorScale = (d) => (d.current ? "#42a07e" : "#bbb");
 
       const g = selection.append("g");
 
@@ -91,7 +90,6 @@ export default {
       };
 
       const updatePoints = () => {
-
         points = points
           .data(chartLocations.value)
           .join(
@@ -102,10 +100,7 @@ export default {
                 .attr("fill", colorScale)
                 .transition()
                 .attr("opacity", 1),
-            (update) =>
-              update
-                .transition()
-                .attr("fill", colorScale),
+            (update) => update.transition().attr("fill", colorScale),
             (exit) => exit.transition().attr("opacity", 0).remove()
           )
           .attr("cx", (d) => projection(d.point)[0])
@@ -113,16 +108,21 @@ export default {
           .attr("r", 6 / 20)
           .attr("vector-effect", "non-scaling-size")
           .style("cursor", "pointer")
-          .on('click', (event, d) => setLocationId(d.id));
+          .on("click", (event, d) => setLocationId(d.id));
       };
 
       updateMap();
       updateZoom(true);
       updatePoints();
 
-
       watch(() => chartFeature.value, updateMap);
-      watch(() => chartViewPoint.value, () => { updateZoom(false); updatePoints() });
+      watch(
+        () => chartViewPoint.value,
+        () => {
+          updateZoom(false);
+          updatePoints();
+        }
+      );
     };
 
     onMounted(async () => {
@@ -143,5 +143,9 @@ export default {
 </script>
 
 <template>
-  <svg id="journey-map-chart" ref="svgRef" :viewBox="`0 0 ${width} ${height}`" />
+  <svg
+    id="journey-map-chart"
+    ref="svgRef"
+    :viewBox="`0 0 ${width} ${height}`"
+  />
 </template>

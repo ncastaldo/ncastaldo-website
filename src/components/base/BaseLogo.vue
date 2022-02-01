@@ -1,12 +1,9 @@
 <script>
-
 export default {
   props: {
-    src: String
+    src: String,
   },
-
-}
-
+};
 </script>
 <template>
   <img class="logo" :src="src" />

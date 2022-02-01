@@ -14,20 +14,22 @@ export default {
     const setPeriodId = (periodId) => store.commit("setPeriodId", periodId);
     const periods = computed(() => store.getters.getPeriods);
     const currentPeriod = computed(() => store.getters.getPeriod);
-    const getPeriodInterval = period => period.fromDate
-      ? `${format(period.fromDate)} - ${format(period.toDate)}`
-      : format(period.toDate);
+    const getPeriodInterval = (period) =>
+      period.fromDate
+        ? `${format(period.fromDate)} - ${format(period.toDate)}`
+        : format(period.toDate);
     const descriptionRefPeriods = [];
-    const setDescriptionRef = (descriptionRef, period) => { descriptionRefPeriods.push([descriptionRef, period]); };
+    const setDescriptionRef = (descriptionRef, period) => {
+      descriptionRefPeriods.push([descriptionRef, period]);
+    };
     // onBeforeUpdate not needed here
     const onScroll = (event) => {
       const centerY = window.innerHeight / 2;
-      const pair = descriptionRefPeriods
-        .find(([descriptionRef, period]) => {
-          console.log(descriptionRef)
-          const rect = descriptionRef.getBoundingClientRect();
-          return rect.top < centerY && centerY < rect.top + rect.height;
-        });
+      const pair = descriptionRefPeriods.find(([descriptionRef, period]) => {
+        console.log(descriptionRef);
+        const rect = descriptionRef.getBoundingClientRect();
+        return rect.top < centerY && centerY < rect.top + rect.height;
+      });
       if (pair !== null && pair.length === 2) {
         const period = pair[1];
         if (period !== currentPeriod.value) {
@@ -60,12 +62,18 @@ export default {
     </template>
     <template #content>
       <h3
-        :class="`description-title ${currentPeriod === period ? 'current' : ''}`"
-      >{{ period.detail.title }}</h3>
+        :class="`description-title ${
+          currentPeriod === period ? 'current' : ''
+        }`"
+      >
+        {{ period.detail.title }}
+      </h3>
       <h4 class="description-subtitle">{{ period.detail.place }}</h4>
       <h5 class="description-caption">{{ getPeriodInterval(period) }}</h5>
       <div class="description-content">
-        <p v-for="(achievement, i) in period.detail.achievements" :key="i">{{ achievement }}</p>
+        <p v-for="(achievement, i) in period.detail.achievements" :key="i">
+          {{ achievement }}
+        </p>
       </div>
     </template>
   </BaseItem>

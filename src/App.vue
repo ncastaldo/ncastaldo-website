@@ -13,7 +13,7 @@ export default {
   },
   setup() {
     return {
-      cssThemes
+      cssThemes,
     };
   },
 };

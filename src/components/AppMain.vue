@@ -4,7 +4,6 @@ import JourneySection from "./journey/JourneySection.vue";
 import AboutSection from "./about/AboutSection.vue";
 import SkillsSection from "./skills/SkillsSection.vue";
 import PublicationsSection from "./publications/PublicationsSection.vue";
-
 </script>
 
 <template>
@@ -21,4 +20,3 @@ import PublicationsSection from "./publications/PublicationsSection.vue";
 .main {
 }
 </style>
-

@@ -4,7 +4,7 @@ import journeyConfig from "../assets/config/journeyConfig.json";
 
 // locations
 
-const locations = journeyConfig.locations
+const locations = journeyConfig.locations;
 
 const locationsDict = locations.reduce(
   (acc, cur) => Object.assign(acc, { [cur.id]: cur }),
@@ -18,19 +18,21 @@ const periods = journeyConfig.periods.map((period) =>
     fromDate: period.from ? new Date(period.from) : null,
     toDate: period.to ? new Date(period.to) : new Date(),
   })
-)
-periods.reverse()
+);
+periods.reverse();
 
-const periodId = periods[0].id
+const periodId = periods[0].id;
 
-const periodsDict = periods.reduce((acc, cur) => ({
-  ...acc,
-  [cur.id]: cur
-}), {});
-
+const periodsDict = periods.reduce(
+  (acc, cur) => ({
+    ...acc,
+    [cur.id]: cur,
+  }),
+  {}
+);
 
 const state = {
-  periodId
+  periodId,
 };
 
 const getPeriods = (state) => periods;
@@ -47,19 +49,21 @@ const getters = {
 };
 
 const mutations = {
-  setPeriodId: (state, periodId) => { state.periodId = periodId }
+  setPeriodId: (state, periodId) => {
+    state.periodId = periodId;
+  },
 };
 
 const actions = {
   setLocationId: ({ commit }, locationId) => {
-    const period = periods.find(d => d.locationId === locationId)
-    commit('setPeriodId', period.id)
-  }
-}
+    const period = periods.find((d) => d.locationId === locationId);
+    commit("setPeriodId", period.id);
+  },
+};
 
 export default createStore({
   state,
   getters,
   mutations,
-  actions
+  actions,
 });

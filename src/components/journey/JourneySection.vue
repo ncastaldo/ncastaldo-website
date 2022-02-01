@@ -10,25 +10,24 @@ export default {
     BaseSection,
     JourneyMapChart,
     JourneyTimeChart,
-    JourneyDescription
+    JourneyDescription,
   },
   setup() {
-    const section = ref(null)
+    const section = ref(null);
 
     const onScroll = (event) => {
-      console.log(section.value.getBoundingClientRect(), window.scrollY)
-    }
+      console.log(section.value.getBoundingClientRect(), window.scrollY);
+    };
 
     onMounted(() => {
       // window.addEventListener('scroll', onScroll)
-    })
+    });
 
     return {
-      section
-    }
-  }
-}
-
+      section,
+    };
+  },
+};
 </script>
 
 <template>
@@ -39,7 +38,7 @@ export default {
         <JourneyTimeChart />
         <JourneyMapChart />
       </div>
-      <div style="z-index: 2;">
+      <div style="z-index: 2">
         <JourneyDescription />
       </div>
     </template>

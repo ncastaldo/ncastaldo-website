@@ -22,10 +22,12 @@ export default {
     const period = computed(() => store.getters.getPeriod);
     const periods = computed(() => store.getters.getPeriods);
 
-    const chartPeriods = computed(() => periods.value.map(d => ({
-      ...d,
-      current: d === period.value
-    })));
+    const chartPeriods = computed(() =>
+      periods.value.map((d) => ({
+        ...d,
+        current: d === period.value,
+      }))
+    );
 
     const useChart = (selection) => {
       const xScale = scaleTime()
@@ -39,7 +41,7 @@ export default {
         .domain([0, 1])
         .range([height - padding.bottom, padding.top]);
 
-      const colorScale = d => d.current ? "#42a07e" : "#ccc"
+      const colorScale = (d) => (d.current ? "#42a07e" : "#ccc");
 
       const xAxis = axisBottom().scale(xScale);
 
@@ -64,10 +66,7 @@ export default {
                 .transition(t)
                 .attr("opacity", 1),
             (update) =>
-              update
-                .transition(t)
-                .attr("opacity", 1)
-                .attr("fill", colorScale),
+              update.transition(t).attr("opacity", 1).attr("fill", colorScale),
             (exit) => exit.transition(t).attr("opacity", 0).remove()
           )
           .attr("x", (d) => xScale(d.fromDate))
@@ -75,7 +74,10 @@ export default {
           .attr("height", (d) => yScale.range()[0] - yScale(1))
           .attr("y", (d) => yScale.range()[1])
           .style("cursor", "pointer")
-          .on('click', (event, d) => { console.log(d); setPeriodId(d.id) });
+          .on("click", (event, d) => {
+            console.log(d);
+            setPeriodId(d.id);
+          });
       };
 
       update();
