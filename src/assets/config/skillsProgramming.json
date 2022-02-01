@@ -1,24 +1,22 @@
-{
-  "programming": [
-    {
-      "id": "javascript",
-      "name": "Javascript",
-      "value": 9
-    },
-    {
-      "id": "python3",
-      "name": "Python3",
-      "value": 8
-    },
-    {
-      "id": "java",
-      "name": "Java",
-      "value": 8
-    },
-    {
-      "id": "C",
-      "name": "C",
-      "value": 7
-    }
-  ]
-}
+[
+  {
+    "id": "javascript",
+    "name": "Javascript",
+    "value": 9
+  },
+  {
+    "id": "python3",
+    "name": "Python3",
+    "value": 8
+  },
+  {
+    "id": "java",
+    "name": "Java",
+    "value": 8
+  },
+  {
+    "id": "C",
+    "name": "C",
+    "value": 7
+  }
+]

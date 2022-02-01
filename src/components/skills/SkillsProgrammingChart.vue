@@ -1,7 +1,7 @@
 <script>
 import { onMounted, ref } from "vue";
 
-import skillsConfig from "../../assets/config/skillsConfig2.json";
+import skillsProgramming from "../../assets/config/skillsProgramming.json";
 
 import { scaleLinear, scaleBand } from "d3-scale";
 import { select } from "d3-selection";
@@ -12,7 +12,7 @@ export default {
     const [width, height] = [300, 120];
     const padding = { top: 10, right: 30, bottom: 10, left: 100 };
 
-    const skills = skillsConfig.programming;
+    const skills = skillsProgramming;
 
     const fullSkills = skills.map((d) => ({ ...d, value: 10 }));
 
@@ -121,5 +121,9 @@ export default {
 </script>
 
 <template>
-  <svg ref="svgRef" :viewBox="`0 0 ${width} ${height}`" style="max-width: 400px" />
+  <svg
+    ref="svgRef"
+    :viewBox="`0 0 ${width} ${height}`"
+    style="max-width: 400px"
+  />
 </template>

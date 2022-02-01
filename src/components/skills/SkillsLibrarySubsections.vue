@@ -3,12 +3,12 @@ import skillsLibraryConfig from "../../assets/config/skillsLibraryConfig.json";
 import BaseSubsection from "../base/BaseSubsection.vue";
 
 export default {
+  components: { BaseSubsection },
   setup() {
     return {
-      skillsPartitionsConfig,
+      skillsLibraryConfig,
     };
   },
-  components: { BaseSubsection },
 };
 </script>
 
