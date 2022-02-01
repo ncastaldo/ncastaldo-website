@@ -1,0 +1,122 @@
+[
+  {
+    "id": "full-stack",
+    "name": "Full Stack",
+    "libraries": [
+      {
+        "id": "d3",
+        "name": "D3"
+      },
+      {
+        "id": "html",
+        "name": "HTML"
+      },
+      {
+        "id": "css",
+        "name": "CSS"
+      },
+      {
+        "id": "vue",
+        "name": "Vue"
+      },
+      {
+        "id": "vuetify",
+        "name": "Vuetify"
+      },
+      {
+        "id": "leaflet",
+        "name": "Leaflet"
+      },
+      {
+        "id": "node",
+        "name": "Node"
+      },
+      {
+        "id": "express",
+        "name": "Express.js"
+      }
+    ]
+  },
+  {
+    "id": "data",
+    "name": "Data",
+    "libraries": [
+      {
+        "id": "node",
+        "name": "Node",
+        "value": 1
+      },
+      {
+        "id": "mongodb",
+        "name": "MongoDB",
+        "value": 1
+      },
+      {
+        "id": "mysql",
+        "name": "MySQL",
+        "value": 1
+      },
+      {
+        "id": "sqlite",
+        "name": "SQLite",
+        "value": 1
+      },
+      {
+        "id": "pandas",
+        "name": "pandas",
+        "value": 1
+      },
+      {
+        "id": "geopandas",
+        "name": "geopandas",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "id": "tools",
+    "name": "Tools",
+    "libraries": [
+      {
+        "id": "vscode",
+        "name": "VSCode",
+        "value": 1
+      },
+      {
+        "id": "git",
+        "name": "Git",
+        "value": 1
+      },
+      {
+        "id": "docker",
+        "name": "Docker",
+        "value": 1
+      },
+      {
+        "id": "jupyter",
+        "name": "Jupyter",
+        "value": 1
+      },
+      {
+        "id": "eclipse",
+        "name": "Eclipse",
+        "value": 1
+      },
+      {
+        "id": "jira",
+        "name": "Jira",
+        "value": 1
+      },
+      {
+        "id": "confluence",
+        "name": "Confluence",
+        "value": 1
+      },
+      {
+        "id": "azure",
+        "name": "Azure",
+        "value": 1
+      }
+    ]
+  }
+]

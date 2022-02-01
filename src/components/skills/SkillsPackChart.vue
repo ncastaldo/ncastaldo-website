@@ -17,8 +17,8 @@ export default {
 
 
     const colorScale = scaleOrdinal()
-      .domain([0, 1, 2])
-      .range(['#ddd', '#ccc', '#bbb'])
+      .domain([1, 2])
+      .range(['#ddd', '#bbb'])
 
     const color = "#42a07e";
 
@@ -50,6 +50,8 @@ export default {
 
       let circles = g.selectAll("circles");
 
+      let labels = g.selectAll("text")
+
       // updates
 
       const update = () => {
@@ -60,6 +62,16 @@ export default {
           .attr("cx", d => d.x)
           .attr("cy", d => d.y)
           .style("fill", d => colorScale(d.depth))
+
+        labels = labels
+          .data(skillsRoot.descendants())
+          .join("text")
+          .attr("pointer-events", "none")
+          .attr("text-anchor", "middle")
+          .attr("transform", d => `translate(${d.x}, ${d.y})`)
+          .text(d => d.data.name)
+
+
 
       };
 
@@ -80,5 +92,6 @@ export default {
 </script>
 
 <template>
-  <svg ref="svgRef" :viewBox="`0 0 ${width} ${height}`" />
+  <h4>Engineering</h4>
+  <svg ref="svgRef" :viewBox="`0 0 ${width} ${height}`" style="max-width: 400px" />
 </template>

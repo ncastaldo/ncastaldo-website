@@ -1,0 +1,32 @@
+{
+  "projects": [
+    {
+      "id": "covid19obs",
+      "value": 3
+    },
+    {
+      "id": "wecare-website",
+      "value": 3
+    },
+    {
+      "id": "aodv-iot",
+      "value": 3
+    },
+    {
+      "id": "data-explorer-bot",
+      "value": 3
+    },
+    {
+      "id": "emolab",
+      "value": 3
+    },
+    {
+      "id": "d3nic",
+      "value": 3
+    },
+    {
+      "id": "council-of-Four",
+      "value": 3
+    }
+  ]
+}

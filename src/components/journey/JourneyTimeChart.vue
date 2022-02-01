@@ -39,7 +39,7 @@ export default {
         .domain([0, 1])
         .range([height - padding.bottom, padding.top]);
 
-      const colorScale = d => d.current ? "#42a07e" : "#bbb"
+      const colorScale = d => d.current ? "#42a07e" : "#ccc"
 
       const xAxis = axisBottom().scale(xScale);
 

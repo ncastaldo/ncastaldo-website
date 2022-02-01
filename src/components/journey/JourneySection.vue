@@ -33,7 +33,7 @@ export default {
 
 <template>
   <BaseSection>
-    <template #title>My Journey</template>
+    <template #title>Journey</template>
     <template #default>
       <div class="sticky">
         <JourneyTimeChart />

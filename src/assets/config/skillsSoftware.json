@@ -1,0 +1,32 @@
+[
+  {
+    "id": "data-visualization",
+    "name": "Data Visualization",
+    "value": 2
+  },
+  {
+    "id": "functional-programming",
+    "name": "Functional Programming",
+    "value": 2
+  },
+  {
+    "id": "oop",
+    "name": "OOP",
+    "value": 2
+  },
+  {
+    "id": "algorithms",
+    "name": "Algorithms",
+    "value": 2
+  },
+  {
+    "id": "technical-analysis",
+    "name": "Technical Analysis",
+    "value": 2
+  },
+  {
+    "id": "rest-api",
+    "name": "REST APIs",
+    "value": 2
+  }
+]
