@@ -15,12 +15,11 @@
 <style scoped>
 .section {
   padding: 1rem 4rem;
-  background-color: #eeeeee;
 }
 
 .section-title {
   font-size: 3rem;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 

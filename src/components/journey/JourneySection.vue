@@ -2,15 +2,15 @@
 import BaseSection from "../base/BaseSection.vue";
 import JourneyMapChart from "./JourneyMapChart.vue";
 import JourneyTimeChart from "./JourneyTimeChart.vue";
-import JourneyDescription from "./JourneyDescription.vue";
+import JourneyItems from "./JourneyItems.vue";
 import { onMounted, ref } from "vue";
+import BaseItem from "../base/BaseItem.vue";
 
 export default {
   components: {
     BaseSection,
-    JourneyMapChart,
     JourneyTimeChart,
-    JourneyDescription,
+    JourneyItems,
   },
   setup() {
     const section = ref(null);
@@ -36,10 +36,12 @@ export default {
     <template #default>
       <div class="sticky">
         <JourneyTimeChart />
-        <JourneyMapChart />
+        <!--BaseItem>
+          <template #logo> <JourneyMapChart /></template>
+        </BaseItem-->
       </div>
-      <div style="z-index: 2">
-        <JourneyDescription />
+      <div>
+        <JourneyItems />
       </div>
     </template>
   </BaseSection>
@@ -48,6 +50,13 @@ export default {
 <style scoped>
 .sticky {
   position: sticky;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1),
+    97%,
+    rgba(255, 255, 255, 0)
+  );
+  z-index: 10;
   top: 0;
 }
 

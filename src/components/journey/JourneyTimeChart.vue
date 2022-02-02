@@ -10,8 +10,8 @@ import { axisBottom } from "d3-axis";
 
 export default {
   setup() {
-    const [width, height] = [600, 60];
-    const padding = { top: 10, right: 10, bottom: 30, left: 10 };
+    const [width, height] = [600, 80];
+    const padding = { top: 20, right: 10, bottom: 40, left: 10 };
 
     const svgRef = ref(null);
 
@@ -29,26 +29,30 @@ export default {
       }))
     );
 
+    const xScale = scaleTime()
+      .domain([
+        min(periods.value, (d) => d.fromDate),
+        max(periods.value, (d) => d.toDate),
+      ])
+      .range([0 + padding.left, width - padding.right]);
+
+    const rx = 10;
+
+    const yScale = scaleLinear()
+      .domain([0, 1])
+      .range([height - padding.bottom, padding.top]);
+
+    const colorScale = (d) => (d.current ? "#42a07e" : "#ccc");
+
+    const xAxis = axisBottom().scale(xScale).tickSize(0).tickPadding(6);
+
     const useChart = (selection) => {
-      const xScale = scaleTime()
-        .domain([
-          min(periods.value, (d) => d.fromDate),
-          max(periods.value, (d) => d.toDate),
-        ])
-        .range([0 + padding.left, width - padding.right]);
-
-      const yScale = scaleLinear()
-        .domain([0, 1])
-        .range([height - padding.bottom, padding.top]);
-
-      const colorScale = (d) => (d.current ? "#42a07e" : "#ccc");
-
-      const xAxis = axisBottom().scale(xScale);
-
       selection
         .append("g")
         .call(xAxis)
-        .attr("transform", `translate(0, ${height - padding.bottom})`);
+        .attr("transform", `translate(0, ${height - padding.bottom})`)
+        .call((g) => g.select(".domain").remove())
+        .call((g) => g.selectAll(".tick text").attr("font-size", "0.8rem"));
 
       let bars = selection.append("g").selectAll("rect");
 
@@ -70,6 +74,7 @@ export default {
             (exit) => exit.transition(t).attr("opacity", 0).remove()
           )
           .attr("x", (d) => xScale(d.fromDate))
+          .attr("rx", rx)
           .attr("width", (d) => xScale(d.toDate) - xScale(d.fromDate))
           .attr("height", (d) => yScale.range()[0] - yScale(1))
           .attr("y", (d) => yScale.range()[1])

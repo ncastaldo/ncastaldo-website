@@ -4,6 +4,7 @@ import JourneySection from "./journey/JourneySection.vue";
 import AboutSection from "./about/AboutSection.vue";
 import SkillsSection from "./skills/SkillsSection.vue";
 import PublicationsSection from "./publications/PublicationsSection.vue";
+import ProjectsSection from "./projects/ProjectsSection.vue";
 </script>
 
 <template>
@@ -12,6 +13,7 @@ import PublicationsSection from "./publications/PublicationsSection.vue";
     <AboutSection />
     <SkillsSection />
     <JourneySection />
+    <ProjectsSection />
     <PublicationsSection />
   </main>
 </template>

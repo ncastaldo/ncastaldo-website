@@ -35,10 +35,12 @@ import SkillsLibrarySubsections from "./SkillsLibrarySubsections.vue";
 .skills-subsection-charts {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
 .skills-subsection-libraries {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
 }
 </style>

@@ -32,7 +32,7 @@ export default {
 </script>
 
 <template>
-  <section>
+  <section class="intro-section">
     <div class="intro">
       <div attr="intro-title">
         <h1 class="intro-title-heading">
@@ -70,9 +70,17 @@ export default {
 </template>
 
 <style>
+.intro-section {
+  display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
+
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #eeeeee;
+}
+
 .intro {
   text-align: center;
-  padding: 14rem 0;
 }
 
 .intro-title-heading {
