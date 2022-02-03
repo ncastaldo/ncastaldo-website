@@ -16,11 +16,11 @@
 }
 
 .item-logo {
-  padding: 0.5rem 2rem;
-  flex: 20%;
+  padding: 0.5rem;
+  flex: 30%;
 }
 
 .item-content {
-  flex: 80%;
+  flex: 70%;
 }
 </style>

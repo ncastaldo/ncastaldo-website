@@ -5,7 +5,7 @@
     "year": 2019,
     "authors": "N. Castaldo, F. Daniel, M. Matera, V. Zaccaria",
     "journal": "Springer",
-    "logo": "/assets/logos/springer-logo.svg",
+    "logo": "/assets/img/publications/springer-logo.png",
     "page": "ICWE 2019, Lecture Notes in Computer Science, vol 11496",
     "link": "https://link.springer.com/chapter/10.1007/978-3-030-19274-7_34"
   },
@@ -15,7 +15,7 @@
     "year": 2020,
     "authors": "R. Gallotti, F. Valle, N. Castaldo, P. Sacco, M. De Domenico",
     "journal": "Nature Human Behaviour",
-    "logo": "/assets/logos/nhb-logo.svg",
+    "logo": "/assets/img/publications/nhb-logo.png",
     "page": "4 (12), 1285-1293",
     "link": "http://nature.com/articles/s41562-020-00994-6"
   },
@@ -25,7 +25,7 @@
     "year": 2021,
     "authors": "P. Sacco, R. Gallotti, F. Pilati, N. Castaldo, M. De Domenico",
     "journal": "Social Science & Medicine ",
-    "logo": "/assets/logos/ssm-logo.svg",
+    "logo": "/assets/img/publications/ssm-logo.png",
     "page": "285, 114215",
     "link": "http://doi.org/10.1016/j.socscimed.2021.114215"
   }
