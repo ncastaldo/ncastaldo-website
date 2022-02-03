@@ -1,8 +1,9 @@
 <script>
 import IntroNameChart from "./IntroNameChart.vue";
+import BaseIconLink from "../base/BaseIconLink.vue";
 
 export default {
-  components: { IntroNameChart },
+  components: { IntroNameChart, BaseIconLink },
   setup() {
     const positions = ["Software", "Data", "Full Stack", "Engineer"];
     const socials = [
@@ -60,9 +61,7 @@ export default {
           :key="i"
           class="intro-socials-element"
         >
-          <a class="intro-socials-element-link" :href="social.link">
-            <fa :icon="social.icon" size="2x"></fa>
-          </a>
+          <BaseIconLink :url="social.link" :icon="social.icon" size="3x" />
         </span>
       </div>
     </div>
@@ -103,10 +102,7 @@ export default {
 
 .intro-positions {
   padding: 1.8rem 0;
-}
-
-.intro-positions {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .intro-position-heading--separator {
@@ -116,13 +112,5 @@ export default {
 
 .intro-socials-element {
   padding: 0 0.7rem;
-}
-
-.intro-socials-element-link {
-  color: #1e1e1e;
-}
-
-.intro-socials-element-link:hover {
-  color: #42a07e;
 }
 </style>

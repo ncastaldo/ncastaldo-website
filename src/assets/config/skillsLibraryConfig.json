@@ -42,11 +42,6 @@
     "name": "Data",
     "libraries": [
       {
-        "id": "node",
-        "name": "Node",
-        "value": 1
-      },
-      {
         "id": "mongodb",
         "name": "MongoDB",
         "value": 1

@@ -7,10 +7,10 @@ export default {
 </script>
 
 <template>
-  <div class="library-item">
+  <span class="library-item">
     <span class="library-item-content">{{ content }}</span>
     <span class="library-item-delimiter"></span>
-  </div>
+  </span>
 </template>
 
 <style>
@@ -21,9 +21,10 @@ export default {
 }
 
 .library-item-content {
-  padding: 0.2rem 0.7rem;
+  padding: 0.2rem 0.8rem;
   border: solid 0.1rem #ccc;
   border-radius: 0.9rem;
+  background: #eee;
 }
 .library-item-delimiter {
   margin-left: 0.4rem;

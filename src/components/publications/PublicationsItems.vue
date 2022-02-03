@@ -1,11 +1,11 @@
 <script>
 import publications from "../../assets/config/publicationsConfig.json";
 import BaseItem from "../base/BaseItem.vue";
-import BaseItemLogo from "../base/BaseItemLogo.vue";
+import BaseImage from "../base/BaseImage.vue";
 import BaseItemDescription from "../base/BaseItemDescription.vue";
 
 export default {
-  components: { BaseItem, BaseItemLogo, BaseItemDescription },
+  components: { BaseItem, BaseImage, BaseItemDescription },
   setup() {
     return {
       publications,
@@ -17,7 +17,7 @@ export default {
 <template>
   <BaseItem v-for="publication in publications" :key="publication.id">
     <template #logo>
-      <BaseItemLogo :src="publication.logo" />
+      <BaseImage :src="publication.logo" />
     </template>
     <template #content>
       <BaseItemDescription

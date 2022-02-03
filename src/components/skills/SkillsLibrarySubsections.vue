@@ -1,10 +1,10 @@
 <script>
 import skillsLibraryConfig from "../../assets/config/skillsLibraryConfig.json";
 import BaseSubsection from "../base/BaseSubsection.vue";
-import BaseCodeItem from "../base/BaseCodeItem.vue";
+import BaseLibraryItem from "../base/BaseLibraryItem.vue";
 
 export default {
-  components: { BaseSubsection, BaseCodeItem },
+  components: { BaseSubsection, BaseLibraryItem },
   setup() {
     return {
       skillsLibraryConfig,
@@ -18,7 +18,7 @@ export default {
     <template #title>{{ partition.name }}</template>
     <template #default>
       <div class="skills-library">
-        <BaseCodeItem
+        <BaseLibraryItem
           v-for="library in partition.libraries"
           :key="library.id"
           :content="library.name"

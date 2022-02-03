@@ -4,11 +4,11 @@ import { useStore } from "vuex";
 
 import { timeFormat } from "d3-time-format";
 import BaseItem from "../base/BaseItem.vue";
-import BaseItemLogo from "../base/BaseItemLogo.vue";
+import BaseImage from "../base/BaseImage.vue";
 import BaseItemDescription from "../base/BaseItemDescription.vue";
 
 export default {
-  components: { BaseItem, BaseItemLogo, BaseItemDescription },
+  components: { BaseItem, BaseImage, BaseItemDescription },
   setup() {
     const store = useStore();
     const setPeriodId = (periodId) => store.commit("setPeriodId", periodId);
@@ -64,7 +64,9 @@ export default {
     :ref="(ref) => setDescriptionRef(ref, period)"
   >
     <template #logo>
-      <BaseItemLogo :src="period.detail.logo" />
+      <div>
+        <BaseImage :src="period.detail.logo" />
+      </div>
     </template>
     <template #content>
       <BaseItemDescription
