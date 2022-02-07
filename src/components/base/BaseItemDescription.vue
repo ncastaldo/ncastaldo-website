@@ -36,6 +36,7 @@ export default {
   font-size: 1.5rem;
 }
 .description-title.current {
+  color: #42a07e;
   text-decoration: underline #42a07e;
   text-underline-offset: 0.4rem;
 }

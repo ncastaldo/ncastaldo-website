@@ -27,6 +27,7 @@
     "journal": "Social Science & Medicine ",
     "logo": "/assets/img/publications/ssm-logo.png",
     "page": "285, 114215",
-    "link": "http://doi.org/10.1016/j.socscimed.2021.114215"
+    "link": "http://doi.org/10.1016/j.socscimed.2021.114215",
+    "abstract": "This paper presents a framework for the design of chatbots for data exploration. With respect to conversational virtual assistants (such as Amazon Alexa or Apple Siri), this class of chatbots exploits structured input to retrieve data from known data sources. The approach is based on a conceptual representation of the available data sources, and on a set of modeling abstractions that allow designers to characterize the role that key data elements play in the user requests to be handled. Starting from the resulting specifications, the framework then generates a conversation for exploring the content exposed by the considered data sources."
   }
 ]

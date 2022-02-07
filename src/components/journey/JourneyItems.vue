@@ -1,5 +1,13 @@
 <script>
-import { computed, onBeforeUpdate, onMounted, ref } from "vue";
+import {
+  computed,
+  inject,
+  onBeforeUpdate,
+  onMounted,
+  onUnmounted,
+  ref,
+  watch,
+} from "vue";
 import { useStore } from "vuex";
 
 import { timeFormat } from "d3-time-format";
@@ -10,33 +18,36 @@ import BaseItemDescription from "../base/BaseItemDescription.vue";
 export default {
   components: { BaseItem, BaseImage, BaseItemDescription },
   setup() {
-    const store = useStore();
-    const setPeriodId = (periodId) => store.commit("setPeriodId", periodId);
-    const periods = computed(() => store.getters.getPeriods);
-    const currentPeriod = computed(() => store.getters.getPeriod);
+    const format = timeFormat("%B %Y");
 
-    const descriptionRefPeriods = [];
-    const setDescriptionRef = (descriptionRef, period) => {
-      descriptionRefPeriods.push([descriptionRef, period]);
+    const journey = inject("journey");
+
+    const getPeriods = journey.getPeriods;
+    const currentPeriod = computed(journey.getPeriod);
+
+    const periodsRefs = {};
+    const setPeriodRef = (periodId, ref) => {
+      periodsRefs[periodId] = ref;
     };
 
-    // onBeforeUpdate not needed here
+    let scrollingTimeout;
+    let isScrolling = false;
+
     const onScroll = (event) => {
+      isScrolling = true;
+      clearTimeout(scrollingTimeout);
+      scrollingTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 66);
+
       const centerY = window.innerHeight / 2;
-      const pair = descriptionRefPeriods.find(([descriptionRef, period]) => {
-        console.log(descriptionRef);
-        const rect = descriptionRef.getBoundingClientRect();
+      const pair = Object.entries(periodsRefs).find(([_, ref]) => {
+        const rect = ref.getBoundingClientRect();
         return rect.top < centerY && centerY < rect.top + rect.height;
       });
-      if (pair !== null && pair.length === 2) {
-        const period = pair[1];
-        if (period !== currentPeriod.value) {
-          setPeriodId(period.id);
-        }
-      }
-    };
 
-    const format = timeFormat("%B %Y");
+      pair !== undefined && journey.setPeriodId(pair[0]);
+    };
 
     const getPeriodInterval = (period) =>
       period.fromDate
@@ -44,40 +55,52 @@ export default {
         : format(period.toDate);
 
     onMounted(() => {
-      // window.addEventListener("scroll", onScroll);
+      window.addEventListener("scroll", onScroll);
+
+      watch(currentPeriod, (period) => {
+        if (!isScrolling) {
+          periodsRefs[period.id].scrollIntoView();
+        }
+      });
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("scroll", onScroll);
     });
 
     return {
+      getPeriods,
       getPeriodInterval,
-      setDescriptionRef,
+      setPeriodRef,
       currentPeriod,
-      periods,
     };
   },
 };
 </script>
 
 <template>
-  <BaseItem
-    v-for="period in periods"
+  <div
+    v-for="period in getPeriods()"
     :key="period.id"
-    :ref="(ref) => setDescriptionRef(ref, period)"
+    :ref="(ref) => setPeriodRef(period.id, ref)"
   >
-    <template #logo>
-      <div>
-        <BaseImage :src="period.detail.logo" />
-      </div>
-    </template>
-    <template #content>
-      <BaseItemDescription
-        :title="period.detail.title"
-        :subtitle="period.detail.place"
-        :caption="getPeriodInterval(period)"
-        :paragraphs="period.detail.achievements"
-        :current="currentPeriod === period"
-      />
-    </template>
-  </BaseItem>
+    <BaseItem>
+      <template #logo>
+        <div>
+          <BaseImage :src="period.detail.logo" />
+        </div>
+      </template>
+      <template #content>
+        <BaseItemDescription
+          :title="period.detail.title"
+          :subtitle="period.detail.place"
+          :caption="getPeriodInterval(period)"
+          :paragraphs="period.detail.achievements"
+          :current="currentPeriod === period"
+        />
+      </template>
+    </BaseItem>
+  </div>
 </template>
 
 <style scoped></style>

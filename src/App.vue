@@ -1,9 +1,13 @@
 <script>
+import { provide } from "vue";
+
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
 import AppFooter from "./components/AppFooter.vue";
 
 import { cssThemes } from "./plugins/themes";
+
+import journey from "./store/journey";
 
 export default {
   components: {
@@ -12,6 +16,8 @@ export default {
     AppFooter,
   },
   setup() {
+    provide("journey", journey);
+
     return {
       cssThemes,
     };

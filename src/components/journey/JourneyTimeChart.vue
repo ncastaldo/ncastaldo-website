@@ -1,6 +1,5 @@
 <script>
-import { computed, onMounted, ref, watch } from "vue";
-import { useStore } from "vuex";
+import { computed, inject, onMounted, ref, watch } from "vue";
 
 import { select } from "d3-selection";
 import { transition } from "d3-transition";
@@ -15,24 +14,32 @@ export default {
 
     const svgRef = ref(null);
 
-    const store = useStore();
+    const journey = inject("journey");
 
-    const setPeriodId = (periodId) => store.commit("setPeriodId", periodId);
+    const period = computed(journey.getPeriod);
 
-    const period = computed(() => store.getters.getPeriod);
-    const periods = computed(() => store.getters.getPeriods);
+    const intervals = journey
+      .getPeriods()
+      .map((period) =>
+        period.intervals.map((interval) => ({
+          fromDate: interval.from ? new Date(interval.from) : null,
+          toDate: interval.to ? new Date(interval.to) : new Date(),
+          periodId: period.id,
+        }))
+      )
+      .flat();
 
-    const chartPeriods = computed(() =>
-      periods.value.map((d) => ({
+    const chartIntervals = computed(() =>
+      intervals.map((d) => ({
         ...d,
-        current: d === period.value,
+        current: d.periodId === period.value.id,
       }))
     );
 
     const xScale = scaleTime()
       .domain([
-        min(periods.value, (d) => d.fromDate),
-        max(periods.value, (d) => d.toDate),
+        min(chartIntervals.value, (d) => d.fromDate),
+        max(chartIntervals.value, (d) => d.toDate),
       ])
       .range([0 + padding.left, width - padding.right]);
 
@@ -57,10 +64,10 @@ export default {
       let bars = selection.append("g").selectAll("rect");
 
       const update = () => {
-        const t = transition().duration(500);
+        const t = transition().duration(250);
 
         bars = bars
-          .data(chartPeriods.value, (d) => d.id)
+          .data(chartIntervals.value)
           .join(
             (enter) =>
               enter
@@ -79,15 +86,12 @@ export default {
           .attr("height", (d) => yScale.range()[0] - yScale(1))
           .attr("y", (d) => yScale.range()[1])
           .style("cursor", "pointer")
-          .on("click", (event, d) => {
-            console.log(d);
-            setPeriodId(d.id);
-          });
+          .on("click", (event, d) => journey.setPeriodId(d.periodId));
       };
 
       update();
 
-      watch(() => chartPeriods.value, update);
+      watch(chartIntervals, update);
     };
 
     onMounted(() => {

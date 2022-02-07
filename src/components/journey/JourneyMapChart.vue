@@ -115,14 +115,11 @@ export default {
       updateZoom(true);
       updatePoints();
 
-      watch(() => chartFeature.value, updateMap);
-      watch(
-        () => chartViewPoint.value,
-        () => {
-          updateZoom(false);
-          updatePoints();
-        }
-      );
+      watch(chartFeature, updateMap);
+      watch(chartViewPoint, () => {
+        updateZoom(false);
+        updatePoints();
+      });
     };
 
     onMounted(async () => {

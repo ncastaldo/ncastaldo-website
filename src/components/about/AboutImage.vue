@@ -2,8 +2,8 @@
 
 <template>
   <div class="about-image-container">
-    <img class="about-image static" src="/assets/img/nc.jpeg" />
-    <img class="about-image active" src="/assets/img/nc_loop.gif" />
+    <img class="about-image static" src="/assets/img/about/nc.jpeg" />
+    <img class="about-image active" src="/assets/img/about/nc_loop.gif" />
   </div>
 </template>
 

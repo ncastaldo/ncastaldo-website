@@ -24,7 +24,7 @@ export default {
   padding: 0.2rem 0.8rem;
   border: solid 0.1rem #ccc;
   border-radius: 0.9rem;
-  background: #eee;
+  background: #f4f4f4;
 }
 .library-item-delimiter {
   margin-left: 0.4rem;
