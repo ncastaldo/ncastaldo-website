@@ -29,12 +29,12 @@ export default {
       )
       .flat();
 
-    const chartIntervals = computed(() =>
-      intervals.map((d) => ({
+    const chartIntervals = computed(() => {
+      return intervals.map((d) => ({
         ...d,
         current: d.periodId === period.value.id,
-      }))
-    );
+      }));
+    });
 
     const xScale = scaleTime()
       .domain([
@@ -86,7 +86,7 @@ export default {
           .attr("height", (d) => yScale.range()[0] - yScale(1))
           .attr("y", (d) => yScale.range()[1])
           .style("cursor", "pointer")
-          .on("click", (event, d) => journey.setPeriodId(d.periodId));
+          .on("click", (event, d) => journey.scrollToPeriodId(d.periodId));
       };
 
       update();

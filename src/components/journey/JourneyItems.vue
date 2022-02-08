@@ -22,32 +22,46 @@ export default {
 
     const journey = inject("journey");
 
-    const getPeriods = journey.getPeriods;
+    const marginTop = 100;
+
+    const periods = journey.getPeriods();
     const currentPeriod = computed(journey.getPeriod);
 
+    const programmaticScrolling = computed({
+      get: journey.isProgrammaticScrolling,
+      set: journey.setProgrammaticScrolling,
+    });
+
     const periodsRefs = {};
-    const setPeriodRef = (periodId, ref) => {
-      periodsRefs[periodId] = ref;
+    const setPeriodRef = (ref) => {
+      periodsRefs[ref.dataset.periodId] = ref;
     };
 
-    let scrollingTimeout;
-    let isScrolling = false;
+    let allEntries = [];
 
-    const onScroll = (event) => {
-      isScrolling = true;
-      clearTimeout(scrollingTimeout);
-      scrollingTimeout = setTimeout(() => {
-        isScrolling = false;
-      }, 66);
+    const observerCallback = (entries) => {
+      if (allEntries.length === 0) {
+        allEntries = entries;
+      } else {
+        let j = 0;
+        entries.forEach((entry) => {
+          while (entry.target !== allEntries[j].target) {
+            j += 1;
+          }
+          allEntries[j] = entry;
+        });
+      }
 
-      const centerY = window.innerHeight / 2;
-      const pair = Object.entries(periodsRefs).find(([_, ref]) => {
-        const rect = ref.getBoundingClientRect();
-        return rect.top < centerY && centerY < rect.top + rect.height;
-      });
+      const entry = allEntries.filter((entry) => entry.isIntersecting).pop();
 
-      pair !== undefined && journey.setPeriodId(pair[0]);
+      if (entry !== undefined && !programmaticScrolling.value) {
+        journey.setPeriodId(entry.target.dataset.periodId);
+      }
     };
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.5,
+      rootMargin: `-${marginTop}px 0px 0px`,
+    });
 
     const getPeriodInterval = (period) =>
       period.fromDate
@@ -55,21 +69,24 @@ export default {
         : format(period.toDate);
 
     onMounted(() => {
-      window.addEventListener("scroll", onScroll);
+      Object.values(periodsRefs).forEach((target) => observer.observe(target));
 
-      watch(currentPeriod, (period) => {
-        if (!isScrolling) {
-          periodsRefs[period.id].scrollIntoView();
+      watch(currentPeriod, (currentPeriod) => {
+        if (programmaticScrolling.value) {
+          const rect = periodsRefs[currentPeriod.id].getBoundingClientRect();
+
+          window.scrollTo(0, rect.top + window.scrollY - marginTop);
+          programmaticScrolling.value = false;
         }
       });
     });
 
     onUnmounted(() => {
-      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
     });
 
     return {
-      getPeriods,
+      periods,
       getPeriodInterval,
       setPeriodRef,
       currentPeriod,
@@ -80,9 +97,10 @@ export default {
 
 <template>
   <div
-    v-for="period in getPeriods()"
+    v-for="period in periods"
     :key="period.id"
-    :ref="(ref) => setPeriodRef(period.id, ref)"
+    :ref="setPeriodRef"
+    :data-period-id="period.id"
   >
     <BaseItem>
       <template #logo>
