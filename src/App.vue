@@ -7,8 +7,6 @@ import AppFooter from "./components/AppFooter.vue";
 
 import { cssThemes } from "./plugins/themes";
 
-import journey from "./store/journey";
-
 export default {
   components: {
     AppHeader,
@@ -16,8 +14,6 @@ export default {
     AppFooter,
   },
   setup() {
-    provide("journey", journey);
-
     return {
       cssThemes,
     };

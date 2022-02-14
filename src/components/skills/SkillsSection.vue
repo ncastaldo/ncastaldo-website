@@ -7,7 +7,7 @@ import SkillsLibrarySubsections from "./SkillsLibrarySubsections.vue";
 </script>
 
 <template>
-  <BaseSection>
+  <BaseSection style="background-color: #eeeeee">
     <template #title>Skills</template>
     <template #default>
       <div class="skills-subsection-charts">

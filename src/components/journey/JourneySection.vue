@@ -1,10 +1,8 @@
 <script>
 import BaseSection from "../base/BaseSection.vue";
-import JourneyMapChart from "./JourneyMapChart.vue";
 import JourneyTimeChart from "./JourneyTimeChart.vue";
 import JourneyItems from "./JourneyItems.vue";
 import { onMounted, ref } from "vue";
-import BaseItem from "../base/BaseItem.vue";
 
 export default {
   components: {

@@ -1,26 +1,19 @@
 <script>
-import {
-  computed,
-  inject,
-  onBeforeUpdate,
-  onMounted,
-  onUnmounted,
-  ref,
-  watch,
-} from "vue";
-import { useStore } from "vuex";
+import { computed, onMounted, onUnmounted, watch } from "vue";
 
 import { timeFormat } from "d3-time-format";
 import BaseItem from "../base/BaseItem.vue";
 import BaseImage from "../base/BaseImage.vue";
 import BaseItemDescription from "../base/BaseItemDescription.vue";
 
+import journey from "../../store/journey";
+
 export default {
   components: { BaseItem, BaseImage, BaseItemDescription },
   setup() {
     const format = timeFormat("%B %Y");
 
-    const journey = inject("journey");
+    // const journey = inject("journey");
 
     const marginTop = 100;
 

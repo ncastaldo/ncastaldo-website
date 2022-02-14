@@ -14,6 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "@turf/turf": "^6.5.0",
+    "@vueuse/core": "^7.6.1",
     "d3-array": "^3.1.1",
     "d3-axis": "^3.0.0",
     "d3-force": "^3.0.0",
@@ -29,6 +30,7 @@
     "topojson-client": "^3.1.0",
     "vite": "^2.7.13",
     "vue": "^3.2.25",
+    "vue-intersect": "^3.0.0",
     "vuex": "^4.0.2"
   },
   "devDependencies": {

@@ -1,5 +1,5 @@
 <script>
-import { computed, inject, onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 
 import { select } from "d3-selection";
 import { transition } from "d3-transition";
@@ -7,14 +7,14 @@ import { scaleLinear, scaleTime } from "d3-scale";
 import { min, max } from "d3-array";
 import { axisBottom } from "d3-axis";
 
+import journey from "../../store/journey";
+
 export default {
   setup() {
     const [width, height] = [600, 80];
     const padding = { top: 20, right: 10, bottom: 40, left: 10 };
 
     const svgRef = ref(null);
-
-    const journey = inject("journey");
 
     const period = computed(journey.getPeriod);
 

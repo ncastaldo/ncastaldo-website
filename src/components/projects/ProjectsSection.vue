@@ -4,7 +4,7 @@ import ProjectsCards from "./ProjectsCards.vue";
 </script>
 
 <template>
-  <BaseSection>
+  <BaseSection style="background-color: #eeeeee">
     <template #title>Projects</template>
     <template #default>
       <div class="projects-cards-container">
