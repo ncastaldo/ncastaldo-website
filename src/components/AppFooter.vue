@@ -2,15 +2,19 @@
 
 <template>
   <footer class="footer">
-    <h3>Footer goes here</h3>
+    <h3 class="footer-heading">Footer goes here</h3>
   </footer>
 </template>
 
-<style scoped>
+<style>
 .footer {
-  padding: 1rem 3rem 5rem;
+  padding: 2rem 3rem;
   margin: 0 auto;
   background-color: #1e1e1e;
   color: #ffffff;
+}
+
+.footer-heading {
+  font-size: 2rem;
 }
 </style>

@@ -23,8 +23,8 @@ export default {
       <BaseItemDescription
         :title="publication.title"
         :subtitle="publication.journal"
-        :caption="publication.authors"
-        :paragraphs="[]"
+        :caption="publication.year"
+        :paragraphs="[publication.authors]"
       />
     </template>
   </BaseItem>

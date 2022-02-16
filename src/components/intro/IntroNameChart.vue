@@ -1,5 +1,5 @@
 <script>
-import { computed, onBeforeMount, onMounted, ref, watch } from "vue";
+import { computed, onBeforeMount, onMounted, ref, toRefs, watch } from "vue";
 
 import opentype from "opentype.js";
 
@@ -9,15 +9,23 @@ import { forceSimulation, forceManyBody, forceX, forceY } from "d3-force";
 const FONT_URL = "/assets/fonts/register.ttf";
 
 export default {
+  props: {
+    height: {
+      type: Number,
+      default: 40,
+    },
+  },
   setup(props) {
-    const fontSize = 35;
+    const { height } = toRefs(props);
+
+    const fontSize = (height.value * 4) / 5;
 
     const text = "@ncastaldo";
 
     const textHeight = fontSize;
     const textWidth = (text.length * fontSize * 2) / 3;
 
-    const [width, height] = [textWidth * 1.2, textHeight * 1.5];
+    const width = textWidth * 1.2;
 
     const color = "#42a07e";
 
@@ -30,7 +38,7 @@ export default {
       let textNodes = [];
 
       const ticked = () => {
-        context.clearRect(0, 0, width, height);
+        context.clearRect(0, 0, width, height.value);
         context.save();
 
         for (const d of simulation.nodes()) {
@@ -86,7 +94,7 @@ export default {
 
       const updateTextNodes = () => {
         const x = (width - textWidth) / 2;
-        const y = height / 2 + (textHeight / 100) * 33;
+        const y = height.value / 2 + (textHeight / 100) * 33;
 
         const path = font.value.getPath(text, x, y, fontSize);
 
@@ -129,7 +137,6 @@ export default {
 
     return {
       width,
-      height,
       canvasRef,
     };
   },

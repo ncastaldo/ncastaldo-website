@@ -1,0 +1,34 @@
+{
+  "roles": [
+    "Software",
+    "Data",
+    "Full Stack",
+    "Engineer"
+  ],
+  "socials": [
+    {
+      "name": "LinkedIn",
+      "icon": [
+        "fab",
+        "linkedin"
+      ],
+      "link": "https://www.linkedin.com/in/ncastaldo"
+    },
+    {
+      "name": "GitHub",
+      "icon": [
+        "fab",
+        "github"
+      ],
+      "link": "https://github.com/ncastaldo"
+    },
+    {
+      "name": "Observable",
+      "icon": [
+        "fab",
+        "observable"
+      ],
+      "link": "https://observablehq.com/@ncastaldo"
+    }
+  ]
+}

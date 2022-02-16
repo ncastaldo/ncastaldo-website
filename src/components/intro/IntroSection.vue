@@ -1,32 +1,26 @@
 <script>
+import { ref } from "vue";
+
+import introConfig from "../../assets/config/introConfig.json";
+import { useFontSize } from "../../composables/style";
+
 import IntroNameChart from "./IntroNameChart.vue";
 import BaseIconLink from "../base/BaseIconLink.vue";
 
 export default {
   components: { IntroNameChart, BaseIconLink },
   setup() {
-    const positions = ["Software", "Data", "Full Stack", "Engineer"];
-    const socials = [
-      {
-        name: "LinkedIn",
-        icon: ["fab", "linkedin"],
-        link: "https://www.linkedin.com/in/ncastaldo",
-      },
-      {
-        name: "GitHub",
-        icon: ["fab", "github"],
-        link: "https://github.com/ncastaldo",
-      },
-      {
-        name: "Observable",
-        icon: ["fab", "observable"],
-        link: "https://observablehq.com/@ncastaldo",
-      },
-    ];
+    const { roles, socials } = introConfig;
+
+    const titleHeading = ref(null);
+
+    const { fontSize: chartHeight } = useFontSize(titleHeading);
 
     return {
-      positions,
+      roles,
       socials,
+      titleHeading,
+      chartHeight,
     };
   },
 };
@@ -34,36 +28,32 @@ export default {
 
 <template>
   <section class="intro-section">
-    <div class="intro">
-      <div attr="intro-title">
-        <h1 class="intro-title-heading">
-          Hi there! I'm
-          <span class="intro-title-heading-name">Nicola Castaldo</span>
-        </h1>
-      </div>
-      <div class="intro-subtitle">
-        <h2 class="intro-subtitle-heading">and also</h2>
-        <IntroNameChart />
-      </div>
-      <div class="intro-positions">
-        <h2 class="intro-position-heading">
-          <span v-for="(position, i) in positions" :key="i">
-            <span v-if="i !== 0" class="intro-position-heading--separator"
-              >|</span
-            >
-            <span>{{ position }}</span>
-          </span>
-        </h2>
-      </div>
-      <div class="intro-socials">
-        <span
-          v-for="(social, i) in socials"
-          :key="i"
-          class="intro-socials-element"
-        >
-          <BaseIconLink :url="social.link" :icon="social.icon" size="3x" />
+    <div v-show="chartHeight > 0" attr="intro-title">
+      <h1 ref="titleHeading" class="intro-title-heading">
+        Hi there! I'm
+        <span class="intro-title-heading-name">Nicola Castaldo</span>
+        <br />
+        and also
+        <IntroNameChart :height="chartHeight" />
+      </h1>
+    </div>
+    <div class="intro-roles">
+      <h2 class="intro-roles-heading">
+        <span v-for="(role, i) in roles" :key="i">
+          <span v-if="i !== 0" class="intro-roles-heading--separator">|</span>
+          <span>{{ role }}</span>
         </span>
-      </div>
+      </h2>
+    </div>
+    <div class="intro-socials">
+      <BaseIconLink
+        v-for="(social, i) in socials"
+        :key="i"
+        class="intro-socials-element"
+        :url="social.link"
+        :icon="social.icon"
+        size="4x"
+      />
     </div>
   </section>
 </template>
@@ -72,45 +62,41 @@ export default {
 .intro-section {
   display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
 
+  flex-direction: column;
+
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: #eeeeee;
-}
+  min-height: 70rem;
 
-.intro {
   text-align: center;
 }
 
 .intro-title-heading {
-  font-size: 2.5rem;
+  font-size: 4rem;
 }
 
 .intro-title-heading-name {
   color: #42a07e;
 }
 
-.intro-subtitle {
-  display: flex;
-  justify-content: center;
-  align-items: bottom;
+.intro-roles {
+  padding: 2rem 0;
 }
 
-.intro-subtitle-heading {
-  font-size: 2.5rem;
+.intro-roles-heading {
+  font-size: 3rem;
 }
 
-.intro-positions {
-  padding: 1.8rem 0;
-  font-size: 1.2rem;
-}
-
-.intro-position-heading--separator {
-  padding: 0 0.8rem;
+.intro-roles-heading--separator {
+  padding: 0 1.5rem;
   color: #42a07e;
 }
 
+.intro-socials {
+  padding: 1rem 0;
+}
+
 .intro-socials-element {
-  padding: 0 0.7rem;
+  padding: 0 1rem;
 }
 </style>
