@@ -44,7 +44,7 @@ export default {
     <div class="intro-roles">
       <h2 class="intro-roles-heading">
         <span v-for="(role, i) in roles" :key="i">
-          <span v-if="i !== 0" class="intro-roles-heading--separator">|</span>
+          <span v-if="i !== 0" class="intro-roles-heading-separator">|</span>
           <span>{{ role }}</span>
         </span>
       </h2>
@@ -91,7 +91,7 @@ export default {
   font-size: 3rem;
 }
 
-.intro-roles-heading--separator {
+.intro-roles-heading-separator {
   padding: 0 1.5rem;
   color: #42a07e;
 }

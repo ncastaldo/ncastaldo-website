@@ -1,51 +1,30 @@
-<script>
-import { ref } from "vue";
-import Intersect from "vue-intersect";
-export default {
-  props: {
-    backgroundColor: String,
-  },
-  setup() {
-    const visible = ref(true);
-    const show = () => {
-      console.log("a");
-      visible.value = true;
-    };
-
-    return {
-      visible,
-      show,
-    };
-  },
-};
-</script>
+<script></script>
 
 <template>
-  <section class="section">
-    <h2 class="section-title">
+  <section class="base-section">
+    <h2 class="base-section-heading">
       <slot name="title"></slot>
     </h2>
 
-    <div v-if="visible" class="section-content">
+    <div class="base-section-content">
       <slot></slot>
     </div>
   </section>
 </template>
 
 <style scoped>
-.section {
+.base-section {
   padding: 1rem 4rem;
 }
 
-.section-title {
-  font-size: 3rem;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
+.base-section-heading {
+  font-size: 5rem;
+  margin: 3rem auto;
   text-align: center;
 }
 
-.section-content {
+.base-section-content {
   margin: 0 auto;
-  max-width: 50rem;
+  max-width: 80rem;
 }
 </style>

@@ -33,7 +33,8 @@ export default {};
 
 <style>
 .about-description {
-  padding: 2rem 0;
+  font-size: 1.6rem;
+  padding: 3rem 0;
 }
 
 .about-description p {

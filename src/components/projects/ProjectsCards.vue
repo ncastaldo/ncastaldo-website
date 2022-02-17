@@ -1,11 +1,10 @@
 <script>
 import projects from "../../assets/config/projectsConfig.json";
 import BaseCard from "../base/BaseCard.vue";
-import BaseLibraryItem from "../base/BaseLibraryItem.vue";
 import BaseIconLink from "../base/BaseIconLink.vue";
 
 export default {
-  components: { BaseCard, BaseLibraryItem, BaseIconLink },
+  components: { BaseCard, BaseIconLink },
   setup() {
     return {
       projects,
@@ -27,11 +26,9 @@ export default {
     <template #reveal>
       <h4 class="card-reveal-subtitle">Tech stack</h4>
       <div class="card-reveal-libraries">
-        <BaseLibraryItem
-          v-for="(library, i) in project.libraries"
-          :key="i"
-          :content="library"
-        />
+        <div v-for="(library, i) in project.libraries" :key="i" class="library">
+          {{ library.name }}
+        </div>
       </div>
       <div class="card-reveal-links">
         <BaseIconLink

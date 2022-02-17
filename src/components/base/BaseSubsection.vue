@@ -1,27 +1,27 @@
 <script></script>
 
 <template>
-  <div class="subsection">
-    <h2 class="subsection-title">
+  <div class="base-subsection">
+    <h3 class="base-subsection-heading">
       <slot name="title"></slot>
-    </h2>
+    </h3>
 
-    <div class="subsection-content">
+    <div class="base-subsection-content">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <style scoped>
-.subsection {
-  padding-bottom: 1.5rem;
+.base-subsection {
+  padding-bottom: 2rem;
 }
-.subsection-title {
-  font-size: 1.5rem;
-  padding-bottom: 0rem;
+.base-subsection-heading {
+  font-size: 3rem;
+  padding-bottom: 1rem;
 }
 
-.subsection-content {
+.base-subsection-content {
   margin: 0 auto;
 }
 </style>

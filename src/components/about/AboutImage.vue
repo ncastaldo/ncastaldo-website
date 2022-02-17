@@ -14,16 +14,16 @@
 }
 
 .about-image {
-  width: 20rem;
-  height: 20rem;
-  border-radius: 10rem;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 15rem;
   object-fit: contain;
 }
 
-.static {
+.about-image.static {
   position: absolute;
 }
-.static:hover {
+.about-image.static:hover {
   opacity: 0;
 }
 </style>

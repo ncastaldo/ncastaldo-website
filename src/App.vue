@@ -43,4 +43,14 @@ body {
 ul {
   list-style: none;
 }
+
+.library {
+  padding: 0.2rem 0.8rem;
+  font-size: 1.6rem;
+  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
+    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  border: solid 0.1rem #ccc;
+  border-radius: 1.6rem;
+  background: #f4f4f4;
+}
 </style>

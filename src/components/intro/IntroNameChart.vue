@@ -18,7 +18,9 @@ export default {
   setup(props) {
     const { height } = toRefs(props);
 
-    const fontSize = height.value * 0.625;
+    const fontSize = height.value * 0.6;
+
+    const transitionDuration = 1000;
 
     // manage this class, use computed and watched properties for size
 
@@ -43,7 +45,11 @@ export default {
         context.clearRect(0, 0, width, height.value);
         context.save();
 
-        for (const d of simulation.nodes()) {
+        const nodes = simulation.nodes();
+
+        // const nodesLength = nodes.length
+
+        for (const d of nodes) {
           context.beginPath();
           context.moveTo(d.x, d.y);
           context.arc(d.x, d.y, d.r, 0, 2 * Math.PI);
