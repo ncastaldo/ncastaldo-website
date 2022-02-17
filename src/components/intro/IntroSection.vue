@@ -1,8 +1,8 @@
 <script>
-import { ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 
 import introConfig from "../../assets/config/introConfig.json";
-import { useFontSize } from "../../composables/style";
+import { useProperty } from "../../composables/style";
 
 import IntroNameChart from "./IntroNameChart.vue";
 import BaseIconLink from "../base/BaseIconLink.vue";
@@ -13,8 +13,12 @@ export default {
     const { roles, socials } = introConfig;
 
     const titleHeading = ref(null);
+    const chartHeight = ref(0);
 
-    const { fontSize: chartHeight } = useFontSize(titleHeading);
+    onMounted(() => {
+      console;
+      chartHeight.value = titleHeading.value.offsetHeight;
+    });
 
     return {
       roles,
@@ -28,13 +32,13 @@ export default {
 
 <template>
   <section class="intro-section">
-    <div v-show="chartHeight > 0" attr="intro-title">
-      <h1 ref="titleHeading" class="intro-title-heading">
-        Hi there! I'm
+    <div attr="intro-title">
+      <h1 class="intro-title-heading">
+        <span>Hi there! I'm </span>
         <span class="intro-title-heading-name">Nicola Castaldo</span>
         <br />
-        and also
-        <IntroNameChart :height="chartHeight" />
+        <span ref="titleHeading">and also</span>
+        <IntroNameChart v-if="chartHeight > 0" :height="chartHeight" />
       </h1>
     </div>
     <div class="intro-roles">

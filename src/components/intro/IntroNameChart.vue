@@ -18,7 +18,9 @@ export default {
   setup(props) {
     const { height } = toRefs(props);
 
-    const fontSize = (height.value * 4) / 5;
+    const fontSize = height.value * 0.625;
+
+    // manage this class, use computed and watched properties for size
 
     const text = "@ncastaldo";
 
@@ -94,7 +96,7 @@ export default {
 
       const updateTextNodes = () => {
         const x = (width - textWidth) / 2;
-        const y = height.value / 2 + (textHeight / 100) * 33;
+        const y = height.value / 2 + (textHeight / 100) * 35;
 
         const path = font.value.getPath(text, x, y, fontSize);
 
@@ -132,6 +134,8 @@ export default {
     onMounted(async () => {
       font.value = await opentype.load(FONT_URL);
 
+      console.log(font.value);
+
       select(canvasRef.value).call(useChart);
     });
 
@@ -144,5 +148,16 @@ export default {
 </script>
 
 <template>
-  <canvas ref="canvasRef" :width="width" :height="height" />
+  <canvas
+    ref="canvasRef"
+    class="intro-name-chart-canvas"
+    :width="width"
+    :height="height"
+  />
 </template>
+
+<style>
+.intro-name-chart-canvas {
+  vertical-align: text-bottom;
+}
+</style>
