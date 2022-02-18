@@ -4,12 +4,12 @@ import { computed, onMounted, onUnmounted, watch } from "vue";
 import { timeFormat } from "d3-time-format";
 import BaseItem from "../base/BaseItem.vue";
 import BaseImage from "../base/BaseImage.vue";
-import BaseItemDescription from "../base/BaseItemDescription.vue";
+import BaseDescription from "../base/BaseDescription.vue";
 
 import journey from "../../store/journey";
 
 export default {
-  components: { BaseItem, BaseImage, BaseItemDescription },
+  components: { BaseItem, BaseImage, BaseDescription },
   setup() {
     const format = timeFormat("%B %Y");
 
@@ -97,12 +97,10 @@ export default {
   >
     <BaseItem>
       <template #logo>
-        <div>
-          <BaseImage :src="period.detail.logo" />
-        </div>
+        <BaseImage :src="period.detail.logo" />
       </template>
-      <template #content>
-        <BaseItemDescription
+      <template #default>
+        <BaseDescription
           :title="period.detail.title"
           :subtitle="period.detail.place"
           :caption="getPeriodInterval(period)"

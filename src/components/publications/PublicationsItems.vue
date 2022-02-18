@@ -2,10 +2,10 @@
 import publications from "../../assets/config/publicationsConfig.json";
 import BaseItem from "../base/BaseItem.vue";
 import BaseImage from "../base/BaseImage.vue";
-import BaseItemDescription from "../base/BaseItemDescription.vue";
+import BaseDescription from "../base/BaseDescription.vue";
 
 export default {
-  components: { BaseItem, BaseImage, BaseItemDescription },
+  components: { BaseItem, BaseImage, BaseDescription },
   setup() {
     return {
       publications,
@@ -19,8 +19,8 @@ export default {
     <template #logo>
       <BaseImage :src="publication.logo" />
     </template>
-    <template #content>
-      <BaseItemDescription
+    <template #default>
+      <BaseDescription
         :title="publication.title"
         :subtitle="publication.journal"
         :caption="publication.year"

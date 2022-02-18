@@ -6,14 +6,14 @@ export default {
 };
 </script>
 <template>
-  <img class="image" :src="src" />
+  <img class="base-image" :src="src" />
 </template>
 
-<style>
-.image {
+<style scoped>
+.base-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
 }
 </style>

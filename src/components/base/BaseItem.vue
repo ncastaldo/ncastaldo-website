@@ -1,26 +1,31 @@
 <template>
-  <div class="item">
-    <div class="item-logo">
+  <div class="base-item">
+    <div class="base-item-logo">
       <slot name="logo"></slot>
     </div>
-    <div class="item-content">
-      <slot name="content"></slot>
+    <div class="base-item-content">
+      <slot></slot>
     </div>
   </div>
 </template>
 
 <style scoped>
-.item {
-  padding: 1rem;
+.base-item {
+  padding-bottom: 2rem;
   display: flex;
+  align-items: flex-start;
 }
 
-.item-logo {
-  padding: 0.5rem;
-  flex: 30%;
+.base-item-logo,
+.base-item-content {
+  box-sizing: border-box;
+}
+.base-item-logo {
+  padding: 2rem;
+  flex: 34%;
 }
 
-.item-content {
-  flex: 70%;
+.base-item-content {
+  flex: 66%;
 }
 </style>
