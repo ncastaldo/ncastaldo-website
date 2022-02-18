@@ -45,7 +45,7 @@ export default {
         >
           <template #title>{{ partition.name }}</template>
           <template #default>
-            <div class="skills-subsection-libraries-subsection">
+            <div class="skills-subsection-libraries-content">
               <div
                 v-for="library in partition.libraries"
                 :key="library.id"
@@ -77,7 +77,10 @@ export default {
   grid-column: span 2;
 }
 
-.skills-subsection-libraries-subsection {
-  display: inline-block;
+.skills-subsection-libraries-content {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.6rem;
+  row-gap: 0.6rem;
 }
 </style>

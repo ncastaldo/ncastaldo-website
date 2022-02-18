@@ -70,6 +70,7 @@ export default {
           .attr("alignment-baseline", "middle")
           .attr("x", xLeft + labelPadding)
           .attr("y", (d) => yScale(d.id))
+          .classed("skills-software-chart-label", true)
           .text((d) => d.name);
       };
 
@@ -90,5 +91,11 @@ export default {
 </script>
 
 <template>
-  <svg ref="svgRef" :viewBox="`0 0 ${width} ${height}`" />
+  <svg ref="svgRef" :viewBox="`0 0 ${width} ${height}`"></svg>
 </template>
+
+<style>
+.skills-software-chart-label {
+  font-size: 1.4rem;
+}
+</style>
