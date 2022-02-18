@@ -144,5 +144,5 @@ export default {
     id="journey-map-chart"
     ref="svgRef"
     :viewBox="`0 0 ${width} ${height}`"
-  />
+  ></svg>
 </template>

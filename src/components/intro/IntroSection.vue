@@ -1,8 +1,7 @@
 <script>
-import { computed, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import introConfig from "../../assets/config/introConfig.json";
-import { useProperty } from "../../composables/style";
 
 import IntroNameChart from "./IntroNameChart.vue";
 import BaseIconLink from "../base/BaseIconLink.vue";

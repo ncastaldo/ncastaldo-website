@@ -11,8 +11,8 @@ import journey from "../../store/journey";
 
 export default {
   setup() {
-    const [width, height] = [600, 80];
-    const padding = { top: 20, right: 10, bottom: 40, left: 10 };
+    const [width, height] = [600, 60];
+    const padding = { top: 10, right: 20, bottom: 30, left: 20 };
 
     const svgRef = ref(null);
 
@@ -51,7 +51,7 @@ export default {
 
     const colorScale = (d) => (d.current ? "#42a07e" : "#ccc");
 
-    const xAxis = axisBottom().scale(xScale).tickSize(0).tickPadding(6);
+    const xAxis = axisBottom().scale(xScale).tickSize(0).tickPadding(8);
 
     const useChart = (selection) => {
       selection
@@ -59,7 +59,9 @@ export default {
         .call(xAxis)
         .attr("transform", `translate(0, ${height - padding.bottom})`)
         .call((g) => g.select(".domain").remove())
-        .call((g) => g.selectAll(".tick text").attr("font-size", "0.8rem"));
+        .call((g) =>
+          g.selectAll(".tick text").classed("journey-time-chart-label", true)
+        );
 
       let bars = selection.append("g").selectAll("rect");
 
@@ -108,5 +110,21 @@ export default {
 </script>
 
 <template>
-  <svg ref="svgRef" :viewBox="`0 0 ${width} ${height}`" />
+  <svg
+    ref="svgRef"
+    class="journey-time-chart"
+    :viewBox="`0 0 ${width} ${height}`"
+  ></svg>
 </template>
+
+<style scoped>
+.journey-time-chart {
+  background-color: #eeeeee;
+
+  outline: 0.1rem solid #ddd;
+}
+
+.journey-time-chart-label {
+  font-size: 1.2rem;
+}
+</style>

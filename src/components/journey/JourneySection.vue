@@ -48,12 +48,7 @@ export default {
 <style scoped>
 .sticky {
   position: sticky;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 1),
-    97%,
-    rgba(255, 255, 255, 0)
-  );
+  background-color: inherit;
   z-index: 10;
   top: 0;
 }

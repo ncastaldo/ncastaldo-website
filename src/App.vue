@@ -21,6 +21,11 @@ export default {
 </template>
 
 <style>
+:root {
+  --primary-background-color: "#ffffff";
+  --secondary-background-color: "#eeeeee";
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem value */
