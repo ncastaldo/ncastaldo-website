@@ -1,11 +1,16 @@
 <script>
 import { ref } from "vue";
-import BaseImage from "./BaseImage.vue";
+import BaseIconLink from "./BaseIconLink.vue";
+import BaseLibrary from "./BaseLibrary.vue";
 
 export default {
-  components: { BaseImage },
+  components: { BaseIconLink, BaseLibrary },
   props: {
     imageSrc: String,
+    heading: String,
+    description: String,
+    libraries: Array,
+    links: Array,
   },
   setup() {
     const reveal = ref(false);
@@ -21,73 +26,84 @@ export default {
 </script>
 
 <template>
-  <div class="card">
-    <div class="card-front" @click="toggleReveal">
-      <div class="card-image">
-        <BaseImage :src="imageSrc" />
+  <div class="base-card">
+    <div class="base-card-front" @click="toggleReveal">
+      <div class="base-card-image-container">
+        <img class="base-card-image" :src="imageSrc" />
       </div>
-      <div class="card-content">
-        <slot name="content"></slot>
+      <div class="base-card-content">
+        <h3 class="base-card-content-heading">
+          {{ heading }}
+        </h3>
+        <div class="base-card-content-description">
+          {{ description }}
+        </div>
+
+        <div class="base-card-content-libraries">
+          <BaseLibrary
+            v-for="(library, i) in libraries"
+            :key="i"
+            :label="library"
+          >
+          </BaseLibrary>
+        </div>
+        <div class="base-card-content-links">
+          <BaseIconLink
+            v-for="(link, i) in links"
+            :key="i"
+            :url="link.url"
+            :icon="link.icon"
+            size="3x"
+          >
+            {{ library.name }}
+          </BaseIconLink>
+        </div>
       </div>
-    </div>
-    <div :class="`card-reveal ${reveal ? 'active' : ''}`">
-      <div class="card-reveal-close" @click="toggleReveal">
-        <fa icon="times" size="2x"> </fa>
-      </div>
-      <slot name="reveal"></slot>
     </div>
   </div>
 </template>
 
 <style scoped>
-.card {
+.base-card {
   position: relative;
-  outline: 0.1rem solid #ddd;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }
 
-.card:hover {
-  outline-color: #42a07e;
+.base-card-image-container {
+  height: 14rem;
 }
 
-.card-front {
-  cursor: pointer;
-}
-
-.card-image {
-  height: 10rem;
-}
-
-.card-content {
-  padding: 1rem;
-}
-
-.card-reveal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 1rem;
-  box-sizing: border-box;
+.base-card-image {
   width: 100%;
-  min-height: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
-  opacity: 0;
-  visibility: hidden;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
-.card-reveal.active {
-  opacity: 1;
-  visibility: visible;
+.base-card-content {
+  min-height: 15rem;
+  padding: 2rem;
 }
 
-.card-reveal-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 1rem;
-  cursor: pointer;
+.base-card-content-heading {
+  font-size: 2rem;
+  padding-bottom: 1rem;
 }
 
-.card-reveal-close:hover {
-  color: #42a07e;
+.base-card-content-description {
+  font-size: 1.6rem;
+  padding-bottom: 2rem;
+}
+
+.base-card-content-libraries {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.6rem;
+  row-gap: 0.6rem;
+  padding-bottom: 2rem;
+}
+
+.base-card-content-links > *:not(:last-child) {
+  margin-right: 1rem;
 }
 </style>

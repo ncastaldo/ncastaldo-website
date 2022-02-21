@@ -5,6 +5,7 @@ import SkillsSoftwareChart from "./SkillsSoftwareChart.vue";
 import BaseSubsection from "../base/BaseSubsection.vue";
 
 import skillsLibraryConfig from "../../assets/config/skillsLibraryConfig.json";
+import BaseLibrary from "../base/BaseLibrary.vue";
 
 export default {
   components: {
@@ -12,6 +13,7 @@ export default {
     SkillsProgrammingChart,
     SkillsSoftwareChart,
     BaseSubsection,
+    BaseLibrary,
   },
   setup() {
     return {
@@ -46,13 +48,12 @@ export default {
           <template #title>{{ partition.name }}</template>
           <template #default>
             <div class="skills-subsection-libraries-content">
-              <div
+              <BaseLibrary
                 v-for="library in partition.libraries"
                 :key="library.id"
-                class="library"
+                :label="library.name"
               >
-                {{ library.name }}
-              </div>
+              </BaseLibrary>
             </div>
           </template>
         </BaseSubsection>
@@ -61,7 +62,7 @@ export default {
   </BaseSection>
 </template>
 
-<style>
+<style scoped>
 .skills-subsection-content {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));

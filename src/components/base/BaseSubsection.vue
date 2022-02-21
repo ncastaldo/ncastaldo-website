@@ -17,7 +17,7 @@
   padding-bottom: 2rem;
 }
 .base-subsection-heading {
-  font-size: 3rem;
+  font-size: 2.5rem;
   padding-bottom: 1rem;
 }
 

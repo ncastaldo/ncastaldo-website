@@ -32,7 +32,7 @@ export default {
   <BaseSection>
     <template #title>Journey</template>
     <template #default>
-      <div class="sticky">
+      <div class="journey-section-header">
         <JourneyTimeChart />
         <!--BaseItem>
           <template #logo> <JourneyMapChart /></template>
@@ -44,14 +44,11 @@ export default {
 </template>
 
 <style scoped>
-.sticky {
+.journey-section-header {
   position: sticky;
   background-color: inherit;
   z-index: 10;
   top: 0;
-}
-
-.ahead-sticky {
-  z-index: 1;
+  padding-bottom: 2rem;
 }
 </style>

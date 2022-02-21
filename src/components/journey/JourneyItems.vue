@@ -1,16 +1,21 @@
 <script>
-import { computed, onMounted, onUnmounted, watch } from "vue";
+import { computed, onMounted, onUnmounted, toRefs, watch } from "vue";
 
 import { timeFormat } from "d3-time-format";
 import BaseItem from "../base/BaseItem.vue";
-import BaseImage from "../base/BaseImage.vue";
+import BaseLogo from "../base/BaseLogo.vue";
 import BaseDescription from "../base/BaseDescription.vue";
 
 import journey from "../../store/journey";
 
 export default {
-  components: { BaseItem, BaseImage, BaseDescription },
-  setup() {
+  components: { BaseItem, BaseLogo, BaseDescription },
+  props: {
+    current: Boolean,
+  },
+  setup(props) {
+    const { current } = toRefs(props);
+
     const format = timeFormat("%B %Y");
 
     // const journey = inject("journey");
@@ -95,9 +100,9 @@ export default {
     :ref="setPeriodRef"
     :data-period-id="period.id"
   >
-    <BaseItem>
+    <BaseItem :current="currentPeriod === period">
       <template #logo>
-        <BaseImage :src="period.detail.logo" />
+        <BaseLogo :src="period.detail.logo" />
       </template>
       <template #default>
         <BaseDescription
@@ -112,4 +117,4 @@ export default {
   </div>
 </template>
 
-<style scoped></style>
+<style></style>

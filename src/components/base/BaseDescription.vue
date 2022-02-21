@@ -11,8 +11,8 @@ export default {
 </script>
 
 <template>
-  <div class="base-description">
-    <h3 :class="`base-description-title ${current ? 'current' : ''}`">
+  <div class="base-description" :class="current ? 'current' : ''">
+    <h3 class="base-description-title">
       {{ title }}
     </h3>
     <h4 class="base-description-subtitle">{{ subtitle }}</h4>
@@ -31,28 +31,23 @@ export default {
 }
 
 .base-description-title {
-  padding-top: 0.1rem;
-  padding-bottom: 0.3rem;
-  font-size: 2.5rem;
+  padding-bottom: 1rem;
+  font-size: 3rem;
 }
-.base-description-title.current {
+.base-description.current .base-description-title {
   color: #42a07e;
-  text-decoration: underline #42a07e;
-  text-underline-offset: 0.4rem;
 }
 
 .base-description-subtitle {
-  padding-top: 0.1rem;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.5rem;
   text-transform: uppercase;
   font-size: 2rem;
-  font-weight: 300;
-  letter-spacing: 0.1rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
 }
 
 .base-description-caption {
-  padding-top: 0.1rem;
-  padding-bottom: 0.2rem;
+  padding-bottom: 1rem;
   font-size: 1.6rem;
 }
 

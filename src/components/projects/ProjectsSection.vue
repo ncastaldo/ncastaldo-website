@@ -18,6 +18,7 @@ import ProjectsCards from "./ProjectsCards.vue";
 .projects-cards-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 3rem;
+  padding-bottom: 4rem;
 }
 </style>

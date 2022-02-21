@@ -6,11 +6,11 @@ export default {
 };
 </script>
 <template>
-  <img class="base-image" :src="src" />
+  <img class="base-logo" :src="src" />
 </template>
 
 <style scoped>
-.base-image {
+.base-logo {
   width: 100%;
   height: 100%;
   object-fit: contain;

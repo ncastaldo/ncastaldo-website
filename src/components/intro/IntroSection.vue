@@ -80,6 +80,7 @@ export default {
 
 .intro-title-heading-name {
   color: #42a07e;
+  font-weight: 700;
 }
 
 .intro-roles {
