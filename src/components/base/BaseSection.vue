@@ -14,7 +14,7 @@
 
 <style scoped>
 .base-section {
-  padding: 1rem 4rem;
+  padding: 1rem 4rem 2rem;
 }
 
 .base-section-heading {

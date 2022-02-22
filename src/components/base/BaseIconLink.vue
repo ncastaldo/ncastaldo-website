@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <a class="icon-link" :href="url">
+  <a class="icon-link" :href="url" target="_blank">
     <fa :icon="icon" :size="size"></fa>
   </a>
 </template>
@@ -20,6 +20,6 @@ export default {
 }
 
 .icon-link:hover {
-  color: #42a07e;
+  opacity: 0.7;
 }
 </style>

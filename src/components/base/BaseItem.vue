@@ -20,7 +20,6 @@ export default {
 <style scoped>
 .base-item {
   padding: 2rem;
-  margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
