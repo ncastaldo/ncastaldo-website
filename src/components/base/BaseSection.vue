@@ -20,7 +20,26 @@
 .base-section-heading {
   font-size: 5rem;
   margin: 3rem auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+}
+
+.base-section-heading::before,
+.base-section-heading::after {
+  content: "";
+  border-top: 0.1rem solid #ddd;
+  flex: 1 0;
+}
+
+.base-section-heading::before {
+  margin: 0 2rem 0 10rem;
+}
+
+.base-section-heading::after {
+  margin: 0 10rem 0 2rem;
 }
 
 .base-section-content {

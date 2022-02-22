@@ -19,19 +19,20 @@ export default {
 
 <style scoped>
 .base-item {
-  padding-top: 1rem;
+  padding: 2rem;
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
 
-  outline: 0rem solid #ddd;
+  outline: 0.1rem solid #fff;
+
+  transition: outline-color 250ms ease-in-out;
 }
 
 .base-item.current {
   /*box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);*/
-  transition: 250ms;
-  outline: 0.1rem solid #ddd;
+  outline-color: #ddd;
 }
 
 .base-item-logo,
@@ -41,6 +42,7 @@ export default {
 .base-item-logo {
   padding: 2rem;
   flex: 34%;
+  text-align: center;
 }
 
 .base-item-content {

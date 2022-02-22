@@ -32,23 +32,24 @@ export default {
 
 .base-description-title {
   padding-bottom: 1rem;
-  font-size: 3rem;
-}
-.base-description.current .base-description-title {
-  color: #42a07e;
+  font-size: 2.5rem;
 }
 
 .base-description-subtitle {
   padding-bottom: 0.5rem;
   text-transform: uppercase;
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 200;
   letter-spacing: 0.2rem;
 }
-
 .base-description-caption {
   padding-bottom: 1rem;
+  font-weight: 700;
   font-size: 1.6rem;
+}
+
+.base-description.current .base-description-caption {
+  color: #42a07e;
 }
 
 .base-description-content {

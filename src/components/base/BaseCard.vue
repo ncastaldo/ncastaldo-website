@@ -86,7 +86,7 @@ export default {
 }
 
 .base-card-content-heading {
-  font-size: 2rem;
+  font-size: 2.3rem;
   padding-bottom: 1rem;
 }
 

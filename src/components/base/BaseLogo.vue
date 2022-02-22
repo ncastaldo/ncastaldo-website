@@ -13,6 +13,7 @@ export default {
 .base-logo {
   width: 100%;
   height: 100%;
+  max-width: 25rem;
   object-fit: contain;
   object-position: center center;
 }

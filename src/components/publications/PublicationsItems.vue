@@ -7,6 +7,14 @@ import BaseLogo from "../base/BaseLogo.vue";
 export default {
   components: { BaseItem, BaseDescription, BaseLogo },
   setup() {
+    publications.reverse();
+
+    publications.forEach((publication) => {
+      publication.caption = `${publication.journal.trim()} ${publication.page.trim()} (${
+        publication.year
+      })`;
+    });
+
     return {
       publications,
     };
@@ -22,8 +30,7 @@ export default {
     <template #default>
       <BaseDescription
         :title="publication.title"
-        :subtitle="publication.journal"
-        :caption="publication.year"
+        :caption="publication.caption"
         :paragraphs="[publication.authors]"
       />
     </template>
