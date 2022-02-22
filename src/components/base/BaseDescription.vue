@@ -46,6 +46,7 @@ export default {
   padding-bottom: 1rem;
   font-weight: 700;
   font-size: 1.6rem;
+  transition: color 250ms ease-in-out;
 }
 
 .base-description.current .base-description-caption {

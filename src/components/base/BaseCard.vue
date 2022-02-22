@@ -66,7 +66,9 @@ export default {
 <style scoped>
 .base-card {
   position: relative;
-  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  outline: 0.1rem solid #ddd;
+  border-radius: 2rem;
+  overflow: hidden;
 }
 
 .base-card-image-container {

@@ -120,8 +120,7 @@ export default {
 <style scoped>
 .journey-time-chart {
   background-color: #fff;
-
-  outline: 0.1rem solid #ddd;
+  /*outline: 0.1rem solid #ddd;*/
 }
 
 .journey-time-chart-label {

@@ -100,9 +100,12 @@ export default {
     :ref="setPeriodRef"
     :data-period-id="period.id"
   >
-    <BaseItem :current="currentPeriod === period">
+    <BaseItem>
       <template #logo>
-        <BaseLogo :src="period.detail.logo" />
+        <BaseLogo
+          :src="period.detail.logo"
+          :current="currentPeriod === period"
+        />
       </template>
       <template #default>
         <BaseDescription
