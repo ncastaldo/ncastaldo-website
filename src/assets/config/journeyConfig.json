@@ -44,8 +44,14 @@
       "from": "2013-10-01",
       "to": "2016-10-01",
       "intervals": [
-        {"from": "2013-10-01", "to":"2015-09-01"},
-        {"from": "2016-02-01", "to":"2016-10-01"}
+        {
+          "from": "2013-10-01",
+          "to": "2015-09-01"
+        },
+        {
+          "from": "2016-02-01",
+          "to": "2016-10-01"
+        }
       ],
       "detail": {
         "title": "B.Sc. Computer Science & Engineering",
@@ -53,6 +59,7 @@
         "logo": "/assets/img/journey/polimi-logo.png",
         "type": "Education",
         "achievements": [
+          "In FBK I worked as a Software and Data Engineer, with particular focus on Data Visualization.",
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae justo eget magna fermentum iaculis eu non diam. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur adipiscing elit duis tristique. Tincidunt dui ut ornare lectus sit amet est placerat. Orci dapibus ultrices in iaculis nunc. Etiam non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Sed risus ultricies tristique nulla aliquet enim tortor at. Pulvinar proin gravida hendrerit lectus a. Nunc congue nisi vitae suscipit. Diam quam nulla porttitor massa id neque aliquam. Euismod in pellentesque massa placerat. Tincidunt praesent semper feugiat nibh sed pulvinar. Et ultrices neque ornare aenean euismod elementum nisi. Facilisi nullam vehicula ipsum a. Neque egestas congue quisque egestas diam in arcu cursus. Ultricies tristique nulla aliquet enim. Enim nec dui nunc mattis enim ut tellus."
         ]
       },
@@ -64,7 +71,10 @@
       "from": "2015-09-01",
       "to": "2016-02-01",
       "intervals": [
-        {"from": "2015-09-01", "to":"2016-02-01"}
+        {
+          "from": "2015-09-01",
+          "to": "2016-02-01"
+        }
       ],
       "detail": {
         "title": "Erasmus+ Study",
@@ -83,7 +93,10 @@
       "from": "2016-10-01",
       "to": "2019-05-01",
       "intervals": [
-        {"from": "2016-10-01", "to":"2019-05-01"}
+        {
+          "from": "2016-10-01",
+          "to": "2019-05-01"
+        }
       ],
       "detail": {
         "title": "M.Sc. Computer Science & Engineering",
@@ -102,7 +115,10 @@
       "from": "2019-05-01",
       "to": "2021-05-01",
       "intervals": [
-        {"from": "2019-05-01", "to":"2021-05-01"}
+        {
+          "from": "2019-05-01",
+          "to": "2021-05-01"
+        }
       ],
       "detail": {
         "title": "Software & Data Engineer",
@@ -125,19 +141,17 @@
       "from": "2021-05-01",
       "to": null,
       "intervals": [
-        {"from": "2021-05-01", "to": null}
+        {
+          "from": "2021-05-01",
+          "to": null
+        }
       ],
       "detail": {
         "title": "Technical Analyst",
         "place": "OverIT S.p.A.",
         "logo": "/assets/img/journey/overit-logo.png",
         "type": "Experience",
-        "achievements": [
-          "Worked closely with business analysts to interpret and write technical requirements and collect feedbacks and bug reports for new software functionalities",
-          "Collaborated with development teams to design the data and object models, process flows, user experience, page layouts and system integration structures",
-          "Distributed development tasks across multiple developers and carried on code reviews on development outputs",
-          "Tested and reviewed technical documents and conducted hands-on practical sessions with international partners"
-        ]
+        "content": "<p>\r\n      I work as a <b>Technical Analyst<\/b> in the\r\n      <i>Geocall Product Development Group<\/i>\r\n    <\/p>\r\n    <p>In particular:<\/p>\r\n    <ul>\r\n      <li>\r\n        I perform in-depth <b>technical analysis<\/b> of <i>data<\/i>,\r\n        <i>business logic<\/i> and <i>view<\/i> layers of the existing software\r\n        solution\r\n      <\/li>\r\n      <li>\r\n        I work closely with business analysts to <b>define<\/b> the\r\n        <b>requirements<\/b> of new software functionalities to be integrated in\r\n        the Product\r\n      <\/li>\r\n      <li>\r\n        I collaborate with the development teams to <b>design<\/b> the\r\n        <i>data and object models<\/i>, <i>process flows<\/i>,\r\n        <i>user experience<\/i>, <i>page layouts<\/i> and\r\n        <i>system integration structures<\/i> based on SOAP and REST\r\n      <\/li>\r\n      <li>\r\n        I <b>define<\/b> and distribute <b>development tasks<\/b> among the\r\n        developers and I carry on <b>code reviews<\/b> on their outputs\r\n      <\/li>\r\n      <li>\r\n        I test and improve <i>technical documents<\/i> and conduct\r\n        <b>practical sessions<\/b> with <i>international partners<\/i> to\r\n        technically introduce them to the Product\r\n      <\/li>\r\n    <\/ul>"
       },
       "locationId": 1
     }

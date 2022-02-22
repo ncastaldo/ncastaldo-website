@@ -112,12 +112,95 @@ export default {
           :title="period.detail.title"
           :subtitle="period.detail.place"
           :caption="getPeriodInterval(period)"
-          :paragraphs="period.detail.achievements"
+          :content="period.detail.achievements"
           :current="currentPeriod === period"
         />
       </template>
     </BaseItem>
   </div>
+  <div class="test-class">
+    <p>
+      I work as a <b>Technical Analyst</b> in the
+      <i>Geocall Product Development Group</i>
+    </p>
+    <p>In particular:</p>
+    <ul>
+      <li>
+        I perform in-depth <b>technical analysis</b> of data, business logic and
+        view layers of the existing software solution
+      </li>
+      <li>
+        I work closely with business analysts to <b>define</b> the
+        <b>requirements</b> of new software functionalities to be integrated in
+        the <i>Product</i>
+      </li>
+      <li>
+        I collaborate with the development teams to <b>design</b> the data and
+        object models, process flows, user experience, page layouts and system
+        integration structures based on <i>SOAP</i> and <i>REST</i>
+      </li>
+      <li>
+        I define and distribute <b>development tasks</b> among the developers
+        and I carry on <b>code reviews</b> on their outputs
+      </li>
+      <li>
+        I test and improve technical documents and conduct
+        <b>practical sessions</b> with international partners to technically
+        introduce them to the <i>Product</i>
+      </li>
+    </ul>
+  </div>
+  <div class="test-class">
+    <p>
+      I worked as a <b>Software and Data Engineer</b> - formally
+      <i>Technologist</i> - in the <i>CoMuNe Lab</i> at FBK, an
+      interdisciplinary team focused on the research of
+      <b>Complex Multilayer Networks</b>.
+    </p>
+    <p>About me and this job:</p>
+    <ul>
+      <li>
+        I designed and developed scalable
+        <b>processing pipelines</b> to analyze, integrate and efficiently store
+        data coming from multiple sources and in different formats
+      </li>
+      <li>
+        I had the opportunity to study and put in practice
+        <b>data visualization</b> techniques in particular for the Web
+        development, exploiting open source libraries (such as <b>D3</b> and
+        <b>Leaflet</b>) to create dynamic and interactive charts
+      </li>
+      <li>
+        I experimented and applied different full-stack development
+        technologies, using both SQL and NoSQL databases, web back-end
+        frameworks and front-end libraries
+      </li>
+      <li>
+        I collaborated to different research projects that resulted in
+        scientific papers, applying Data Science techniques and State-of-the-Art
+        AI technologies
+      </li>
+      <li>
+        I designed and developed a web full-stack application to process, store
+        and dynamically visualize NLP analyzed text data with interactive charts
+        and maps
+      </li>
+      <li>
+        I designed and configured a cloud infrastructure to host different
+        interconnected Linux based VMs for high computing tasks
+      </li>
+    </ul>
+  </div>
 </template>
 
-<style></style>
+<style scoped>
+.test-class {
+  font-size: 1.6rem;
+  margin-bottom: 3rem;
+}
+
+.test-class > ul {
+  list-style: circle;
+  padding-left: 2rem;
+}
+</style>
