@@ -41,24 +41,19 @@ export default {
           <span>to see my resume,</span>
         </div>
         <div class="contacts-content-text">
-          <span>or click</span>
-          <BaseIconAction
-            :icon="['fas', 'envelope']"
-            size="1x"
-            class="contacts-content-icon"
-            :color="showEmail ? '#42a07e' : '#1f1f1f'"
-            @click="showEmail = !showEmail"
-          ></BaseIconAction>
-          <span
-            >to <span>{{ showEmail ? "encrypt" : "decrypt" }}</span> my
-            email.</span
-          >
+          <span>
+            or click on the email to
+            <span>{{ showEmail ? "encrypt" : "decrypt" }}</span>
+            it.
+          </span>
         </div>
         <div class="contacts-content-chart">
           <ContactsTextChart
             :text="email"
             :height="40"
             :ordered="showEmail"
+            :style="{ cursor: 'pointer' }"
+            @click="showEmail = !showEmail"
           ></ContactsTextChart>
           <BaseIconAction
             :icon="['fas', 'copy']"
