@@ -20,7 +20,7 @@
     "link": "http://nature.com/articles/s41562-020-00994-6"
   },
   {
-    "id": 1,
+    "id": 3,
     "title": "Emergence of knowledge communities and information centralization during the COVID-19 pandemic",
     "year": 2021,
     "authors": "P. Sacco, R. Gallotti, F. Pilati, N. Castaldo, M. De Domenico",
@@ -38,5 +38,15 @@
     "logo": "/assets/img/publications/plos-logo.png",
     "page": "285, 114215",
     "link": "https://doi.org/10.1371/journal.pcbi.1009760"
+  },
+  {
+    "id": 5,
+    "title": "Epidemic proximity and imitation dynamics drive infodemic waves during the COVID-19 pandemic",
+    "year": 2022,
+    "authors": "V D'Andrea, O. Artime, N. Castaldo, P. Sacco, R. Gallotti, M. De Domenico",
+    "journal": "Physical Review Research",
+    "logo": "/assets/img/publications/prr-logo.png",
+    "page": "4 (1), 013158",
+    "link": "https://doi.org/10.1103/PhysRevResearch.4.013158"
   }
 ]
