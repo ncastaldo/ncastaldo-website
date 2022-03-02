@@ -1,6 +1,6 @@
 import { computed, reactive } from "vue";
 
-import journeyConfig from "../assets/config/journeyConfig.json";
+import journeyConfig from "../config/journeyConfig";
 
 const periods = journeyConfig.periods.map((period) =>
   Object.assign(period, {

@@ -42,7 +42,7 @@ export default {
         </div>
         <div class="contacts-content-text">
           <span>
-            or click on the email to
+            or click the email to
             <span>{{ showEmail ? "encrypt" : "decrypt" }}</span>
             it.
           </span>
@@ -55,14 +55,17 @@ export default {
             :style="{ cursor: 'pointer' }"
             @click="showEmail = !showEmail"
           ></ContactsTextChart>
+        </div>
+        <div class="contacts-content-caption">
           <BaseIconAction
             :icon="['fas', 'copy']"
             size="1x"
             class="contacts-content-icon"
-            :color="showEmail ? '#42a07e' : '#888'"
+            :color="showEmail ? (copied ? '#42a07e' : '#1e1e1e') : '#888'"
             :disabled="!showEmail"
             @click="copy(email)"
           ></BaseIconAction>
+          <span>{{ copied ? "Copied!" : "Copy email" }}</span>
         </div>
       </div>
     </template>
@@ -91,5 +94,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.contacts-content-caption {
+  padding: 1rem 0 4rem;
+  text-transform: uppercase;
+  font-size: 2rem;
 }
 </style>

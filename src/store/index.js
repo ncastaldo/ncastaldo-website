@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 
-import journeyConfig from "../assets/config/journeyConfig.json";
+import journeyConfig from "../config/journeyConfig";
 
 // locations
 
