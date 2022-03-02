@@ -38,7 +38,9 @@ export default {
           <template #logo> <JourneyMapChart /></template>
         </BaseItem-->
       </div>
-      <JourneyItems />
+      <div class="journey-section-content">
+        <JourneyItems />
+      </div>
     </template>
   </BaseSection>
 </template>

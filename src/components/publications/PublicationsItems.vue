@@ -29,9 +29,10 @@ export default {
     </template>
     <template #default>
       <BaseDescription
-        :title="publication.title"
+        :title="publication.journal"
+        :subtitle="publication.title"
         :caption="publication.caption"
-        :paragraphs="[publication.authors]"
+        :html-content="publication.authors"
       />
     </template>
   </BaseItem>

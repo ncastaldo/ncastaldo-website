@@ -12,9 +12,7 @@ export default {
 
 <template>
   <div class="base-description" :class="current ? 'current' : ''">
-    <h3 class="base-description-title">
-      {{ title }}
-    </h3>
+    <h3 class="base-description-title">{{ title }}</h3>
     <h4 class="base-description-subtitle">{{ subtitle }}</h4>
     <h5 class="base-description-caption">{{ caption }}</h5>
     <div class="base-description-html" v-html="htmlContent"></div>
@@ -27,26 +25,28 @@ export default {
 }
 
 .base-description-title {
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   font-size: 2.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 
 .base-description-subtitle {
   padding-bottom: 0.5rem;
-  text-transform: uppercase;
   font-size: 2rem;
-  font-weight: 200;
-  letter-spacing: 0.2rem;
+  font-weight: 500;
 }
 .base-description-caption {
   padding-bottom: 1rem;
-  font-weight: 700;
   font-size: 1.6rem;
-  transition: color 100ms ease-in-out;
+
+  letter-spacing: 0.04rem;
 }
 
 .base-description.current .base-description-caption {
   color: #42a07e;
+  font-weight: 600;
+  letter-spacing: 0rem;
 }
 
 .base-description-html {

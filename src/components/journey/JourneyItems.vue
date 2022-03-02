@@ -109,8 +109,8 @@ export default {
       </template>
       <template #default>
         <BaseDescription
-          :title="period.detail.title"
-          :subtitle="period.detail.place"
+          :title="period.detail.place"
+          :subtitle="period.detail.title"
           :caption="getPeriodInterval(period)"
           :html-content="period.detail.html"
           :current="currentPeriod === period"
