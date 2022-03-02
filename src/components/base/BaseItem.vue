@@ -32,12 +32,12 @@ export default {
 
 .base-item-logo {
   padding: 2rem;
-  flex: 34%;
+  flex: 30%;
   text-align: center;
 }
 
 .base-item-content {
-  flex: 66%;
+  flex: 70%;
 }
 
 @media (max-width: 600px) {

@@ -121,7 +121,7 @@ export default {
   <div class="test-class">
     <p>
       I work as a <b>Technical Analyst</b> in the
-      <i>Geocall Product Development Group</i>
+      <i>Geocall Product Development Group</i> at <i>OverIT</i>.
     </p>
     <p>In particular:</p>
     <ul>
@@ -153,7 +153,7 @@ export default {
   <div class="test-class">
     <p>
       I worked as a <b>Software and Data Engineer</b> - formally
-      <i>Technologist</i> - in the <i>CoMuNe Lab</i> at FBK, an
+      <i>Technologist</i> - in the <i>CoMuNe Lab</i> at <i>FBK</i>, an
       interdisciplinary team focused on the research of
       <b>Complex Multilayer Networks</b>.
     </p>
@@ -190,6 +190,45 @@ export default {
         interconnected Linux based VMs for high computing tasks
       </li>
     </ul>
+  </div>
+  <div class="test-class">
+    <p>
+      I participated in the Erasmus+ programme and I stayed for five months in
+      Valencia, Spain. I studied at the
+      <i>Universitat Politècnica de València</i> where I followed both
+      theoretical and practical courses related to:
+    </p>
+    <ul>
+      <li>Network Design and Maintainance</li>
+      <li>Data Bases Design and Management</li>
+      <li>VPN and Tunelling</li>
+      <li>Data Structures and Algorithms</li>
+    </ul>
+    <p>
+      I enjoyed this period in Spain also because it was challenging! I had to
+      study and take the exams in Spanish, a language didn't know at the
+      beginning, and I had to change my <i>study method</i> in order to achieve
+      good results in the Spanish academic system that is focused on
+      <i>continuous assessment</i> and lots of practical sessions.
+    </p>
+  </div>
+  <div class="test-class">
+    <p>
+      I moved from Udine, my hometown, to Milano and there I started my
+      university studies at the <i>Politecnico di Milano</i>, choosing
+      <b>Computer Science and Engineer</b> - formally
+      <i>Ingegneria Informatica</i> - as Bachelor Degree.
+    </p>
+    <p>
+      During these years I had the opportunity to study subjects related to
+      different areas, spanning from Maths and Physics, to Computer Science,
+      Electronics and Industrial Engineering.
+    </p>
+    <p>
+      For the final, in a team with other colleagues, we designed and developed
+      a Java-based digital version of a board game that could be played in
+      multiplayer mode from different machines.
+    </p>
   </div>
 </template>
 
