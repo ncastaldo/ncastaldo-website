@@ -193,6 +193,30 @@ export default {
   </div>
   <div class="test-class">
     <p>
+      I studied <b>Computer Science and Engineering</b> at
+      <i>Politecnico di Milano</i> as Master degree. In this period I strengthen
+      my skills in Computer Science by choosing advanced subjects such as:
+    </p>
+    <ul>
+      <li>Software Engineering</li>
+      <li>Full-Stack Development</li>
+      <li>Internet of Things</li>
+      <li>Data Integration and Big Data</li>
+    </ul>
+    <p>
+      During my last year I worked on a project that then became the foundation
+      of my Thesis:
+      <i>
+        "A Conceptual Modeling Approach for the Rapid Development of Chatbots
+        for Conversational Data Exploration".
+      </i>
+      Thanks to this activity, I got closer to the Academic world and I had the
+      opportunity to publish an article based on the Thesis:
+      <i>Conversational Data Exploration, Springer 2019</i>.
+    </p>
+  </div>
+  <div class="test-class">
+    <p>
       I participated in the Erasmus+ programme and I stayed for five months in
       Valencia, Spain. I studied at the
       <i>Universitat Politècnica de València</i> where I followed both
