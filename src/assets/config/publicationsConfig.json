@@ -7,7 +7,7 @@
     "journal": "Springer",
     "logo": "/assets/img/publications/springer-logo.png",
     "page": "ICWE 2019, Lecture Notes in Computer Science, vol 11496",
-    "link": "https://link.springer.com/chapter/10.1007/978-3-030-19274-7_34"
+    "url": "https://url.springer.com/chapter/10.1007/978-3-030-19274-7_34"
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "journal": "Nature Human Behaviour",
     "logo": "/assets/img/publications/nhb-logo.png",
     "page": "4 (12), 1285-1293",
-    "link": "http://nature.com/articles/s41562-020-00994-6"
+    "url": "http://nature.com/articles/s41562-020-00994-6"
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "journal": "Social Science & Medicine ",
     "logo": "/assets/img/publications/ssm-logo.png",
     "page": "285, 114215",
-    "link": "http://doi.org/10.1016/j.socscimed.2021.114215"
+    "url": "http://doi.org/10.1016/j.socscimed.2021.114215"
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "journal": "PLOS Computational Biology",
     "logo": "/assets/img/publications/plos-logo.png",
     "page": "285, 114215",
-    "link": "https://doi.org/10.1371/journal.pcbi.1009760"
+    "url": "https://doi.org/10.1371/journal.pcbi.1009760"
   },
   {
     "id": 5,
@@ -47,6 +47,6 @@
     "journal": "Physical Review Research",
     "logo": "/assets/img/publications/prr-logo.png",
     "page": "4 (1), 013158",
-    "link": "https://doi.org/10.1103/PhysRevResearch.4.013158"
+    "url": "https://doi.org/10.1103/PhysRevResearch.4.013158"
   }
 ]

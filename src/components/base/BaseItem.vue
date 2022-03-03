@@ -40,7 +40,7 @@ export default {
   flex: 70%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .base-item-logo,
   .base-item-content {
     flex: 100%;

@@ -33,6 +33,7 @@ export default {
         :subtitle="publication.title"
         :caption="publication.caption"
         :html-content="publication.authors"
+        :url="publication.url"
       />
     </template>
   </BaseItem>

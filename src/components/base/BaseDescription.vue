@@ -5,6 +5,7 @@ export default {
     subtitle: String,
     caption: String,
     htmlContent: String, // todo verify
+    url: String,
     current: Boolean,
   },
 };
@@ -12,7 +13,12 @@ export default {
 
 <template>
   <div class="base-description" :class="current ? 'current' : ''">
-    <h3 class="base-description-title">{{ title }}</h3>
+    <h3
+      class="base-description-title"
+      :class="url ? 'base-description-title-link' : ''"
+    >
+      <a :href="url" target="_blank">{{ title }}</a>
+    </h3>
     <h4 class="base-description-subtitle">{{ subtitle }}</h4>
     <h5 class="base-description-caption">{{ caption }}</h5>
     <div class="base-description-html" v-html="htmlContent"></div>
@@ -29,6 +35,15 @@ export default {
   font-size: 2.5rem;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+.base-description-title-link:hover {
+  opacity: 0.7;
+}
+
+.base-description-title a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .base-description-subtitle {

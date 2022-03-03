@@ -114,6 +114,7 @@ export default {
           :caption="getPeriodInterval(period)"
           :html-content="period.detail.html"
           :current="currentPeriod === period"
+          :url="period.detail.url"
         />
       </template>
     </BaseItem>

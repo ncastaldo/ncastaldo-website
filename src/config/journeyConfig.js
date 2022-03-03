@@ -75,6 +75,7 @@ export default {
             an existing board game in <i>Java</i>.\
           </p>\
         ",
+        url: "https://www.polimi.it/en/",
       },
       locationId: 2,
     },
@@ -117,6 +118,7 @@ export default {
             <i>continuous assessment</i> and lots of practical sessions.\
           </p>\
         ",
+        url: "http://www.upv.es/en",
       },
       locationId: 3,
     },
@@ -162,6 +164,7 @@ export default {
             <i>Conversational Data Exploration, Springer 2019</i>.\
           </p>\
         ',
+        url: "https://www.polimi.it/en/",
       },
       locationId: 2,
     },
@@ -223,6 +226,8 @@ export default {
             </li>\
           </ul>\
         ",
+
+        url: "https://www.fbk.eu/en/",
       },
       locationId: 4,
     },
@@ -274,6 +279,7 @@ export default {
             </li>\
           </ul>\
         ",
+        url: "https://www.overit.it/en/",
       },
       locationId: 1,
     },

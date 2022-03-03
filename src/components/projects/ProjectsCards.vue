@@ -28,6 +28,7 @@ export default {
 <template>
   <BaseCard
     v-for="project in projects"
+    v-bind="$attrs"
     :key="project.id"
     :heading="project.name"
     :description="project.description"

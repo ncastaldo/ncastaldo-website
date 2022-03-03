@@ -57,4 +57,8 @@ h6 {
 ul {
   list-style: none;
 }
+
+hr {
+  border-width: 0.05rem;
+}
 </style>

@@ -51,6 +51,6 @@ export default {
   background-color: inherit;
   z-index: 10;
   top: 0;
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 </style>
