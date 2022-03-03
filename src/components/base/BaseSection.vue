@@ -35,11 +35,11 @@
 }
 
 .base-section-heading::before {
-  margin: 0 2rem 0 10rem;
+  margin: 0 2rem 0 1rem;
 }
 
 .base-section-heading::after {
-  margin: 0 10rem 0 2rem;
+  margin: 0 1rem 0 2rem;
 }
 
 .base-section-content {

@@ -84,4 +84,10 @@ export default {
   column-gap: 0.6rem;
   row-gap: 0.6rem;
 }
+
+@media (max-width: 720px) {
+  .skills-subsection-libraries {
+    grid-column: span 6;
+  }
+}
 </style>

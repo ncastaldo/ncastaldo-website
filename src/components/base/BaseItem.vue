@@ -41,6 +41,9 @@ export default {
 }
 
 @media (max-width: 720px) {
+  .base-item {
+    padding: 2rem 0;
+  }
   .base-item-logo,
   .base-item-content {
     flex: 100%;
