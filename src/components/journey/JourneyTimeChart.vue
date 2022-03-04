@@ -1,13 +1,5 @@
 <script>
-import {
-  computed,
-  onMounted,
-  onUnmounted,
-  ref,
-  toRefs,
-  watch,
-  watchEffect,
-} from "vue";
+import { computed, onMounted, ref, toRefs, watchEffect } from "vue";
 
 import { select } from "d3-selection";
 import { transition } from "d3-transition";

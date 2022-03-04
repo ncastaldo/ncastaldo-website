@@ -1,42 +1,51 @@
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, toRefs, watchEffect } from "vue";
 
 import skillsSoftware from "../../assets/config/skillsSoftware.json";
 
 import { scalePoint } from "d3-scale";
 import { select } from "d3-selection";
 import { transition } from "d3-transition";
+import { useContainerWidth } from "../../composables/chart";
 
 export default {
-  setup() {
-    const [width, height] = [300, 120];
-    const padding = { top: 10, right: 200, bottom: 10, left: 10 };
-
-    const skills = skillsSoftware;
-
-    const yScale = scalePoint()
-      .range([padding.top, height - padding.bottom])
-      .padding(0.2)
-      .domain(skills.map((d) => d.id));
-
-    const xLeft = padding.left;
-
-    const labelPadding = 15;
-
+  props: {
+    height: {
+      type: Number,
+      default: 300,
+    },
+  },
+  setup(props) {
+    const divRef = ref(null);
     const svgRef = ref(null);
 
+    const { height } = toRefs(props);
+    const width = useContainerWidth(divRef);
+
+    const padding = { top: 10, right: 200, bottom: 10, left: 10 };
+    const radius = 8;
+    const labelPadding = 20;
+
     const useChart = (selection) => {
+      const yScale = scalePoint().padding(0.2);
+
+      const xLeft = padding.left;
+
       let circles = selection.append("g").selectAll("circle");
       let labels = selection.append("g").selectAll("text");
 
       // updates
 
-      const update = () => {
+      const update = ({ data, width, height }) => {
         const t = transition().duration(500);
         const delay = (_, i) => i * 100;
 
+        yScale
+          .range([padding.top, height - padding.bottom])
+          .domain(data.map((d) => d.id));
+
         circles = circles
-          .data(skills)
+          .data(data)
           .join(
             (enter) =>
               enter
@@ -44,7 +53,7 @@ export default {
                 .attr("r", 0)
                 .transition(t)
                 .delay(delay)
-                .attr("r", (d) => (d.value > 0 ? 5 : 0)),
+                .attr("r", (d) => (d.value > 0 ? radius : 0)),
             (update) => update,
             (exit) => exit
           )
@@ -53,7 +62,7 @@ export default {
           .style("fill", (d) => "#42a07e");
 
         labels = labels
-          .data(skills)
+          .data(data)
           .join(
             (enter) =>
               enter
@@ -70,11 +79,16 @@ export default {
           .attr("alignment-baseline", "middle")
           .attr("x", xLeft + labelPadding)
           .attr("y", (d) => yScale(d.id))
-          .classed("skills-software-chart-label", true)
           .text((d) => d.name);
       };
 
-      update();
+      watchEffect(() => {
+        update({
+          data: skillsSoftware,
+          width: width.value,
+          height: height.value,
+        });
+      });
     };
 
     onMounted(() => {
@@ -83,7 +97,7 @@ export default {
 
     return {
       width,
-      height,
+      divRef,
       svgRef,
     };
   },
@@ -91,11 +105,18 @@ export default {
 </script>
 
 <template>
-  <svg ref="svgRef" :viewBox="`0 0 ${width} ${height}`"></svg>
+  <div ref="divRef" :style="{ height, width: '100%' }">
+    <svg
+      ref="svgRef"
+      :width="width"
+      :height="height"
+      class="skills-software-chart"
+    ></svg>
+  </div>
 </template>
 
-<style>
-.skills-software-chart-label {
-  font-size: 1.4rem;
+<style scoped>
+.skills-software-chart :deep(text) {
+  font-size: 2rem;
 }
 </style>

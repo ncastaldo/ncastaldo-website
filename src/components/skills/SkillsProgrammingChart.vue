@@ -1,5 +1,5 @@
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, toRefs, watchEffect } from "vue";
 
 import skillsProgramming from "../../assets/config/skillsProgramming.json";
 
@@ -7,44 +7,52 @@ import { scaleLinear, scaleBand } from "d3-scale";
 import { select } from "d3-selection";
 import { transition } from "d3-transition";
 
+import { useContainerWidth } from "../../composables/chart";
+
 export default {
-  setup() {
-    const [width, height] = [300, 120];
-    const padding = { top: 10, right: 30, bottom: 10, left: 100 };
+  props: {
+    height: {
+      type: Number,
+      default: 300,
+    },
+  },
+  setup(props) {
+    const divRef = ref(null);
+    const svgRef = ref(null);
 
-    const skills = skillsProgramming;
+    const { height } = toRefs(props);
+    const width = useContainerWidth(divRef);
 
-    const fullSkills = skills.map((d) => ({ ...d, value: 10 }));
-
-    const x = padding.left;
-    const rx = 10;
+    const padding = { top: 20, right: 30, bottom: 20, left: 100 };
 
     const labelPadding = 15;
 
-    const xScale = scaleLinear()
-      .domain([1, 10])
-      .range([0, width - padding.right - padding.left]);
-
-    const yScale = scaleBand()
-      .domain(skills.map((d) => d.id))
-      .range([padding.top, height - padding.bottom])
-      .paddingInner(0.4);
-
-    const svgRef = ref(null);
-
     const useChart = (selection) => {
+      const xScale = scaleLinear().domain([1, 10]);
+
+      const yScale = scaleBand();
+
       let backgroundBars = selection.append("g").selectAll("rect");
       let bars = selection.append("g").selectAll("rect");
       let labels = selection.append("g").selectAll("rect");
 
       // updates
 
-      const update = () => {
+      const update = ({ data, width, height }) => {
+        xScale.range([padding.left, width - padding.right]);
+
+        yScale
+          .domain(data.map((d) => d.id))
+          .range([padding.top, height - padding.bottom])
+          .paddingInner(0.45);
+
+        const rx = yScale.bandwidth() / 2;
+
         const t = transition().duration(500);
         const delay = (_, i) => i * 100;
 
         backgroundBars = backgroundBars
-          .data(fullSkills)
+          .data(data)
           .join(
             (enter) =>
               enter
@@ -56,15 +64,15 @@ export default {
             (update) => update,
             (exit) => exit
           )
-          .attr("x", x)
+          .attr("x", xScale.range()[0])
           .attr("rx", rx)
-          .attr("width", (d) => xScale(d.value))
+          .attr("width", xScale.range()[1] - xScale.range()[0])
           .attr("y", (d) => yScale(d.id))
           .attr("height", (d) => yScale.bandwidth())
           .style("fill", (d) => "#ccc");
 
         bars = bars
-          .data(skills)
+          .data(data)
           .join(
             (enter) =>
               enter
@@ -72,18 +80,19 @@ export default {
                 .attr("width", 0)
                 .transition(t)
                 .delay(delay)
-                .attr("width", (d) => xScale(d.value)),
-            (update) => update,
+                .attr("width", (d) => xScale(d.value) - xScale.range()[0]),
+            (update) =>
+              update.attr("width", (d) => xScale(d.value) - xScale.range()[0]),
             (exit) => exit
           )
-          .attr("x", x)
+          .attr("x", xScale.range()[0])
           .attr("rx", rx)
           .attr("y", (d) => yScale(d.id))
           .attr("height", (d) => yScale.bandwidth())
           .style("fill", (d) => "#42a07e");
 
         labels = labels
-          .data(skills)
+          .data(data)
           .join(
             (enter) =>
               enter
@@ -98,13 +107,19 @@ export default {
           .attr("pointer-events", "none")
           .attr("text-anchor", "end")
           .attr("alignment-baseline", "middle")
-          .attr("x", x - labelPadding)
+          .attr("x", xScale.range()[0] - labelPadding)
           .attr("y", (d) => yScale(d.id) + yScale.bandwidth() / 2)
-          .classed("skills-programming-chart-label", true)
           .text((d) => d.name);
       };
 
-      update();
+      watchEffect(() => {
+        console.log(width.value);
+        update({
+          data: skillsProgramming,
+          width: width.value,
+          height: height.value,
+        });
+      });
     };
 
     onMounted(() => {
@@ -113,7 +128,7 @@ export default {
 
     return {
       width,
-      height,
+      divRef,
       svgRef,
     };
   },
@@ -121,11 +136,18 @@ export default {
 </script>
 
 <template>
-  <svg ref="svgRef" :viewBox="`0 0 ${width} ${height}`"></svg>
+  <div ref="divRef" :style="{ height, width: '100%' }">
+    <svg
+      ref="svgRef"
+      :width="width"
+      :height="height"
+      class="skills-programming-chart"
+    ></svg>
+  </div>
 </template>
 
-<style>
-.skills-programming-chart-label {
-  font-size: 1.4rem;
+<style scoped>
+.skills-programming-chart :deep(text) {
+  font-size: 2rem;
 }
 </style>

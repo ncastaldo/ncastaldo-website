@@ -14,7 +14,6 @@ import { zoom, zoomIdentity } from "d3-zoom";
 import { feature } from "topojson-client";
 
 import { getSizeProps } from "../../plugins/utils";
-import { useChart } from "../../composables/chart";
 import { useFetch } from "../../composables/fetch";
 
 const MAP_URL =
@@ -30,7 +29,6 @@ export default {
 
     const chartRef = ref(null);
 
-    const { selection } = useChart(chartRef);
     const { data: mapTopojson } = useFetch(MAP_URL);
 
     const chartFeature = computed(() =>
@@ -94,17 +92,19 @@ export default {
           .attr("vector-effect", "non-scaling-size");
       };
 
-      update();
+      watchEffect(() => {
+        if (chartFeature.value !== undefined) {
+          update();
+
+          nextTick(() => {
+            chartDrawn.value = true;
+          });
+        }
+      });
     };
 
-    watchEffect(() => {
-      if (chartFeature.value !== undefined && selection.value !== undefined) {
-        selection.value.call(draw);
-
-        nextTick(() => {
-          chartDrawn.value = true;
-        });
-      }
+    onMounted(() => {
+      select(chartRef.value).call(draw);
     });
 
     return {

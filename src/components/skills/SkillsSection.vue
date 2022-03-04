@@ -31,13 +31,13 @@ export default {
         <BaseSubsection class="skills-subsection-chart">
           <template #title>Programming</template>
           <template #default>
-            <SkillsProgrammingChart />
+            <SkillsProgrammingChart :height="200" />
           </template>
         </BaseSubsection>
         <BaseSubsection class="skills-subsection-chart">
           <template #title>Software</template>
           <template #default>
-            <SkillsSoftwareChart />
+            <SkillsSoftwareChart :height="200" />
           </template>
         </BaseSubsection>
         <BaseSubsection
@@ -71,6 +71,10 @@ export default {
 }
 
 .skills-subsection-chart {
+  margin: auto 0;
+}
+
+.skills-subsection-chart {
   grid-column: span 3;
 }
 
@@ -86,6 +90,7 @@ export default {
 }
 
 @media (max-width: 720px) {
+  .skills-subsection-chart,
   .skills-subsection-libraries {
     grid-column: span 6;
   }

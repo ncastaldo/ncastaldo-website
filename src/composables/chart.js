@@ -1,12 +1,19 @@
-import { select } from "d3-selection";
 import { onMounted, ref } from "vue";
 
-export const useChart = (el) => {
-  const selection = ref(null);
+import { useDebounceFn, useEventListener } from "@vueuse/core";
+
+export const useContainerWidth = (target, { debounce = 250 } = {}) => {
+  const width = ref(0);
+
+  const updateWidth = () => {
+    width.value = target.value.getBoundingClientRect().width;
+  };
+
+  useEventListener(window, "resize", useDebounceFn(updateWidth, debounce));
 
   onMounted(() => {
-    selection.value = select(el.value);
+    updateWidth();
   });
 
-  return { selection };
+  return width;
 };
