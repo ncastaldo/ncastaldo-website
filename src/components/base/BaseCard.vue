@@ -16,13 +16,10 @@ export default {
 
 <template>
   <div class="base-card">
-    <div class="base-card-back" :class="reveal ? 'base-card-back-reveal' : ''">
+    <div class="base-card-back">
       <img class="base-card-image" :src="imageSrc" />
     </div>
-    <div
-      class="base-card-front"
-      :class="reveal ? 'base-card-front-reveal' : ''"
-    >
+    <div class="base-card-front">
       <div class="base-card-heading-container">
         <h3 class="base-card-heading">
           {{ heading }}
