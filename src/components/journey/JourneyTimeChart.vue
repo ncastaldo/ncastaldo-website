@@ -1,5 +1,13 @@
 <script>
-import { computed, onMounted, ref, watch } from "vue";
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  ref,
+  toRefs,
+  watch,
+  watchEffect,
+} from "vue";
 
 import { select } from "d3-selection";
 import { transition } from "d3-transition";
@@ -7,16 +15,19 @@ import { scaleLinear, scaleTime } from "d3-scale";
 import { min, max } from "d3-array";
 import { axisBottom } from "d3-axis";
 
+import { useDebounceFn, useEventListener } from "@vueuse/core";
+
 import journey from "../../store/journey";
 
 export default {
-  setup() {
-    const [width, height] = [600, 60];
-    const padding = { top: 10, right: 20, bottom: 30, left: 20 };
-
-    const svgRef = ref(null);
-
-    const period = computed(journey.getPeriod);
+  props: {
+    height: {
+      type: Number,
+      default: 60,
+    },
+  },
+  setup(props) {
+    const padding = { top: 15, right: 20, bottom: 35, left: 20 };
 
     const intervals = journey
       .getPeriods()
@@ -27,7 +38,8 @@ export default {
           periodId: period.id,
         }))
       )
-      .flat();
+      .flat()
+      .sort((a, b) => a.fromDate - b.toDate);
 
     const chartIntervals = computed(() => {
       return intervals.map((d) => ({
@@ -36,51 +48,62 @@ export default {
       }));
     });
 
-    const xScale = scaleTime()
-      .domain([
-        min(chartIntervals.value, (d) => d.fromDate),
-        max(chartIntervals.value, (d) => d.toDate),
-      ])
-      .range([0 + padding.left, width - padding.right]);
+    const { height } = toRefs(props);
+    const width = ref(0);
 
-    const rx = 10;
+    const divRef = ref(null);
+    const svgRef = ref(null);
 
-    const yScale = scaleLinear()
-      .domain([0, 1])
-      .range([height - padding.bottom, padding.top]);
+    const period = computed(journey.getPeriod);
 
     const colorScale = (d) => (d.current ? "#42a07e" : "#ccc");
 
-    const xAxis = axisBottom().scale(xScale).tickSize(0).tickPadding(8);
-
     const useChart = (selection) => {
-      selection
-        .append("g")
-        .call(xAxis)
-        .attr("transform", `translate(0, ${height - padding.bottom})`)
-        .call((g) => g.select(".domain").remove())
-        .call((g) =>
-          g.selectAll(".tick text").classed("journey-time-chart-label", true)
-        );
+      const xScale = scaleTime();
+      const xAxis = axisBottom().scale(xScale).tickSize(0).tickPadding(8);
 
+      const yScale = scaleLinear().domain([0, 1]);
+
+      let axis = selection.append("g");
       let bars = selection.append("g").selectAll("rect");
 
-      const update = () => {
-        const t = transition().duration(250);
+      const update = ({ data, width, height }) => {
+        const enterTransition = transition().duration(500);
+        const delayTransition = (_, i) => i * 100;
+
+        const updateTransition = transition().duration(250);
+
+        xScale
+          .domain([min(data, (d) => d.fromDate), max(data, (d) => d.toDate)])
+          .range([0 + padding.left, width - padding.right]);
+
+        xAxis.ticks(width > 500 ? 10 : 5);
+
+        yScale.range([height - padding.bottom, padding.top]);
+
+        const rx = (height - padding.top - padding.bottom) / 2;
+
+        axis
+          .call(xAxis)
+          .attr("transform", `translate(0, ${height - padding.bottom})`)
+          .call((g) => g.select(".domain").remove());
 
         bars = bars
-          .data(chartIntervals.value)
+          .data(data)
           .join(
             (enter) =>
               enter
                 .append("rect")
                 .attr("opacity", 0)
                 .attr("fill", colorScale)
-                .transition(t)
+                .transition(enterTransition)
+                .delay(delayTransition)
                 .attr("opacity", 1),
             (update) =>
-              update.transition(t).attr("opacity", 1).attr("fill", colorScale),
-            (exit) => exit.transition(t).attr("opacity", 0).remove()
+              update
+                .transition(updateTransition)
+                .attr("opacity", 1)
+                .attr("fill", colorScale)
           )
           .attr("x", (d) => xScale(d.fromDate))
           .attr("rx", rx)
@@ -91,30 +114,45 @@ export default {
           .on("click", (event, d) => journey.scrollToPeriodId(d.periodId));
       };
 
-      update();
-
-      watch(chartIntervals, update);
+      watchEffect(() => {
+        update({
+          data: chartIntervals.value,
+          width: width.value,
+          height: height.value,
+        });
+      });
     };
 
+    const updateWidth = () => {
+      width.value = divRef.value.getBoundingClientRect().width;
+    };
+
+    useEventListener(window, "resize", useDebounceFn(updateWidth, 250));
+
     onMounted(() => {
+      updateWidth();
+
       select(svgRef.value).call(useChart);
     });
 
     return {
-      width,
-      height,
+      divRef,
       svgRef,
+      width,
     };
   },
 };
 </script>
 
 <template>
-  <svg
-    ref="svgRef"
-    class="journey-time-chart"
-    :viewBox="`0 0 ${width} ${height}`"
-  ></svg>
+  <div ref="divRef" :style="{ height, width: '100%' }">
+    <svg
+      ref="svgRef"
+      class="journey-time-chart"
+      :width="width"
+      :height="height"
+    ></svg>
+  </div>
 </template>
 
 <style scoped>
@@ -123,7 +161,7 @@ export default {
   /*outline: 0.1rem solid #ddd;*/
 }
 
-.journey-time-chart-label {
-  font-size: 1.2rem;
+.journey-time-chart :deep(text) {
+  font-size: 1.6rem;
 }
 </style>

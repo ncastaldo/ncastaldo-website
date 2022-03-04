@@ -33,7 +33,7 @@ export default {
     <template #title>Journey</template>
     <template #default>
       <div class="journey-section-header">
-        <JourneyTimeChart />
+        <JourneyTimeChart :height="75" />
         <!--BaseItem>
           <template #logo> <JourneyMapChart /></template>
         </BaseItem-->
