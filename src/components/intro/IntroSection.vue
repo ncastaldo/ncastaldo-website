@@ -61,7 +61,7 @@ export default {
   </section>
 </template>
 
-<style>
+<style scoped>
 .intro-section {
   display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
 
