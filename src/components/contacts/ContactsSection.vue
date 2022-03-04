@@ -64,7 +64,8 @@ export default {
 <style scoped>
 .contacts-content {
   width: 100%;
-  padding: 3rem 3rem;
+  padding: 3rem 3rem 6rem;
+
   max-width: 50rem;
   margin: 0 auto;
   box-sizing: border-box;

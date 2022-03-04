@@ -21,7 +21,7 @@ import ContactsSection from "./contacts/ContactsSection.vue";
 </template>
 
 <style>
-.main > :nth-child(0) {
-  background-color: #eeeeee;
+.main > :nth-child(2n + 1) {
+  background-color: #f7f7f7;
 }
 </style>
