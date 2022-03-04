@@ -2,7 +2,7 @@
 
 <template>
   <header class="header">
-    <h2 class="header-heading">Nicola Castaldo - @ncastaldo</h2>
+    <h2 class="header-heading">@ncastaldo</h2>
   </header>
 </template>
 

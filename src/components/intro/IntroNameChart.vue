@@ -75,12 +75,6 @@ export default {
 
       let pointerNode = { r: 0, pointer: true };
 
-      const onMove = (event) => {
-        const [x, y] = pointer(event);
-        pointerNode.fx = x;
-        pointerNode.fy = y;
-      };
-
       const onEnter = (event) => {
         const [x, y] = pointer(event);
         pointerNode.fx = x;
@@ -88,15 +82,24 @@ export default {
         simulation.nodes([...textNodes, pointerNode]);
       };
 
+      const onMove = (event) => {
+        const [x, y] = pointer(event);
+        pointerNode.fx = x;
+        pointerNode.fy = y;
+      };
+
       const onOut = (event) => {
         simulation.nodes([...textNodes]);
       };
 
       selection
-        .on("touchmove touchstart touchend", (event) => event.preventDefault())
-        .on("pointermove touchmove", onMove)
-        .on("pointerenter touchstart", onEnter)
-        .on("pointerout touchend", onOut);
+        .on("touchstart", (event) => {
+          onEnter(event);
+          event.preventDefault();
+        })
+        .on("pointerenter", onEnter)
+        .on("pointermove", onMove)
+        .on("pointerleave", onOut);
 
       // updates
 

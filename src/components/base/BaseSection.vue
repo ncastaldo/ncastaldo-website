@@ -46,4 +46,10 @@
   margin: 0 auto;
   max-width: 80rem;
 }
+
+@media (max-width: 720px) {
+  .base-section {
+    padding: 1rem 1rem 2rem;
+  }
+}
 </style>

@@ -13,10 +13,7 @@ export default {
 
 <template>
   <div class="base-description" :class="current ? 'current' : ''">
-    <h3
-      class="base-description-title"
-      :class="url ? 'base-description-title-link' : ''"
-    >
+    <h3 class="base-description-title" :class="url ? 'link' : ''">
       <a :href="url" target="_blank">{{ title }}</a>
     </h3>
     <h4 class="base-description-subtitle">{{ subtitle }}</h4>
@@ -37,7 +34,12 @@ export default {
   text-transform: uppercase;
 }
 
-.base-description-title-link:hover {
+.base-description-title.link {
+  text-decoration: underline;
+  text-decoration-thickness: 0.2rem;
+  text-underline-offset: 0.2rem;
+}
+.base-description-title.link:hover {
   opacity: 0.7;
 }
 
@@ -54,7 +56,7 @@ export default {
 .base-description-caption {
   padding-bottom: 1rem;
   font-size: 1.6rem;
-
+  font-style: italic;
   letter-spacing: 0.04rem;
 }
 

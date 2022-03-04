@@ -5,14 +5,12 @@ import ContactsTextChart from "./ContactsTextChart.vue";
 import BaseIconLink from "../base/BaseIconLink.vue";
 
 import { useClipboard } from "@vueuse/core";
-import BaseIconAction from "../base/BaseIconAction.vue";
 
 export default {
   components: {
     BaseSection,
     ContactsTextChart,
     BaseIconLink,
-    BaseIconAction,
   },
   setup() {
     const showEmail = ref(false);
@@ -57,15 +55,12 @@ export default {
           ></ContactsTextChart>
         </div>
         <div class="contacts-content-caption">
-          <BaseIconAction
-            :icon="['fas', 'copy']"
-            size="1x"
-            class="contacts-content-icon"
-            :color="showEmail ? (copied ? '#42a07e' : '#1e1e1e') : '#888'"
-            :disabled="!showEmail"
-            @click="copy(email)"
-          ></BaseIconAction>
-          <span>{{ copied ? "Copied!" : "Copy email" }}</span>
+          <span
+            class="contacts-content-caption-span"
+            :class="showEmail ? (copied ? 'copied' : '') : 'disabled'"
+            @click="copy"
+            >{{ showEmail && copied ? "Copied!" : "Copy email" }}</span
+          >
         </div>
       </div>
     </template>
@@ -94,11 +89,33 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 0 1rem;
 }
 
-.contacts-content-caption {
-  padding: 1rem 0 4rem;
-  text-transform: uppercase;
+.contacts-content-caption-span {
+  padding: 0.6rem 1.2rem;
   font-size: 2rem;
+  outline: 0.1rem solid #1f1f1f;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.contacts-content-caption-span.disabled {
+  color: #888;
+  outline: 0.1rem solid #ddd;
+  pointer-events: none;
+}
+
+.contacts-content-caption-span:hover {
+  color: #42a07e;
+  outline-color: #42a07e;
+}
+
+.contacts-content-caption-span.copied {
+  color: #fff;
+  font-weight: 500;
+  background-color: #42a07e;
+  outline-color: #42a07e;
 }
 </style>

@@ -11,19 +11,9 @@ export default {
   setup() {
     const { roles, socials } = introConfig;
 
-    const titleHeading = ref(null);
-    const chartHeight = ref(0);
-
-    onMounted(() => {
-      console;
-      chartHeight.value = titleHeading.value.offsetHeight;
-    });
-
     return {
       roles,
       socials,
-      titleHeading,
-      chartHeight,
     };
   },
 };
@@ -33,11 +23,9 @@ export default {
   <section class="intro-section">
     <div attr="intro-title">
       <h1 class="intro-title-heading">
-        <span>Hi there! I'm </span>
-        <span class="intro-title-heading-name">Nicola Castaldo</span>
+        <span>Hi there! I am</span>
         <br />
-        <span ref="titleHeading">and also</span>
-        <IntroNameChart v-if="chartHeight > 0" :height="chartHeight" />
+        <IntroNameChart :height="70" />
       </h1>
     </div>
     <div class="intro-roles">
@@ -76,6 +64,7 @@ export default {
 
 .intro-title-heading {
   font-size: 4rem;
+  max-width: 50rem;
 }
 
 .intro-title-heading-name {
