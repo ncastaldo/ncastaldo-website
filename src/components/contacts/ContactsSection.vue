@@ -2,7 +2,6 @@
 import { ref } from "vue";
 import BaseSection from "../base/BaseSection.vue";
 import ContactsTextChart from "./ContactsTextChart.vue";
-import BaseIconLink from "../base/BaseIconLink.vue";
 
 import { useClipboard } from "@vueuse/core";
 
@@ -10,7 +9,6 @@ export default {
   components: {
     BaseSection,
     ContactsTextChart,
-    BaseIconLink,
   },
   setup() {
     const showEmail = ref(false);
@@ -29,21 +27,17 @@ export default {
     <template #default>
       <div class="contacts-content">
         <div class="contacts-content-text">
-          <span>Click</span>
-          <BaseIconLink
-            url="/assets/files/NICOLA_CASTALDO_CV_SMALL.pdf"
-            :icon="['fas', 'scroll']"
-            size="1x"
-            class="contacts-content-icon"
-          ></BaseIconLink>
-          <span>to see my resume,</span>
-        </div>
-        <div class="contacts-content-text">
-          <span>
-            or click the email to
-            <span>{{ showEmail ? "encrypt" : "decrypt" }}</span>
-            it.
-          </span>
+          Click
+          <a
+            href="/assets/files/NICOLA_CASTALDO_CV_SMALL.pdf"
+            target="_blank"
+            class="contacts-content-text-link"
+          >
+            here</a
+          >
+          to see my resume or click the email to
+          <span>{{ showEmail ? "encrypt" : "decrypt" }}</span>
+          it.
         </div>
         <div class="contacts-content-chart">
           <ContactsTextChart
@@ -70,7 +64,10 @@ export default {
 <style scoped>
 .contacts-content {
   width: 100%;
-  padding: 4rem 0 8rem;
+  padding: 3rem 3rem;
+  max-width: 50rem;
+  margin: 0 auto;
+  box-sizing: border-box;
   font-size: 3rem;
   text-align: center;
   user-select: none;
@@ -78,6 +75,11 @@ export default {
 
 .contacts-content-text {
   padding-bottom: 1rem;
+}
+
+.contacts-content-text-link {
+  color: #1f1f1f;
+  text-underline-offset: 0.2rem;
 }
 
 .contacts-content-icon {

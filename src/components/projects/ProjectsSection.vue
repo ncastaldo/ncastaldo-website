@@ -20,7 +20,7 @@ import ProjectsCards from "./ProjectsCards.vue";
   grid-template-columns: 1fr 1fr;
   column-gap: 1rem;
   row-gap: 4rem;
-  padding-bottom: 4rem;
+  padding: 3rem 3rem;
 }
 
 .projects-cards-item {

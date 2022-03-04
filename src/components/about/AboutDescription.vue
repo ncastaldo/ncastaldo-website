@@ -34,16 +34,10 @@ export default {};
 <style>
 .about-description {
   font-size: 1.6rem;
-  padding: 3rem 0;
+  padding: 3rem 3rem;
 }
 
 .about-description p {
   padding-bottom: 0.4rem;
-}
-
-@media (max-width: 720px) {
-  .about-description {
-    padding: 3rem 2rem;
-  }
 }
 </style>

@@ -3,9 +3,10 @@ import publications from "../../assets/config/publicationsConfig.json";
 import BaseItem from "../base/BaseItem.vue";
 import BaseDescription from "../base/BaseDescription.vue";
 import BaseLogo from "../base/BaseLogo.vue";
+import BaseHorizonalRow from "../base/BaseHorizonalRow.vue";
 
 export default {
-  components: { BaseItem, BaseDescription, BaseLogo },
+  components: { BaseItem, BaseDescription, BaseLogo, BaseHorizonalRow },
   setup() {
     publications.reverse();
 
@@ -23,18 +24,23 @@ export default {
 </script>
 
 <template>
-  <BaseItem v-for="publication in publications" :key="publication.id">
-    <template #logo>
-      <BaseLogo :src="publication.logo" />
-    </template>
-    <template #default>
-      <BaseDescription
-        :title="publication.journal"
-        :subtitle="publication.title"
-        :caption="publication.caption"
-        :html-content="publication.authors"
-        :url="publication.url"
-      />
-    </template>
-  </BaseItem>
+  <div v-for="(publication, i) in publications" :key="publication.id">
+    <BaseItem>
+      <template #logo>
+        <BaseLogo :src="publication.logo" />
+      </template>
+      <template #default>
+        <BaseDescription
+          :title="publication.journal"
+          :subtitle="publication.title"
+          :caption="publication.caption"
+          :html-content="publication.authors"
+          :url="publication.url"
+        />
+      </template>
+    </BaseItem>
+    <BaseHorizonalRow v-if="i !== publications.length - 1" />
+  </div>
 </template>
+
+<style scoped></style>

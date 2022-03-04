@@ -24,7 +24,6 @@ export default {
 
 <style scoped>
 .base-description {
-  padding: 1rem;
 }
 
 .base-description-title {

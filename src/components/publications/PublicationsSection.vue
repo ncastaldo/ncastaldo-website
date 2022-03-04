@@ -7,7 +7,15 @@ import PublicationsItems from "./PublicationsItems.vue";
   <BaseSection>
     <template #title>Publications</template>
     <template #default>
-      <PublicationsItems />
+      <div class="publications-section-content">
+        <PublicationsItems />
+      </div>
     </template>
   </BaseSection>
 </template>
+
+<style scoped>
+.publications-section-content {
+  padding: 3rem 3rem;
+}
+</style>

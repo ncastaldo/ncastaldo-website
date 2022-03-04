@@ -19,7 +19,6 @@ export default {
 
 <style scoped>
 .base-item {
-  padding: 2rem;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -31,22 +30,29 @@ export default {
 }
 
 .base-item-logo {
-  padding: 2rem;
+  padding-right: 2rem;
   flex: 30%;
   text-align: center;
 }
 
 .base-item-content {
+  padding-left: 2rem;
   flex: 70%;
 }
 
 @media (max-width: 720px) {
-  .base-item {
-    padding: 2rem 0;
-  }
   .base-item-logo,
   .base-item-content {
     flex: 100%;
+  }
+
+  .base-item-logo {
+    padding-right: 0rem;
+    padding-bottom: 2rem;
+  }
+
+  .base-item-content {
+    padding-left: 0rem;
   }
 }
 </style>

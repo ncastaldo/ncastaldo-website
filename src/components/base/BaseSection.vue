@@ -13,10 +13,6 @@
 </template>
 
 <style scoped>
-.base-section {
-  padding: 1rem 4rem 2rem;
-}
-
 .base-section-heading {
   font-size: 5rem;
   margin: 3rem auto;
@@ -35,21 +31,15 @@
 }
 
 .base-section-heading::before {
-  margin: 0 2rem 0 1rem;
+  margin: 0 2rem 0 5rem;
 }
 
 .base-section-heading::after {
-  margin: 0 1rem 0 2rem;
+  margin: 0 5rem 0 2rem;
 }
 
 .base-section-content {
   margin: 0 auto;
   max-width: 80rem;
-}
-
-@media (max-width: 720px) {
-  .base-section {
-    padding: 1rem 1rem 2rem;
-  }
 }
 </style>

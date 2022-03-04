@@ -7,9 +7,10 @@ import BaseLogo from "../base/BaseLogo.vue";
 import BaseDescription from "../base/BaseDescription.vue";
 
 import journey from "../../store/journey";
+import BaseHorizonalRow from "../base/BaseHorizonalRow.vue";
 
 export default {
-  components: { BaseItem, BaseLogo, BaseDescription },
+  components: { BaseItem, BaseLogo, BaseDescription, BaseHorizonalRow },
   props: {
     current: Boolean,
   },
@@ -95,7 +96,7 @@ export default {
 
 <template>
   <div
-    v-for="period in periods"
+    v-for="(period, i) in periods"
     :key="period.id"
     :ref="setPeriodRef"
     :data-period-id="period.id"
@@ -118,6 +119,7 @@ export default {
         />
       </template>
     </BaseItem>
+    <BaseHorizonalRow v-if="i !== periods.length - 1" />
   </div>
 </template>
 

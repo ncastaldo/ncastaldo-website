@@ -66,6 +66,7 @@ export default {
 .skills-subsection-content {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
+  padding: 3rem 3rem;
 
   gap: 1rem;
 }

@@ -53,4 +53,8 @@ export default {
   top: 0;
   margin-bottom: 2rem;
 }
+
+.journey-section-content {
+  padding: 3rem 3rem;
+}
 </style>
