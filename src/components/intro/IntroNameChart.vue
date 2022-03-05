@@ -1,9 +1,18 @@
 <script>
-import { computed, onBeforeMount, onMounted, ref, toRefs, watch } from "vue";
+import {
+  computed,
+  onBeforeMount,
+  onMounted,
+  ref,
+  toRefs,
+  watch,
+  watchEffect,
+} from "vue";
 
 import opentype from "opentype.js";
 
 import { select, pointer } from "d3-selection";
+import { shuffle } from "d3-array";
 import { forceSimulation, forceManyBody, forceX, forceY } from "d3-force";
 
 const FONT_URL = "/assets/fonts/register.ttf";
@@ -20,7 +29,7 @@ export default {
 
     const fontSize = height.value * 0.6;
 
-    const transitionDuration = 1000;
+    const transitionDuration = 2000;
 
     // manage this class, use computed and watched properties for size
 
@@ -34,7 +43,13 @@ export default {
     const color = "#42a07e";
 
     const canvasRef = ref(null);
-    const font = ref(null);
+
+    const font = ref(undefined);
+
+    // fetch font
+    opentype.load(FONT_URL).then((data) => {
+      font.value = data;
+    });
 
     const useChart = (selection) => {
       const context = selection.node().getContext("2d");
@@ -47,9 +62,12 @@ export default {
 
         const nodes = simulation.nodes();
 
-        // const nodesLength = nodes.length
+        let index = 0;
+        const targetIndex = nodes.length * timeRatio;
 
-        for (const d of nodes) {
+        for (let index = 0; index < targetIndex; index++) {
+          const d = nodes[index];
+
           context.beginPath();
           context.moveTo(d.x, d.y);
           context.arc(d.x, d.y, d.r, 0, 2 * Math.PI);
@@ -103,11 +121,14 @@ export default {
 
       // updates
 
-      const updateTextNodes = () => {
+      let timeout = null;
+      let timeRatio = 1;
+
+      const update = ({ font }) => {
         const x = (width - textWidth) / 2;
         const y = height.value / 2 + (textHeight / 100) * 35;
 
-        const path = font.value.getPath(text, x, y, fontSize);
+        const path = font.getPath(text, x, y, fontSize);
 
         textNodes = [];
 
@@ -134,17 +155,36 @@ export default {
           }
         }
 
-        simulation.nodes([...textNodes]);
+        simulation.nodes(shuffle(textNodes));
+
+        const startTime = Date.now();
+
+        const loopFn = () => {
+          if (timeout) {
+            clearTimeout(timeout);
+          }
+
+          const currentTime = Date.now();
+          timeRatio = (currentTime - startTime) / transitionDuration;
+
+          if (timeRatio > 1) {
+            timeRatio = 1;
+          } else {
+            timeout = setTimeout(loopFn, 10);
+          }
+        };
+
+        loopFn();
       };
 
-      updateTextNodes();
+      watchEffect(() => {
+        if (font.value) {
+          update({ font: font.value });
+        }
+      });
     };
 
-    onMounted(async () => {
-      font.value = await opentype.load(FONT_URL);
-
-      console.log(font.value);
-
+    onMounted(() => {
       select(canvasRef.value).call(useChart);
     });
 
