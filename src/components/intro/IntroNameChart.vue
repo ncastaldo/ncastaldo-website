@@ -62,7 +62,6 @@ export default {
 
         const nodes = simulation.nodes();
 
-        let index = 0;
         const targetIndex = nodes.length * timeRatio;
 
         for (let index = 0; index < targetIndex; index++) {
