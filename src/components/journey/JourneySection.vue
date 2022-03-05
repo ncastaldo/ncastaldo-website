@@ -39,7 +39,7 @@ export default {
         </BaseItem-->
       </div>
       <div class="journey-section-content">
-        <JourneyItems />
+        <JourneyItems :margin-top="85" />
       </div>
     </template>
   </BaseSection>

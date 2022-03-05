@@ -12,16 +12,21 @@ import BaseHorizonalRow from "../base/BaseHorizonalRow.vue";
 export default {
   components: { BaseItem, BaseLogo, BaseDescription, BaseHorizonalRow },
   props: {
-    current: Boolean,
+    current: {
+      type: Boolean,
+      default: false,
+    },
+    marginTop: {
+      type: Number,
+      default: 0,
+    },
   },
   setup(props) {
-    const { current } = toRefs(props);
+    const { current, marginTop } = toRefs(props);
 
     const format = timeFormat("%B %Y");
 
     // const journey = inject("journey");
-
-    const marginTop = 60;
 
     const periods = journey.getPeriods();
     const currentPeriod = computed(journey.getPeriod);
@@ -59,7 +64,7 @@ export default {
     };
     const observer = new IntersectionObserver(observerCallback, {
       threshold: 0.5,
-      rootMargin: `-${marginTop}px 0px 0px`,
+      rootMargin: `-${marginTop.value}px 0px 0px`,
     });
 
     const getPeriodInterval = (period) =>
@@ -74,7 +79,7 @@ export default {
         if (programmaticScrolling.value) {
           const rect = periodsRefs[currentPeriod.id].getBoundingClientRect();
 
-          window.scrollTo(0, rect.top + window.scrollY - marginTop);
+          window.scrollTo(0, rect.top + window.scrollY - marginTop.value);
           programmaticScrolling.value = false;
         }
       });
