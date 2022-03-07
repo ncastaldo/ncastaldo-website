@@ -19,7 +19,8 @@ export default {
 </template>
 
 <style scoped>
-.icon-link:hover {
+.icon-link:hover,
+.icon-link:active {
   opacity: 0.7;
 }
 </style>

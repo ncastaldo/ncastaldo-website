@@ -1,6 +1,4 @@
 <script>
-import BaseTooltip from "../base/BaseTooltip.vue";
-import BaseMapChart from "../base/BaseMapChart.vue";
 export default {};
 </script>
 

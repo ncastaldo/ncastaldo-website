@@ -84,7 +84,7 @@ export default {
 }
 .base-card:hover .base-card-back,
 .base-card:active .base-card-back {
-  opacity: 0.05;
+  opacity: 0.1;
 }
 
 .base-card-front {
