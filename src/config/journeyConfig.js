@@ -57,7 +57,7 @@ export default {
         title: "B.Sc. Computer Science & Engineering",
         place: "Politecnico di Milano",
         logo: "/assets/img/journey/polimi-logo.png",
-        type: "Education",
+        type: "education",
         html: "\
           <p>\
             I moved from Udine, my hometown, to Milano and there I started my\
@@ -94,7 +94,7 @@ export default {
         title: "Erasmus+ Study",
         place: "Universitat Politecnica de Valencia",
         logo: "/assets/img/journey/upv-logo.png",
-        type: "Education",
+        type: "education",
         html: "\
           <p>\
             I participated in the <b>Erasmus+</b> programme and I stayed for five\
@@ -137,7 +137,7 @@ export default {
         title: "M.Sc. Computer Science & Engineering",
         place: "Politecnico di Milano",
         logo: "/assets/img/journey/polimi-logo.png",
-        type: "Education",
+        type: "education",
         html: '\
           <p>\
             I studied <b>Computer Science and Engineering</b> at\
@@ -183,7 +183,7 @@ export default {
         title: "Software & Data Engineer",
         place: "Fondazione Bruno Kessler",
         logo: "/assets/img/journey/fbk-logo.png",
-        type: "Experience",
+        type: "work",
         html: "\
           <p>\
             I worked as a <b>Software and Data Engineer</b> - formally\
@@ -246,7 +246,7 @@ export default {
         title: "Technical Analyst",
         place: "OverIT S.p.A.",
         logo: "/assets/img/journey/overit-logo.png",
-        type: "Experience",
+        type: "work",
         html: "\
           <p>\
             I work as a <b>Technical Analyst</b> in the\

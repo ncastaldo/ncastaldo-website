@@ -13,6 +13,7 @@
 }
 .about-image {
   text-align: center;
+  min-height: 30rem;
   max-width: 30rem;
   max-width: 30rem;
   border-radius: 15rem;

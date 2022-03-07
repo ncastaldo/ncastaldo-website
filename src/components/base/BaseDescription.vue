@@ -1,11 +1,14 @@
 <script>
+import BaseIconLink from "./BaseIconLink.vue";
 export default {
+  components: { BaseIconLink },
   props: {
     title: String,
     subtitle: String,
     caption: String,
-    htmlContent: String, // todo verify
+    htmlContent: String,
     url: String,
+    icon: Array,
     current: Boolean,
   },
 };
@@ -13,9 +16,18 @@ export default {
 
 <template>
   <div class="base-description" :class="current ? 'current' : ''">
-    <h3 class="base-description-title" :class="url ? 'link' : ''">
-      <a :href="url" target="_blank">{{ title }}</a>
+    <h3 class="base-description-title">
+      {{ title }}
+      <BaseIconLink
+        v-if="url && icon"
+        :url="url"
+        size="1x"
+        color="#1f1f1f"
+        class="base-description-icon"
+        :icon="icon"
+      />
     </h3>
+
     <h4 class="base-description-subtitle">{{ subtitle }}</h4>
     <h5 class="base-description-caption">{{ caption }}</h5>
     <div class="base-description-html" v-html="htmlContent"></div>
@@ -33,10 +45,8 @@ export default {
   text-transform: uppercase;
 }
 
-.base-description-title.link {
-  text-decoration: underline;
-  text-decoration-thickness: 0.2rem;
-  text-underline-offset: 0.2rem;
+.base-description-icon {
+  margin-left: 0.2rem;
 }
 .base-description-title.link:hover {
   opacity: 0.7;
@@ -63,6 +73,7 @@ export default {
   color: #42a07e;
   font-weight: 600;
   letter-spacing: 0rem;
+  text-decoration: underline;
 }
 
 .base-description-html {
@@ -70,11 +81,11 @@ export default {
   font-size: 1.6rem;
 }
 
-.base-description-html >>> p {
+.base-description-html:deep(p) {
   padding-bottom: 0.4rem;
 }
 
-.base-description-html >>> ul {
+.base-description-html:deep(ul) {
   padding-bottom: 0.4rem;
   padding-left: 2rem;
   list-style: circle;

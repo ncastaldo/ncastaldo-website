@@ -17,6 +17,9 @@ export default {};
 </template>
 
 <style scoped>
+.base-section {
+  padding-bottom: 2rem;
+}
 .base-section-heading-container {
   text-align: center;
 
@@ -29,6 +32,6 @@ export default {};
 
 .base-section-content {
   margin: 0 auto;
-  max-width: 80rem;
+  max-width: 85rem;
 }
 </style>

@@ -14,6 +14,7 @@ export default {
       publication.caption = `${publication.journal.trim()} ${publication.page.trim()} (${
         publication.year
       })`;
+      publication.icon = ["fas", "newspaper"];
     });
 
     return {
@@ -36,6 +37,7 @@ export default {
           :caption="publication.caption"
           :html-content="publication.authors"
           :url="publication.url"
+          :icon="publication.icon"
         />
       </template>
     </BaseItem>

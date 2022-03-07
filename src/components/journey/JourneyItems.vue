@@ -72,6 +72,14 @@ export default {
         ? `${format(period.fromDate)} - ${format(period.toDate)}`
         : format(period.toDate);
 
+    const iconsMap = {
+      education: ["fa", "university"],
+      work: ["fa", "briefcase"],
+    };
+
+    const getPeriodIcon = (period) =>
+      period.detail.type in iconsMap ? iconsMap[period.detail.type] : null;
+
     onMounted(() => {
       Object.values(periodsRefs).forEach((target) => observer.observe(target));
 
@@ -92,6 +100,7 @@ export default {
     return {
       periods,
       getPeriodInterval,
+      getPeriodIcon,
       setPeriodRef,
       currentPeriod,
     };
@@ -121,6 +130,7 @@ export default {
           :html-content="period.detail.html"
           :current="currentPeriod === period"
           :url="period.detail.url"
+          :icon="getPeriodIcon(period)"
         />
       </template>
     </BaseItem>
