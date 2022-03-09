@@ -150,7 +150,8 @@ export default {
 <style scoped>
 .journey-time-chart {
   background-color: #fff;
-  /*outline: 0.1rem solid #ddd;*/
+  /*
+  box-shadow: #ddd 0 0 0 0.1rem;*/
 }
 
 .journey-time-chart :deep(text) {

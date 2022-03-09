@@ -17,7 +17,7 @@ export default {
   max-width: 25rem;
   object-fit: contain;
   object-position: center center;
-  outline: 0.1rem solid #ddd;
+  box-shadow: #ddd 0 0 0 0.1rem;
   border-radius: 2rem;
   transition: outline-color 250ms ease-in-out;
 }

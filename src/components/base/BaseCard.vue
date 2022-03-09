@@ -82,7 +82,7 @@ export default {
 <style scoped>
 .base-card {
   position: relative;
-  outline: 0.1rem solid #ddd;
+  box-shadow: #ddd 0 0 0 0.1rem;
   border-radius: 2rem;
   transform: translateZ(0);
   overflow: hidden;
