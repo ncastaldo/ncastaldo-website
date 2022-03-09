@@ -1,6 +1,9 @@
 <script>
+import { ref } from "vue";
 import BaseIconLink from "./BaseIconLink.vue";
 import BaseLibrary from "./BaseLibrary.vue";
+
+import isMobile from "is-mobile";
 
 export default {
   components: { BaseIconLink, BaseLibrary },
@@ -11,11 +14,30 @@ export default {
     libraries: Array,
     links: Array,
   },
+  setup() {
+    const active = ref(false);
+
+    const mobile = isMobile();
+
+    const onClick = () => {
+      if (mobile) {
+        active.value = !active.value;
+      }
+    };
+
+    return { active, onClick };
+  },
 };
 </script>
 
 <template>
-  <div class="base-card">
+  <div
+    class="base-card"
+    :class="active ? 'active' : ''"
+    @click="onClick"
+    @mouseover="active = true"
+    @mouseout="active = false"
+  >
     <div class="base-card-back">
       <img class="base-card-image" :src="imageSrc" />
     </div>
@@ -62,6 +84,7 @@ export default {
   position: relative;
   outline: 0.1rem solid #ddd;
   border-radius: 2rem;
+  transform: translateZ(0);
   overflow: hidden;
   height: 40rem;
   width: 30rem;
@@ -82,8 +105,8 @@ export default {
   opacity: 1;
   transition: opacity 200ms;
 }
-.base-card:hover .base-card-back,
-.base-card:active .base-card-back {
+
+.base-card.active .base-card-back {
   opacity: 0.1;
 }
 
@@ -104,16 +127,14 @@ export default {
 
   transition: opacity 200ms;
 }
-.base-card:hover .base-card-header,
-.base-card:active .base-card-header {
+.base-card.active .base-card-header {
   opacity: 1;
 }
 .base-card-header > * {
   margin: 0 0.5rem;
 }
 
-.base-card:hover .base-card-front,
-.base-card:active .base-card-front {
+.base-card.active .base-card-front {
   top: calc(100% - 33rem);
 }
 
@@ -155,6 +176,6 @@ export default {
   flex-wrap: wrap;
   column-gap: 0.6rem;
   row-gap: 0.6rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 </style>

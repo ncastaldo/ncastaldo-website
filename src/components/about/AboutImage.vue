@@ -1,8 +1,25 @@
-<script></script>
+<script>
+import { ref } from "vue";
+
+export default {
+  setup() {
+    const active = ref(false);
+
+    return { active };
+  },
+};
+</script>
 
 <template>
   <div class="about-image-container">
-    <img class="about-image static" src="/assets/img/about/nc_2.png" />
+    <img
+      :style="{ opacity: active ? 0 : 1 }"
+      class="about-image static"
+      src="/assets/img/about/nc_2.png"
+      @touchstart.prevent=""
+      @pointerenter="active = true"
+      @pointerleave="active = false"
+    />
     <img class="about-image" src="/assets/img/about/nc_loop.gif" />
   </div>
 </template>
@@ -18,12 +35,10 @@
   max-width: 30rem;
   border-radius: 15rem;
   object-fit: contain;
+  overflow: hidden;
 }
 
 .about-image.static {
   position: absolute;
-}
-.about-image.static:hover {
-  opacity: 0;
 }
 </style>
