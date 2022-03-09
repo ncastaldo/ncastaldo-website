@@ -14,7 +14,14 @@ export default {
     const showEmail = ref(false);
 
     const email = ref("me@ncastaldo.it");
-    const { copy, copied } = useClipboard({ source: email });
+
+    const copied = ref(false);
+
+    const copy = () => {
+      navigator.clipboard.writeText(email.value);
+
+      copied.value = true;
+    };
 
     return { email, showEmail, copy, copied };
   },
@@ -97,8 +104,8 @@ export default {
 
 .contacts-content-caption-span {
   padding: 0.6rem 1.2rem;
+  box-shadow: #1f1f1f 0 0 0 0.1rem;
   font-size: 2rem;
-  outline: 0.1rem solid #1f1f1f;
   border-radius: 2rem;
   cursor: pointer;
   font-weight: 400;
@@ -106,19 +113,19 @@ export default {
 
 .contacts-content-caption-span.disabled {
   color: #888;
-  outline: 0.1rem solid #ddd;
+  box-shadow: #ddd 0 0 0 0.1rem;
   pointer-events: none;
 }
 
 .contacts-content-caption-span:hover {
   color: #42a07e;
-  outline-color: #42a07e;
+  box-shadow: #42a07e 0 0 0 0.1rem;
 }
 
 .contacts-content-caption-span.copied {
   color: #fff;
   font-weight: 500;
   background-color: #42a07e;
-  outline-color: #42a07e;
+  box-shadow: #42a07e 0 0 0 0.1rem;
 }
 </style>
