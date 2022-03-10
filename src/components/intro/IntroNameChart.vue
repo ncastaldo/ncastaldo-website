@@ -29,6 +29,7 @@ export default {
 
     const fontSize = height.value * 0.6;
 
+    const initialDelay = 200;
     const transitionDuration = 2000;
 
     // manage this class, use computed and watched properties for size
@@ -121,7 +122,7 @@ export default {
       // updates
 
       let timeout = null;
-      let timeRatio = 1;
+      let timeRatio = 0;
 
       const update = ({ font }) => {
         const x = (width - textWidth) / 2;
@@ -173,7 +174,11 @@ export default {
           }
         };
 
-        loopFn();
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(loopFn, initialDelay);
       };
 
       watchEffect(() => {
