@@ -22,17 +22,21 @@ export default {
 
 <template>
   <main class="main">
-    <IntroSection />
-    <AboutSection />
-    <SkillsSection />
-    <JourneySection />
-    <ProjectsSection />
-    <PublicationsSection />
-    <ContactsSection />
+    <IntroSection id="intro" />
+    <AboutSection id="about" />
+    <SkillsSection id="skills" />
+    <JourneySection id="journey" />
+    <ProjectsSection id="projects" />
+    <PublicationsSection id="publications" />
+    <ContactsSection id="contacts" />
   </main>
 </template>
 
 <style>
+.main > * {
+  scroll-margin-top: 10rem;
+}
+
 .main > :nth-child(2n + 1) {
   background-color: #f7f7f7;
 }

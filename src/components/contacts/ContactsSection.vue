@@ -71,12 +71,19 @@ export default {
   width: 100%;
   padding: 3rem 3rem 6rem;
 
+  display: flex; /* NEW, Spec - Firefox, Chrome, Opera */
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  min-height: 40rem;
+
   max-width: 50rem;
   margin: 0 auto;
   box-sizing: border-box;
   font-size: 3rem;
   text-align: center;
-  user-select: none;
 }
 
 .contacts-content-text {
@@ -97,6 +104,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
   padding: 0 0 1rem;
 }
 

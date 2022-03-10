@@ -2,28 +2,12 @@
 import BaseSection from "../base/BaseSection.vue";
 import JourneyTimeChart from "./JourneyTimeChart.vue";
 import JourneyItems from "./JourneyItems.vue";
-import { onMounted, ref } from "vue";
 
 export default {
   components: {
     BaseSection,
     JourneyTimeChart,
     JourneyItems,
-  },
-  setup() {
-    const section = ref(null);
-
-    const onScroll = (event) => {
-      console.log(section.value.getBoundingClientRect(), window.scrollY);
-    };
-
-    onMounted(() => {
-      // window.addEventListener('scroll', onScroll)
-    });
-
-    return {
-      section,
-    };
   },
 };
 </script>
@@ -39,7 +23,7 @@ export default {
         </BaseItem-->
       </div>
       <div class="journey-section-content">
-        <JourneyItems :margin-top="85" />
+        <JourneyItems :margin-top="85 + 100" />
       </div>
     </template>
   </BaseSection>
@@ -49,9 +33,10 @@ export default {
 .journey-section-header {
   position: sticky;
   background-color: inherit;
-  z-index: 10;
-  top: 0;
+  z-index: 5;
   margin-bottom: 2rem;
+
+  top: 10rem;
 }
 
 .journey-section-content {

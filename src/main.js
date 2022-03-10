@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
+  faBars,
+  faTimes,
   faUniversity,
   faBriefcase,
   faLink,
@@ -16,7 +18,7 @@ import App from "./App.vue";
 import store from "./store";
 
 // https://www.youtube.com/watch?v=MoDIpTuRWfM&t=178s
-library.add(faUniversity, faBriefcase, faLink, faNewspaper); // adding the icons in our project
+library.add(faBars, faTimes, faUniversity, faBriefcase, faLink, faNewspaper); // adding the icons in our project
 library.add(faGithub, faLinkedin, faObservable);
 
 createApp(App).use(store).component("fa", FontAwesomeIcon).mount("#app");

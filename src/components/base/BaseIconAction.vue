@@ -31,8 +31,4 @@ export default {
   ></fa>
 </template>
 
-<style scoped>
-.base-icon-action:hover {
-  opacity: 0.7;
-}
-</style>
+<style scoped></style>
