@@ -3,8 +3,6 @@ import { ref } from "vue";
 import BaseSection from "../base/BaseSection.vue";
 import ContactsTextChart from "./ContactsTextChart.vue";
 
-import { useClipboard } from "@vueuse/core";
-
 export default {
   components: {
     BaseSection,
@@ -13,7 +11,7 @@ export default {
   setup() {
     const showEmail = ref(false);
 
-    const email = ref("me@ncastaldo.it");
+    const email = ref("me@" + window.location.hostname);
 
     const copied = ref(false);
 
