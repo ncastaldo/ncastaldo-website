@@ -67,10 +67,12 @@ export default {
       rootMargin: `-${marginTop.value}px 0px 0px`,
     });
 
-    const getPeriodInterval = (period) =>
-      period.fromDate
+    const getPeriodCaption = (period) =>
+      period.detail.location +
+      " | " +
+      (period.fromDate
         ? `${format(period.fromDate)} - ${format(period.toDate)}`
-        : format(period.toDate);
+        : format(period.toDate));
 
     const iconsMap = {
       education: ["fa", "university"],
@@ -99,7 +101,7 @@ export default {
 
     return {
       periods,
-      getPeriodInterval,
+      getPeriodCaption,
       getPeriodIcon,
       setPeriodRef,
       currentPeriod,
@@ -126,7 +128,7 @@ export default {
         <BaseDescription
           :title="period.detail.place"
           :subtitle="period.detail.title"
-          :caption="getPeriodInterval(period)"
+          :caption="getPeriodCaption(period)"
           :html-content="period.detail.html"
           :current="currentPeriod === period"
           :url="period.detail.url"

@@ -56,6 +56,7 @@ export default {
       detail: {
         title: "B.Sc. Computer Science & Engineering",
         place: "Politecnico di Milano",
+        location: "Milano, Italy",
         logo: "/assets/img/journey/polimi-logo.png",
         type: "education",
         html: "\
@@ -93,6 +94,7 @@ export default {
       detail: {
         title: "Erasmus+ Study",
         place: "Universitat Politecnica de Valencia",
+        location: "Valencia, Spain",
         logo: "/assets/img/journey/upv-logo.png",
         type: "education",
         html: "\
@@ -136,6 +138,7 @@ export default {
       detail: {
         title: "M.Sc. Computer Science & Engineering",
         place: "Politecnico di Milano",
+        location: "Milano, Italy",
         logo: "/assets/img/journey/polimi-logo.png",
         type: "education",
         html: '\
@@ -182,6 +185,7 @@ export default {
       detail: {
         title: "Software & Data Engineer",
         place: "Fondazione Bruno Kessler",
+        location: "Trento, Italy",
         logo: "/assets/img/journey/fbk-logo.png",
         type: "work",
         html: "\
@@ -245,6 +249,7 @@ export default {
       detail: {
         title: "Technical Analyst",
         place: "OverIT S.p.A.",
+        location: "Udine, Italy",
         logo: "/assets/img/journey/overit-logo.png",
         type: "work",
         html: "\

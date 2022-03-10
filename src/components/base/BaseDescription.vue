@@ -73,7 +73,6 @@ export default {
   color: #42a07e;
   font-weight: 600;
   letter-spacing: 0rem;
-  text-decoration: underline;
 }
 
 .base-description-html {
