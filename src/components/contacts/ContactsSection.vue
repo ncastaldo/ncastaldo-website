@@ -11,7 +11,7 @@ export default {
   setup() {
     const showEmail = ref(false);
 
-    const email = ref("me@" + window.location.hostname);
+    const email = ref("me@" + window.location.hostname.replace("www.", ""));
 
     const copied = ref(false);
 
