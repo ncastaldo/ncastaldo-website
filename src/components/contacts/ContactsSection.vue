@@ -105,7 +105,7 @@ export default {
   justify-content: center;
   align-items: center;
   user-select: none;
-  padding: 0 0 1rem;
+  padding: 1rem 0 2rem;
 }
 
 .contacts-content-caption-span {
