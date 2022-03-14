@@ -40,4 +40,10 @@ export default {
 .main > :nth-child(2n + 1) {
   background-color: #f7f7f7;
 }
+
+@media (max-height: 700px) {
+  .main > * {
+    scroll-margin-top: 7rem;
+  }
+}
 </style>

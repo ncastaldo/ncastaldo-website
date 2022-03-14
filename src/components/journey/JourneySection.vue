@@ -2,12 +2,28 @@
 import BaseSection from "../base/BaseSection.vue";
 import JourneyTimeChart from "./JourneyTimeChart.vue";
 import JourneyItems from "./JourneyItems.vue";
+import { ref, watchEffect } from "vue";
+
+import { useWindowSize } from "@vueuse/core";
 
 export default {
   components: {
     BaseSection,
     JourneyTimeChart,
     JourneyItems,
+  },
+  setup() {
+    const marginTop = ref(100);
+
+    const { height } = useWindowSize();
+
+    watchEffect(() => {
+      marginTop.value = height.value > 700 ? 100 : 70;
+    });
+
+    return {
+      marginTop,
+    };
   },
 };
 </script>
@@ -23,7 +39,7 @@ export default {
         </BaseItem-->
       </div>
       <div class="journey-section-content">
-        <JourneyItems :margin-top="85 + 100" />
+        <JourneyItems :margin-top="85 + marginTop" />
       </div>
     </template>
   </BaseSection>
@@ -41,5 +57,11 @@ export default {
 
 .journey-section-content {
   padding: 3rem 3rem;
+}
+
+@media (max-height: 700px) {
+  .journey-section-header {
+    top: 7rem;
+  }
 }
 </style>

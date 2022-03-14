@@ -139,15 +139,19 @@ export default {
   top: 0;
   left: 100%;
 
+  padding: 10rem 0;
+
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   z-index: 20;
 
   background-color: rgba(30, 30, 30, 0.95);
 
   text-align: center;
 
-  transition: left 100ms ease-in-out;
+  overflow: scroll;
+
+  transition: left 200ms ease-in-out;
 }
 
 .header-sidebar-routes {
@@ -156,9 +160,7 @@ export default {
   align-items: center;
   justify-content: center;
 
-  padding: 10rem 0;
-
-  overflow: scroll;
+  overflow-y: scroll;
 
   font-size: 3rem;
 }
@@ -184,6 +186,20 @@ export default {
 
   .header-sidebar.active {
     left: 0;
+  }
+}
+
+@media (max-height: 700px) {
+  .header {
+    height: 7rem;
+  }
+  .header-sidebar {
+    padding: 7rem 0;
+  }
+
+  .header-sidebar-icon {
+    position: absolute;
+    top: 1.5rem;
   }
 }
 </style>

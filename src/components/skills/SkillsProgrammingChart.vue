@@ -7,7 +7,7 @@ import { scaleLinear, scaleBand } from "d3-scale";
 import { select } from "d3-selection";
 import { transition } from "d3-transition";
 
-import { useContainerWidth } from "../../composables/chart";
+import { useContainerSize } from "../../composables/chart";
 
 export default {
   props: {
@@ -21,7 +21,7 @@ export default {
     const svgRef = ref(null);
 
     const { height } = toRefs(props);
-    const width = useContainerWidth(divRef);
+    const { width } = useContainerSize(divRef);
 
     const padding = { top: 20, right: 30, bottom: 20, left: 100 };
 

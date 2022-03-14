@@ -2,18 +2,24 @@ import { onMounted, ref } from "vue";
 
 import { useDebounceFn, useEventListener } from "@vueuse/core";
 
-export const useContainerWidth = (target, { debounce = 250 } = {}) => {
+export const useContainerSize = (target, { debounce = 250 } = {}) => {
+  const height = ref(0);
   const width = ref(0);
 
-  const updateWidth = () => {
-    width.value = target.value.getBoundingClientRect().width;
+  const updateSize = () => {
+    const rect = target.value.getBoundingClientRect();
+    width.value = rect.width;
+    height.value = rect.height;
   };
 
-  useEventListener(window, "resize", useDebounceFn(updateWidth, debounce));
+  useEventListener(window, "resize", useDebounceFn(updateSize, debounce));
 
   onMounted(() => {
-    updateWidth();
+    updateSize();
   });
 
-  return width;
+  return {
+    width,
+    height,
+  };
 };
