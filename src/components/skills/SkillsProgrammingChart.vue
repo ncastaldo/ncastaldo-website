@@ -7,7 +7,7 @@ import { scaleLinear, scaleBand } from "d3-scale";
 import { select } from "d3-selection";
 import { transition } from "d3-transition";
 
-import { useContainerSize } from "../../composables/chart";
+import { useContainerSize } from "../../composables/view";
 
 export default {
   props: {

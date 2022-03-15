@@ -6,8 +6,12 @@ import BaseItem from "../base/BaseItem.vue";
 import BaseLogo from "../base/BaseLogo.vue";
 import BaseDescription from "../base/BaseDescription.vue";
 
+import view from "../../store/view";
 import journey from "../../store/journey";
+
 import BaseHorizonalRow from "../base/BaseHorizonalRow.vue";
+
+import { useEventListener } from "@vueuse/core";
 
 export default {
   components: { BaseItem, BaseLogo, BaseDescription, BaseHorizonalRow },
@@ -26,53 +30,13 @@ export default {
 
     const format = timeFormat("%B %Y");
 
-    // const journey = inject("journey");
-
     const periods = journey.getPeriods();
     const currentPeriod = computed(journey.getPeriod);
 
-    const programmaticScrolling = computed({
-      get: journey.isProgrammaticScrolling,
-      set: journey.setProgrammaticScrolling,
+    const programmaticScroll = computed({
+      get: view.isProgrammaticScroll,
+      set: view.setProgrammaticScroll,
     });
-
-    const periodsRefs = {};
-    const setPeriodRef = (ref) => {
-      periodsRefs[ref.dataset.periodId] = ref;
-    };
-
-    let allEntries = [];
-
-    const observerCallback = (entries) => {
-      if (allEntries.length === 0) {
-        allEntries = entries;
-      } else {
-        let j = 0;
-        entries.forEach((entry) => {
-          while (entry.target !== allEntries[j].target) {
-            j += 1;
-          }
-          allEntries[j] = entry;
-        });
-      }
-
-      const entry = allEntries.filter((entry) => entry.isIntersecting).pop();
-
-      if (entry !== undefined && !programmaticScrolling.value) {
-        journey.setPeriodId(entry.target.dataset.periodId);
-      }
-    };
-    const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.5,
-      rootMargin: `-${marginTop.value}px 0px 0px`,
-    });
-
-    const getPeriodCaption = (period) =>
-      period.detail.location +
-      " | " +
-      (period.fromDate
-        ? `${format(period.fromDate)} - ${format(period.toDate)}`
-        : format(period.toDate));
 
     const iconsMap = {
       education: ["fa", "university"],
@@ -82,23 +46,57 @@ export default {
     const getPeriodIcon = (period) =>
       period.detail.type in iconsMap ? iconsMap[period.detail.type] : null;
 
-    onMounted(() => {
-      Object.values(periodsRefs).forEach((target) => observer.observe(target));
+    const getPeriodCaption = (period) =>
+      period.detail.location +
+      " | " +
+      (period.fromDate
+        ? `${format(period.fromDate)} - ${format(period.toDate)}`
+        : format(period.toDate));
 
-      watch(currentPeriod, (currentPeriod) => {
-        if (programmaticScrolling.value) {
-          const rect = periodsRefs[currentPeriod.id].getBoundingClientRect();
+    const periodsRefs = {};
+    const setPeriodRef = (ref) => {
+      periodsRefs[ref.dataset.periodId] = ref;
+    };
 
-          window.scrollTo(0, rect.top + window.scrollY - marginTop.value);
-          programmaticScrolling.value = false;
-        }
+    const onScroll = (event) => {
+      if (programmaticScroll.value) {
+        return;
+      }
+
+      const sectionTop = window.pageYOffset + marginTop.value;
+
+      const periodRefDistances = Object.entries(periodsRefs)
+        .map(([periodId, ref]) => [
+          periodId,
+          Math.abs(ref.offsetTop - sectionTop),
+        ])
+        .sort(([_, aDistance], [__, bDistance]) => aDistance - bDistance);
+
+      if (periodRefDistances.length > 0) {
+        const closestPeriodId = periodRefDistances[0][0];
+
+        journey.setPeriodId(closestPeriodId);
+      }
+    };
+
+    useEventListener(document, "scroll", onScroll);
+
+    watch(currentPeriod, () => {
+      if (!programmaticScroll.value) {
+        return;
+      }
+      const rect = periodsRefs[currentPeriod.value.id].getBoundingClientRect();
+
+      window.scrollTo({
+        top: rect.top + window.scrollY - marginTop.value,
+        left: 0,
+        behavior: "smooth",
       });
+
+      programmaticScroll.value = false;
     });
 
-    onUnmounted(() => {
-      observer.disconnect();
-    });
-
+    // window.scrollTo(0, rect.top + window.scrollY - marginTop.value);
     return {
       periods,
       getPeriodCaption,

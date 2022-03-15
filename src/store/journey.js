@@ -1,6 +1,9 @@
-import { computed, reactive } from "vue";
+import { reactive } from "vue";
+import view from "../store/view";
 
 import journeyConfig from "../config/journeyConfig";
+
+const { setProgrammaticScroll } = view;
 
 const periods = journeyConfig.periods.map((period) =>
   Object.assign(period, {
@@ -11,7 +14,6 @@ const periods = journeyConfig.periods.map((period) =>
 periods.reverse();
 
 const periodId = periods[0].id;
-const programmaticScrolling = false;
 
 const periodsDict = periods.reduce(
   (acc, cur) => ({
@@ -23,32 +25,23 @@ const periodsDict = periods.reduce(
 
 const state = reactive({
   periodId,
-  programmaticScrolling,
 });
 
 const setPeriodId = (periodId) => {
   state.periodId = periodId;
 };
 
-const setProgrammaticScrolling = (programmaticScrolling) => {
-  state.programmaticScrolling = programmaticScrolling;
-};
-
 const scrollToPeriodId = (periodId) => {
   setPeriodId(periodId);
-  setProgrammaticScrolling(true);
+  setProgrammaticScroll(true);
 };
 
 const getPeriod = () => periodsDict[state.periodId];
 const getPeriods = () => periods;
 
-const isProgrammaticScrolling = () => state.programmaticScrolling;
-
 export default {
   setPeriodId,
   scrollToPeriodId,
-  setProgrammaticScrolling,
   getPeriod,
   getPeriods,
-  isProgrammaticScrolling,
 };
