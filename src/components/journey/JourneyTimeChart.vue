@@ -21,6 +21,8 @@ export default {
   setup(props) {
     const padding = { top: 15, right: 20, bottom: 35, left: 20 };
 
+    const period = computed(journey.getPeriod);
+
     const intervals = journey
       .getPeriods()
       .map((period) =>
@@ -45,8 +47,6 @@ export default {
 
     const divRef = ref(null);
     const svgRef = ref(null);
-
-    const period = computed(journey.getPeriod);
 
     const colorScale = (d) => (d.current ? "#42a07e" : "#ccc");
 
@@ -103,7 +103,7 @@ export default {
           .attr("height", (d) => yScale.range()[0] - yScale(1))
           .attr("y", (d) => yScale.range()[1])
           .style("cursor", "pointer")
-          .on("click", (event, d) => journey.scrollToPeriodId(d.periodId));
+          .on("click", (event, d) => journey.setTargetPeriodId(d.periodId));
       };
 
       watchEffect(() => {

@@ -4,18 +4,13 @@ import viewConfig from "../config/viewConfig";
 
 const { routes } = viewConfig;
 
-const programmaticScroll = false;
-const routeId = null;
+const routeId = routes[0].id;
+const targetRouteId = routeId;
 
 const state = reactive({
-  programmaticScroll,
   routeId,
+  targetRouteId,
 });
-
-const setProgrammaticScroll = (programmaticScroll) => {
-  state.programmaticScroll = programmaticScroll;
-};
-const isProgrammaticScroll = () => state.programmaticScroll;
 
 const routesDict = routes.reduce(
   (acc, cur) => ({
@@ -25,13 +20,21 @@ const routesDict = routes.reduce(
   {}
 );
 
-const getRoute = routeId !== null ? routesDict[routeId] : null;
+const setRouteId = (routeId) => {
+  state.routeId = routeId;
+};
+const setTargetRouteId = (targetRouteId) => {
+  state.targetRouteId = targetRouteId;
+};
 
+const getRoute = () => routesDict[state.routeId];
 const getRoutes = () => routes;
+const getTargetRouteId = () => state.targetRouteId;
 
 export default {
-  setProgrammaticScroll,
-  isProgrammaticScroll,
+  setRouteId,
+  setTargetRouteId,
   getRoute,
   getRoutes,
+  getTargetRouteId,
 };

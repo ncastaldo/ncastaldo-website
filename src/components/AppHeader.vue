@@ -1,23 +1,26 @@
 <script>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import BaseIconAction from "./base/BaseIconAction.vue";
+
+import view from "../store/view";
+
 export default {
   components: { BaseIconAction },
   setup() {
     const active = ref(false);
 
-    const routes = [
-      { name: "About", id: "about" },
-      { name: "Skills", id: "skills" },
-      { name: "Journey", id: "journey" },
-      { name: "Projects", id: "projects" },
-      { name: "Publications", id: "publications" },
-      { name: "Contacts", id: "contacts" },
-    ];
-    const onClick = (value) => {
+    const routes = view.getRoutes();
+    const currentRoute = computed(view.getRoute);
+
+    const onIconClick = (value) => {
       active.value = value;
     };
-    return { routes, onClick, active };
+
+    const onRouteClick = (routeId) => {
+      view.setTargetRouteId(routeId);
+    };
+
+    return { routes, currentRoute, onIconClick, onRouteClick, active };
   },
 };
 </script>
@@ -33,24 +36,24 @@ export default {
           v-for="route in routes"
           :key="route.id"
           class="header-content-routes-span"
+          :class="currentRoute === route ? 'active' : ''"
+          @click="onRouteClick(route.id)"
         >
-          <a class="header-content-routes-span-link" :href="'#' + route.id">
-            {{ route.name }}
-          </a>
+          {{ route.name }}
         </span>
       </div>
       <BaseIconAction
         class="header-content-icon"
         :icon="['fa', 'bars']"
         color="#ffffff"
-        @click="onClick(true)"
+        @click="onIconClick(true)"
       />
     </div>
     <div class="header-sidebar" :class="active ? 'active' : ''">
       <BaseIconAction
         class="header-sidebar-icon"
         :icon="['fa', 'times']"
-        @click="onClick(false)"
+        @click="onIconClick(false)"
       />
       <div class="header-sidebar-routes">
         <span
@@ -61,7 +64,7 @@ export default {
           <a
             class="header-sidebar-routes-span-link"
             :href="'#' + route.id"
-            @click="onClick(false)"
+            @click="onIconClick(false)"
           >
             {{ route.name }}
           </a>
@@ -110,6 +113,11 @@ export default {
 
 .header-content-routes-span {
   margin: 0 1rem;
+  cursor: pointer;
+}
+
+.header-content-routes-span.active {
+  text-decoration: underline;
 }
 
 .header-content-routes {

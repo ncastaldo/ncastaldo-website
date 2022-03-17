@@ -1,5 +1,12 @@
 <script>
-import { computed, onMounted, onUnmounted, toRefs, watch } from "vue";
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  toRefs,
+  watch,
+  watchEffect,
+} from "vue";
 
 import { timeFormat } from "d3-time-format";
 import BaseItem from "../base/BaseItem.vue";
@@ -12,6 +19,7 @@ import journey from "../../store/journey";
 import BaseHorizonalRow from "../base/BaseHorizonalRow.vue";
 
 import { useEventListener } from "@vueuse/core";
+import { useClosestRef } from "../../composables/view";
 
 export default {
   components: { BaseItem, BaseLogo, BaseDescription, BaseHorizonalRow },
@@ -33,10 +41,7 @@ export default {
     const periods = journey.getPeriods();
     const currentPeriod = computed(journey.getPeriod);
 
-    const programmaticScroll = computed({
-      get: view.isProgrammaticScroll,
-      set: view.setProgrammaticScroll,
-    });
+    const targetPeriodId = computed(journey.getTargetPeriodId);
 
     const iconsMap = {
       education: ["fa", "university"],
@@ -53,47 +58,29 @@ export default {
         ? `${format(period.fromDate)} - ${format(period.toDate)}`
         : format(period.toDate));
 
-    const periodsRefs = {};
+    const periodsRefs = [];
     const setPeriodRef = (ref) => {
-      periodsRefs[ref.dataset.periodId] = ref;
+      periodsRefs.push(ref);
     };
 
-    const onScroll = (event) => {
-      if (programmaticScroll.value) {
-        return;
+    const closestRef = useClosestRef(periodsRefs);
+
+    watchEffect(() => {
+      if (closestRef.value) {
+        journey.setPeriodId(closestRef.value.dataset.periodId);
       }
+    });
 
-      const sectionTop = window.pageYOffset + marginTop.value;
-
-      const periodRefDistances = Object.entries(periodsRefs)
-        .map(([periodId, ref]) => [
-          periodId,
-          Math.abs(ref.offsetTop - sectionTop),
-        ])
-        .sort(([_, aDistance], [__, bDistance]) => aDistance - bDistance);
-
-      if (periodRefDistances.length > 0) {
-        const closestPeriodId = periodRefDistances[0][0];
-
-        journey.setPeriodId(closestPeriodId);
-      }
-    };
-
-    useEventListener(document, "scroll", onScroll);
-
-    watch(currentPeriod, () => {
-      if (!programmaticScroll.value) {
-        return;
-      }
-      const rect = periodsRefs[currentPeriod.value.id].getBoundingClientRect();
+    watch(targetPeriodId, (id) => {
+      const rect = periodsRefs
+        .find((ref) => ref.dataset.periodId === id.toString())
+        .getBoundingClientRect();
 
       window.scrollTo({
         top: rect.top + window.scrollY - marginTop.value,
         left: 0,
         behavior: "smooth",
       });
-
-      programmaticScroll.value = false;
     });
 
     // window.scrollTo(0, rect.top + window.scrollY - marginTop.value);

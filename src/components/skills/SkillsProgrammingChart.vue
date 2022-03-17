@@ -113,7 +113,6 @@ export default {
       };
 
       watchEffect(() => {
-        console.log(width.value);
         update({
           data: skillsProgramming,
           width: width.value,

@@ -23,3 +23,25 @@ export const useContainerSize = (target, { debounce = 250 } = {}) => {
     height,
   };
 };
+
+export const useClosestRef = (refs = []) => {
+  const closestRef = ref(null);
+
+  const onScroll = () => {
+    const height = window.innerHeight;
+
+    const maybeClosestRef = refs
+      .map((ref) => [ref, ref.getBoundingClientRect()])
+      .filter(([_, rect]) => rect.bottom >= 0 && rect.top <= height)
+      .map(([ref, rect]) => [ref, Math.min(height - rect.top, rect.bottom)])
+      .sort(([_, aDistance], [__, bDistance]) => bDistance - aDistance)
+      .map(([ref, _]) => ref)
+      .find(() => true);
+
+    closestRef.value = maybeClosestRef ? maybeClosestRef : null;
+  };
+
+  useEventListener(document, "scroll", onScroll);
+
+  return closestRef;
+};

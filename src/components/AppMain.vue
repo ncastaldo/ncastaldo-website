@@ -7,6 +7,11 @@ import ProjectsSection from "./projects/ProjectsSection.vue";
 import PublicationsSection from "./publications/PublicationsSection.vue";
 import ContactsSection from "./contacts/ContactsSection.vue";
 
+import { useWindowSize } from "@vueuse/core";
+import { useClosestRef } from "../composables/view";
+import view from "../store/view";
+import { computed, ref, watch, watchEffect, watchPostEffect } from "vue";
+
 export default {
   components: {
     IntroSection,
@@ -17,18 +22,58 @@ export default {
     PublicationsSection,
     ContactsSection,
   },
+  setup() {
+    const sectionRefs = [];
+    const setSectionRef = (ref) => {
+      sectionRefs.push(ref);
+    };
+
+    const targetRouteId = computed(view.getTargetRouteId);
+    const routes = view.getRoutes();
+
+    const marginTop = ref(0);
+
+    const closestRef = useClosestRef(sectionRefs);
+
+    watchEffect(() => {
+      if (closestRef.value) {
+        view.setRouteId(closestRef.value.id);
+      }
+    });
+
+    watch(targetRouteId, (id) => {
+      const rect = sectionRefs
+        .find((ref) => ref.id === id.toString())
+        .getBoundingClientRect();
+
+      window.scrollTo({
+        top: rect.top + window.scrollY - marginTop.value,
+        left: 0,
+        behavior: "smooth",
+      });
+    });
+
+    const { height } = useWindowSize();
+
+    watchEffect(() => {
+      marginTop.value = height.value > 700 ? 100 : 70;
+    });
+
+    return { routes, setSectionRef };
+  },
 };
 </script>
 
 <template>
   <main class="main">
-    <IntroSection id="intro" />
-    <AboutSection id="about" />
-    <SkillsSection id="skills" />
-    <JourneySection id="journey" />
-    <ProjectsSection id="projects" />
-    <PublicationsSection id="publications" />
-    <ContactsSection id="contacts" />
+    <div
+      v-for="route in routes"
+      :id="route.id"
+      :key="route.id"
+      :ref="setSectionRef"
+    >
+      <component :is="`${route.id}-section`"></component>
+    </div>
   </main>
 </template>
 
