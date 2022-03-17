@@ -17,6 +17,7 @@ export default {
     };
 
     const onRouteClick = (routeId) => {
+      active.value = false;
       view.setTargetRouteId(routeId);
     };
 
@@ -60,14 +61,10 @@ export default {
           v-for="route in routes"
           :key="route.id"
           class="header-sidebar-routes-span"
+          :class="currentRoute === route ? 'active' : ''"
+          @click="onRouteClick(route.id)"
         >
-          <a
-            class="header-sidebar-routes-span-link"
-            :href="'#' + route.id"
-            @click="onIconClick(false)"
-          >
-            {{ route.name }}
-          </a>
+          {{ route.name }}
         </span>
       </div>
     </div>
@@ -90,6 +87,8 @@ export default {
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }
 
+/*** CONTENT ***/
+
 .header-content {
   margin: auto;
 
@@ -105,6 +104,11 @@ export default {
 
 .header-content-heading {
   font-size: 3rem;
+}
+
+.header-content-heading-link {
+  text-decoration: none;
+  color: #ffffff;
 }
 
 .header-content-routes {
@@ -124,23 +128,14 @@ export default {
   font-size: 2rem;
 }
 
-.header-content-heading-link,
-.header-content-routes-span-link,
-.header-sidebar-routes-span-link {
-  text-decoration: none;
-  color: #ffffff;
-}
-
 .header-content-icon {
   font-size: 3.3rem;
 }
-.header-sidebar-icon {
-  font-size: 4rem;
-}
-
 .header-content-icon {
   display: none;
 }
+
+/*** SIDEBAR ***/
 
 .header-sidebar {
   position: absolute;
@@ -162,6 +157,10 @@ export default {
   transition: left 200ms ease-in-out;
 }
 
+.header-sidebar-icon {
+  font-size: 4rem;
+}
+
 .header-sidebar-routes {
   display: flex;
   flex-direction: column;
@@ -181,6 +180,19 @@ export default {
   position: absolute;
   right: 3rem;
   top: 3rem;
+}
+
+.header-sidebar-routes-span,
+.header-content-routes-span {
+  cursor: pointer;
+}
+
+.header-sidebar-routes-span:hover,
+.header-content-routes-span:hover,
+.header-content-routes-span.active,
+.header-sidebar-routes-span.active {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
 }
 
 @media (max-width: 800px) {
