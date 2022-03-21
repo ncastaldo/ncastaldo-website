@@ -2,15 +2,15 @@
 import { computed, ref } from "vue";
 import BaseIconAction from "./base/BaseIconAction.vue";
 
-import view from "../store/view";
+import route from "../store/route";
 
 export default {
   components: { BaseIconAction },
   setup() {
     const active = ref(false);
 
-    const routes = view.getRoutes();
-    const currentRoute = computed(view.getRoute);
+    const routes = route.getRoutes();
+    const currentRoute = computed(route.getRoute);
 
     const onIconClick = (value) => {
       active.value = value;

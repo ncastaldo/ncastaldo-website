@@ -14,6 +14,8 @@ import {
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faObservable } from "./plugins/icons";
 
+import VueFullscreen from "vue-fullscreen";
+
 import App from "./App.vue";
 import store from "./store";
 
@@ -21,4 +23,8 @@ import store from "./store";
 library.add(faBars, faTimes, faUniversity, faBriefcase, faLink, faNewspaper); // adding the icons in our project
 library.add(faGithub, faLinkedin, faObservable);
 
-createApp(App).use(store).component("fa", FontAwesomeIcon).mount("#app");
+createApp(App)
+  .use(store)
+  .use(VueFullscreen)
+  .component("fa", FontAwesomeIcon)
+  .mount("#app");

@@ -9,7 +9,7 @@ import ContactsSection from "./contacts/ContactsSection.vue";
 
 import { useWindowSize } from "@vueuse/core";
 import { useClosestRef } from "../composables/view";
-import view from "../store/view";
+import route from "../store/route";
 import { computed, ref, watch, watchEffect, watchPostEffect } from "vue";
 
 export default {
@@ -28,8 +28,8 @@ export default {
       sectionRefs.push(ref);
     };
 
-    const targetRouteId = computed(view.getTargetRouteId);
-    const routes = view.getRoutes();
+    const targetRouteId = computed(route.getTargetRouteId);
+    const routes = route.getRoutes();
 
     const marginTop = ref(0);
 
@@ -37,7 +37,7 @@ export default {
 
     watchEffect(() => {
       if (closestRef.value) {
-        view.setRouteId(closestRef.value.id);
+        route.setRouteId(closestRef.value.id);
       }
     });
 

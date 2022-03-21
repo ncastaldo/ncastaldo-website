@@ -1,24 +1,15 @@
 <script>
-import {
-  computed,
-  onMounted,
-  onUnmounted,
-  toRefs,
-  watch,
-  watchEffect,
-} from "vue";
+import { computed, toRefs, watch, watchEffect } from "vue";
 
 import { timeFormat } from "d3-time-format";
 import BaseItem from "../base/BaseItem.vue";
 import BaseLogo from "../base/BaseLogo.vue";
 import BaseDescription from "../base/BaseDescription.vue";
 
-import view from "../../store/view";
 import journey from "../../store/journey";
 
 import BaseHorizonalRow from "../base/BaseHorizonalRow.vue";
 
-import { useEventListener } from "@vueuse/core";
 import { useClosestRef } from "../../composables/view";
 
 export default {
@@ -34,7 +25,7 @@ export default {
     },
   },
   setup(props) {
-    const { current, marginTop } = toRefs(props);
+    const { marginTop } = toRefs(props);
 
     const format = timeFormat("%B %Y");
 
@@ -81,7 +72,6 @@ export default {
       });
     });
 
-    // window.scrollTo(0, rect.top + window.scrollY - marginTop.value);
     return {
       periods,
       getPeriodCaption,
