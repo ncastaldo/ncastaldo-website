@@ -52,11 +52,9 @@ export default {
       period.detail.type in iconsMap ? iconsMap[period.detail.type] : null;
 
     const getPeriodCaption = (period) =>
-      period.detail.location +
-      " | " +
-      (period.fromDate
-        ? `${format(period.fromDate)} - ${format(period.toDate)}`
-        : format(period.toDate));
+      `${period.detail.location} | ${format(period.fromDate)} - ${
+        period.to ? format(period.toDate) : "Present"
+      }`;
 
     const periodsRefs = [];
     const setPeriodRef = (ref) => {
