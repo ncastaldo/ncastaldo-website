@@ -18,7 +18,7 @@ export default {
 
     const onRouteClick = (routeId) => {
       active.value = false;
-      view.setTargetRouteId(routeId);
+      route.setTargetRouteId(routeId);
     };
 
     return { routes, currentRoute, onIconClick, onRouteClick, active };

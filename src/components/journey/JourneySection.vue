@@ -2,7 +2,8 @@
 import BaseSection from "../base/BaseSection.vue";
 import JourneyTimeChart from "./JourneyTimeChart.vue";
 import JourneyItems from "./JourneyItems.vue";
-import { ref, watchEffect } from "vue";
+
+import { ref, watchEffect, computed } from "vue";
 
 import { useWindowSize } from "@vueuse/core";
 
