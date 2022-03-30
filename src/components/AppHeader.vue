@@ -195,7 +195,7 @@ export default {
   text-underline-offset: 0.2rem;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .header-content-routes {
     display: none;
   }

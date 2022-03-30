@@ -17,14 +17,12 @@ import { faObservable } from "./plugins/icons";
 import VueFullscreen from "vue-fullscreen";
 
 import App from "./App.vue";
-import store from "./store";
 
 // https://www.youtube.com/watch?v=MoDIpTuRWfM&t=178s
 library.add(faBars, faTimes, faUniversity, faBriefcase, faLink, faNewspaper); // adding the icons in our project
 library.add(faGithub, faLinkedin, faObservable);
 
 createApp(App)
-  .use(store)
   .use(VueFullscreen)
   .component("fa", FontAwesomeIcon)
   .mount("#app");
