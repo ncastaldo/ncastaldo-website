@@ -17,6 +17,7 @@ import { faObservable } from "./plugins/icons";
 import VueFullscreen from "vue-fullscreen";
 
 import App from "./App.vue";
+import "./assets/style/index.css";
 
 // https://www.youtube.com/watch?v=MoDIpTuRWfM&t=178s
 library.add(faBars, faTimes, faUniversity, faBriefcase, faLink, faNewspaper); // adding the icons in our project
