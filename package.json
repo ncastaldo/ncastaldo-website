@@ -1,6 +1,6 @@
 {
-  "name": "second-ncastaldo",
-  "version": "0.0.0",
+  "name": "ncastaldo.it",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
