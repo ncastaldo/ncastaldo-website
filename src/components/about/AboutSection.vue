@@ -1,7 +1,15 @@
-<script setup>
+<script>
 import BaseSection from "../base/BaseSection.vue";
 import AboutImage from "./AboutImage.vue";
 import AboutDescription from "./AboutDescription.vue";
+
+export default {
+  components: {
+    BaseSection,
+    AboutImage,
+    AboutDescription,
+  },
+};
 </script>
 
 <template>

@@ -26,7 +26,7 @@ export default {};
   </div>
 </template>
 
-<style>
+<style scoped>
 .about-description {
   font-size: 1.6rem;
   padding: 3rem 3rem;

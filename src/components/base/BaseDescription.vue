@@ -35,9 +35,6 @@ export default {
 </template>
 
 <style scoped>
-.base-description {
-}
-
 .base-description-title {
   padding-bottom: 0.5rem;
   font-size: 2.5rem;

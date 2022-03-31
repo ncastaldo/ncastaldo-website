@@ -20,7 +20,11 @@ import App from "./App.vue";
 import "./assets/style/index.css";
 
 // https://www.youtube.com/watch?v=MoDIpTuRWfM&t=178s
-library.add(faBars, faTimes, faUniversity, faBriefcase, faLink, faNewspaper); // adding the icons in our project
+
+// solid icons
+library.add(faBars, faTimes, faUniversity, faBriefcase, faLink, faNewspaper);
+
+// brand icons
 library.add(faGithub, faLinkedin, faObservable);
 
 createApp(App)

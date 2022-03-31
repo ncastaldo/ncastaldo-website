@@ -1,6 +1,10 @@
-<script setup>
+<script>
 import BaseSection from "../base/BaseSection.vue";
 import ProjectsCards from "./ProjectsCards.vue";
+
+export default {
+  components: { BaseSection, ProjectsCards },
+};
 </script>
 
 <template>
@@ -8,24 +12,19 @@ import ProjectsCards from "./ProjectsCards.vue";
     <template #title>Projects</template>
     <template #default>
       <div class="projects-cards-grid">
-        <ProjectsCards class="projects-cards-item" />
+        <ProjectsCards />
       </div>
     </template>
   </BaseSection>
 </template>
 
-<style>
+<style scoped>
 .projects-cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1rem;
   row-gap: 4rem;
   padding: 3rem 3rem;
-}
-
-.projects-cards-item {
-  margin: 0 auto;
-  max-width: 30rem;
 }
 
 @media (max-width: 720px) {

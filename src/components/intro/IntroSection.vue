@@ -1,6 +1,4 @@
 <script>
-import { onMounted, ref } from "vue";
-
 import introConfig from "../../assets/config/introConfig.json";
 
 import IntroNameChart from "./IntroNameChart.vue";

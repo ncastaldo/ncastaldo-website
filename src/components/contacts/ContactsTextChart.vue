@@ -1,19 +1,8 @@
 <script>
-import {
-  computed,
-  onBeforeMount,
-  onMounted,
-  ref,
-  toRefs,
-  watch,
-  watchEffect,
-} from "vue";
+import { computed, onMounted, ref, toRefs, watchEffect } from "vue";
 
-import { select, pointer } from "d3-selection";
+import { select } from "d3-selection";
 import { shuffle } from "d3-array";
-import { forceSimulation, forceManyBody, forceX, forceY } from "d3-force";
-
-const FONT_URL = "/assets/fonts/register.ttf";
 
 export default {
   props: {
@@ -114,8 +103,8 @@ export default {
   ></svg>
 </template>
 
-<style>
-.contacts-text-chart-text {
+<style scoped>
+.contacts-text-chart-svg {
   font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono,
     DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
 }

@@ -209,7 +209,7 @@ export default {
   />
 </template>
 
-<style>
+<style scoped>
 .intro-name-chart-canvas {
   vertical-align: text-bottom;
 }

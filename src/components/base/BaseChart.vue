@@ -1,5 +1,5 @@
 <script>
-import { ref, defineExpose } from "vue";
+import { ref } from "vue";
 import { useSizeProps } from "../../composables/svg";
 
 export default {
@@ -15,5 +15,5 @@ export default {
 </script>
 
 <template>
-  <svg ref="template" :viewBox="`0 0 ${width} ${height}`" />
+  <svg ref="template" :viewBox="`0 0 ${width} ${height}`"></svg>
 </template>

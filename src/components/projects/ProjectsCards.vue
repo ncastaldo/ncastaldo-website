@@ -35,8 +35,14 @@ export default {
     :libraries="project.libraries"
     :links="project.links"
     :image-src="project.imageSrc"
+    class="project-card"
   >
   </BaseCard>
 </template>
 
-<style scoped></style>
+<style scoped>
+.project-card {
+  margin: 0 auto;
+  max-width: 30rem;
+}
+</style>

@@ -1,19 +1,10 @@
 <script>
-import {
-  computed,
-  nextTick,
-  onMounted,
-  ref,
-  toRefs,
-  watch,
-  watchEffect,
-} from "vue";
+import { computed, nextTick, onMounted, ref, toRefs, watchEffect } from "vue";
 
 import { geoMercator, geoPath } from "d3-geo";
 import { zoom, zoomIdentity } from "d3-zoom";
 import { feature } from "topojson-client";
 
-import { getSizeProps } from "../../plugins/utils";
 import { useFetch } from "../../composables/fetch";
 
 const MAP_URL =
@@ -21,8 +12,18 @@ const MAP_URL =
 
 export default {
   props: {
-    geoPoint: Array,
-    ...getSizeProps(),
+    geoPoint: {
+      type: Array,
+      default: () => [13.234579, 46.071068],
+    },
+    width: {
+      type: [Number, String],
+      default: 300,
+    },
+    height: {
+      type: [Number, String],
+      default: 200,
+    },
   },
   setup(props) {
     const { width, height, geoPoint } = toRefs(props);
@@ -108,8 +109,6 @@ export default {
     });
 
     return {
-      width,
-      height,
       chartRef,
       chartDrawn,
     };
@@ -121,7 +120,6 @@ export default {
   <svg
     v-show="chartDrawn"
     ref="chartRef"
-    dis
     :viewBox="`0 0 ${width} ${height}`"
-  />
+  ></svg>
 </template>
