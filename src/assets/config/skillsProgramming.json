@@ -1,18 +1,23 @@
 [
   {
     "id": "javascript",
-    "name": "Javascript",
+    "name": "JavaScript",
     "value": 9
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript",
+    "value": 7.5
   },
   {
     "id": "python3",
     "name": "Python3",
-    "value": 9
+    "value": 8.5
   },
   {
     "id": "java",
     "name": "Java",
-    "value": 8.5
+    "value": 9
   },
   {
     "id": "C",

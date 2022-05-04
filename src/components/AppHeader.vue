@@ -9,7 +9,7 @@ export default {
   setup() {
     const active = ref(false);
 
-    const routes = route.getRoutes();
+    const routes = computed(() => route.getRoutes().slice(1));
     const currentRoute = computed(route.getRoute);
 
     const onIconClick = (value) => {
@@ -120,10 +120,6 @@ export default {
   cursor: pointer;
 }
 
-.header-content-routes-span.active {
-  text-decoration: underline;
-}
-
 .header-content-routes {
   font-size: 2rem;
 }
@@ -185,14 +181,30 @@ export default {
 .header-sidebar-routes-span,
 .header-content-routes-span {
   cursor: pointer;
+  text-decoration: none;
+  position: relative;
 }
 
-.header-sidebar-routes-span:hover,
-.header-content-routes-span:hover,
-.header-content-routes-span.active,
-.header-sidebar-routes-span.active {
-  text-decoration: underline;
-  text-underline-offset: 0.2rem;
+.header-content-routes-span:hover:after,
+.header-content-routes-span.active:after,
+.header-sidebar-routes-span:hover:after,
+.header-sidebar-routes-span.active:after {
+  content: "";
+
+  width: 100%;
+  position: absolute;
+  left: 0;
+  border-width: 0 0 0.3rem;
+  border-style: solid;
+}
+
+.header-content-routes-span:hover:after,
+.header-content-routes-span.active:after {
+  top: 2.8rem;
+}
+.header-sidebar-routes-span:hover:after,
+.header-sidebar-routes-span.active:after {
+  top: 4rem;
 }
 
 @media (max-width: 850px) {

@@ -28,10 +28,14 @@ export default {
     </div>
     <div class="intro-roles">
       <h2 class="intro-roles-heading">
-        <span v-for="(role, i) in roles" :key="i">
-          <span v-if="i !== 0" class="intro-roles-heading-separator">|</span>
-          <span>{{ role }}</span>
-        </span>
+        <span class="intro-roles-heading-separator">[</span>
+        <span>Software</span>
+        <span class="intro-roles-heading-separator">|</span>
+        <span>Data</span>
+        <span class="intro-roles-heading-separator">|</span>
+        <span>Full Stack</span>
+        <span class="intro-roles-heading-separator">]</span>
+        <span>Engineer</span>
       </h2>
     </div>
     <div class="intro-socials">
@@ -55,7 +59,7 @@ export default {
 
   justify-content: center;
   align-items: center;
-  min-height: 70rem;
+  min-height: 100vh;
 
   text-align: center;
 }

@@ -30,7 +30,7 @@ export default {
     const fontSize = height.value * 0.6;
 
     const initialDelay = 200;
-    const transitionDuration = 2000;
+    const transitionDuration = 2400;
 
     // manage this class, use computed and watched properties for size
 

@@ -1,12 +1,15 @@
 <script>
-import { ref } from "vue";
+import { ref, watch, watchEffect } from "vue";
 import BaseSection from "../base/BaseSection.vue";
 import ContactsTextChart from "./ContactsTextChart.vue";
+import BaseIconLink from "../base/BaseIconLink.vue";
+import { computed } from "@vue/reactivity";
 
 export default {
   components: {
     BaseSection,
     ContactsTextChart,
+    BaseIconLink,
   },
   setup() {
     const showEmail = ref(false);
@@ -21,6 +24,12 @@ export default {
       copied.value = true;
     };
 
+    watchEffect(() => {
+      if (showEmail.value == false) {
+        copied.value = false;
+      }
+    });
+
     return { email, showEmail, copy, copied };
   },
 };
@@ -33,15 +42,16 @@ export default {
       <div class="contacts-content">
         <div class="contacts-content-text">
           Click
-          <a
-            href="/assets/files/NICOLA_CASTALDO_CV_SMALL.pdf"
-            target="_blank"
-            class="contacts-content-text-link"
-          >
-            here</a
-          >
+          <BaseIconLink
+            url="/assets/files/NICOLA_CASTALDO_CV_SMALL.pdf"
+            :icon="['fa', 'link']"
+            color="#1f1f1f"
+            class="contacts-content-icon"
+          />
           to see my resume or click the email to
-          <span>{{ showEmail ? "encrypt" : "decrypt" }}</span>
+          <i
+            ><span>{{ showEmail ? "encrypt" : "decrypt" }}</span></i
+          >
           it.
         </div>
         <div class="contacts-content-chart">
@@ -77,7 +87,7 @@ export default {
 
   justify-content: center;
   align-items: center;
-  min-height: 40rem;
+  min-height: min(100vh - 10rem, 40rem);
 
   max-width: 50rem;
   margin: 0 auto;
@@ -90,13 +100,8 @@ export default {
   padding-bottom: 1rem;
 }
 
-.contacts-content-text-link {
-  color: #1f1f1f;
-  text-underline-offset: 0.2rem;
-}
-
 .contacts-content-icon {
-  margin: 0 1.6rem;
+  margin: 0 0.8rem;
 }
 
 .contacts-content-chart {

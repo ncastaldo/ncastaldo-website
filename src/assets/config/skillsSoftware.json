@@ -5,23 +5,23 @@
     "value": 2
   },
   {
-    "id": "functional-programming",
-    "name": "Functional Programming",
+    "id": "fp-oop",
+    "name": "Functional Programming & OOP",
     "value": 2
   },
   {
-    "id": "oop",
-    "name": "OOP",
-    "value": 2
-  },
-  {
-    "id": "algorithms",
-    "name": "Algorithms",
+    "id": "algorithms-ds",
+    "name": "Algorithms & Data Structures",
     "value": 2
   },
   {
     "id": "technical-analysis",
     "name": "Technical Analysis",
+    "value": 2
+  },
+  {
+    "id": "agile",
+    "name": "Agile Methodologies",
     "value": 2
   },
   {

@@ -5,6 +5,6 @@
 <style scoped>
 .base-horizontal-row {
   margin: 4rem auto;
-  width: 5rem;
+  max-width: 15rem;
 }
 </style>

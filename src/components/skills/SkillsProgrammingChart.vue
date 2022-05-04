@@ -23,7 +23,7 @@ export default {
     const { height } = toRefs(props);
     const { width } = useContainerSize(divRef);
 
-    const padding = { top: 20, right: 30, bottom: 20, left: 100 };
+    const padding = { top: 20, right: 30, bottom: 20, left: 120 };
 
     const labelPadding = 15;
 

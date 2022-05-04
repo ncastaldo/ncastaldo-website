@@ -30,9 +30,12 @@ export default {};
 .about-description {
   font-size: 1.6rem;
   padding: 3rem 3rem;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 50rem;
 }
 
 .about-description p {
-  padding-bottom: 0.4rem;
+  padding-bottom: 1.4rem;
 }
 </style>
