@@ -266,7 +266,7 @@ export default {
             <li>\
               I work closely with business analysts to <b>define</b> the\
               <b>requirements</b> of new software functionalities to be integrated in\
-              the <i>Product</i>\
+              the <i>Product</i>, applying <b>Agile</b> methodologies such as Kanban and <b>Scrum</b>\
             </li>\
             <li>\
               I collaborate with the development teams to <b>design</b> the data and\

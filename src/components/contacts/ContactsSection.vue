@@ -43,7 +43,7 @@ export default {
         <div class="contacts-content-text">
           Click
           <BaseIconLink
-            url="/assets/files/NICOLA_CASTALDO_CV_SMALL.pdf"
+            url="/assets/files/NICOLA_CASTALDO_CV.pdf"
             :icon="['fa', 'link']"
             color="#1f1f1f"
             class="contacts-content-icon"
