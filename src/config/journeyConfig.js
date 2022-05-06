@@ -183,14 +183,14 @@ export default {
         },
       ],
       detail: {
-        title: "Software & Data Engineer",
+        title: "Data and Full Stack Engineer",
         place: "Fondazione Bruno Kessler",
         location: "Trento, Italy",
         logo: "/assets/img/journey/fbk-logo.png",
         type: "work",
         html: "\
           <p>\
-            I worked as a <b>Software and Data Engineer</b> - formally\
+            I worked as a <b>Data and Full Stack Engineer</b> - formally\
             <i>Technologist</i> - in the <i>CoMuNe Lab</i> at <i>FBK</i>, an\
             interdisciplinary team focused on the research of\
             <i>Complex Multilayer Networks</i>.\
