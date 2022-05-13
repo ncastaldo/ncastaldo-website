@@ -147,6 +147,6 @@ export default {
 
 <style scoped>
 .skills-programming-chart :deep(text) {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 </style>

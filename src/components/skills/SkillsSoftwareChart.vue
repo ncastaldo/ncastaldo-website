@@ -117,6 +117,6 @@ export default {
 
 <style scoped>
 .skills-software-chart :deep(text) {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 </style>
