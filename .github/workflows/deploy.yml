@@ -25,4 +25,4 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Deploy with rsync
-        run: rsync -avz -e "ssh -i ${{ env.SSH_KEY_PATH }}" ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/ncastaldo.it/public/
+        run: rsync -avz -e "ssh -i ${{ env.SSH_KEY_PATH }}" ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/www/ncastaldo.it/public/
