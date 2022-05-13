@@ -2,4 +2,4 @@
 
 Source code of my personal website [ncastaldo.it](https://ncastaldo.it).
 
-Built with Vue 3 and D3.
+Built with Vue3 and D3.

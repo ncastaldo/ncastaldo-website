@@ -5,7 +5,7 @@
     "year": 2019,
     "authors": "N. Castaldo, F. Daniel, M. Matera, V. Zaccaria",
     "journal": "Springer",
-    "logo": "/assets/img/publications/springer-logo.png",
+    "logo": "assets/img/publications/springer-logo.png",
     "page": "ICWE 2019, Lecture Notes in Computer Science, vol 11496",
     "url": "https://link.springer.com/chapter/10.1007/978-3-030-19274-7_34"
   },
@@ -15,7 +15,7 @@
     "year": 2020,
     "authors": "R. Gallotti, F. Valle, N. Castaldo, P. Sacco, M. De Domenico",
     "journal": "Nature Human Behaviour",
-    "logo": "/assets/img/publications/nhb-logo.png",
+    "logo": "assets/img/publications/nhb-logo.png",
     "page": "4 (12), 1285-1293",
     "url": "http://nature.com/articles/s41562-020-00994-6"
   },
@@ -25,7 +25,7 @@
     "year": 2021,
     "authors": "P. Sacco, R. Gallotti, F. Pilati, N. Castaldo, M. De Domenico",
     "journal": "Social Science & Medicine ",
-    "logo": "/assets/img/publications/ssm-logo.png",
+    "logo": "assets/img/publications/ssm-logo.png",
     "page": "285, 114215",
     "url": "http://doi.org/10.1016/j.socscimed.2021.114215"
   },
@@ -35,7 +35,7 @@
     "year": 2022,
     "authors": "V. D'Andrea, R. Gallotti, N. Castaldo, M. De Domenico",
     "journal": "PLOS Computational Biology",
-    "logo": "/assets/img/publications/plos-logo.png",
+    "logo": "assets/img/publications/plos-logo.png",
     "page": "285, 114215",
     "url": "https://doi.org/10.1371/journal.pcbi.1009760"
   },
@@ -45,7 +45,7 @@
     "year": 2022,
     "authors": "V D'Andrea, O. Artime, N. Castaldo, P. Sacco, R. Gallotti, M. De Domenico",
     "journal": "Physical Review Research",
-    "logo": "/assets/img/publications/prr-logo.png",
+    "logo": "assets/img/publications/prr-logo.png",
     "page": "4 (1), 013158",
     "url": "https://doi.org/10.1103/PhysRevResearch.4.013158"
   }

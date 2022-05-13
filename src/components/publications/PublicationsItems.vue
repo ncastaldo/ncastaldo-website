@@ -15,6 +15,7 @@ export default {
         publication.year
       })`;
       publication.icon = ["fas", "newspaper"];
+      publication.logo = import.meta.env.BASE_URL + publication.logo;
     });
 
     return {

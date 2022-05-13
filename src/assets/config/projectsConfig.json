@@ -1,52 +1,87 @@
- [
+[
   {
     "id": "covid19obs",
     "name": "Covid19 Infodemics Obervatory",
-    "imageSrc": "/assets/img/projects/covid19obs.png",
+    "imageSrc": "assets/img/projects/covid19obs.png",
     "description": "A web app to analyze the relationship between the evolution of the COVID-19 epidemic and the information dynamics on social media.",
-    "libraries": ["Javascript", "D3", "d3nic", "Vue", "Vuetify", "Leaflet", "Mapbox", "pandas", "geopandas"],
+    "libraries": [
+      "Javascript",
+      "D3",
+      "d3nic",
+      "Vue",
+      "Vuetify",
+      "Leaflet",
+      "Mapbox",
+      "pandas",
+      "geopandas"
+    ],
     "url": "https://covid19obs.fbk.eu",
     "githubUrl": "https://github.com/ncastaldo/covid19obs"
   },
   {
     "id": "d3nic",
     "name": "d3nic",
-    "imageSrc": "/assets/img/projects/d3nic.png",
+    "imageSrc": "assets/img/projects/d3nic.png",
     "description": "A D3.js based library that exposes methods to easily create interactive and dynamic charts.",
-    "libraries": ["Javascript", "D3", "Webpack"],
+    "libraries": [
+      "Javascript",
+      "D3",
+      "Webpack"
+    ],
     "url": "https://jsfiddle.net/ncastaldo/m0qn3ucL",
     "githubUrl": "https://github.com/ncastaldo/d3nic"
   },
   {
     "id": "data-explorer-bot",
     "name": "Data Explorer Bot",
-    "imageSrc": "/assets/img/projects/data-explorer-bot.png",
+    "imageSrc": "assets/img/projects/data-explorer-bot.png",
     "description": "A framework for the development of chatbots for data exploration.",
-    "libraries": ["Python3", "Rasa NLU", "SQL", "Chatito", "Telegram API"],
+    "libraries": [
+      "Python3",
+      "Rasa NLU",
+      "SQL",
+      "Chatito",
+      "Telegram API"
+    ],
     "githubUrl": "https://github.com/ncastaldo/data-explorer-chatbot"
   },
   {
     "id": "aodv-iot",
     "name": "IoT AODV Project",
-    "imageSrc": "/assets/img/projects/aodv-iot.png",
+    "imageSrc": "assets/img/projects/aodv-iot.png",
     "description": "The IoT implementation of the Ad Hoc On-Demand Distance Vector routing protocol.",
-    "libraries": ["C", "ContikiOS"],
+    "libraries": [
+      "C",
+      "ContikiOS"
+    ],
     "githubUrl": "https://github.com/ncastaldo/iot-project"
   },
   {
     "id": "wecare-website",
     "name": "WeCare Website",
-    "imageSrc": "/assets/img/projects/wecare-website-project.png",
+    "imageSrc": "assets/img/projects/wecare-website-project.png",
     "description": "A Full-Stack web application for an association devoted to support children and young adults.",
-    "libraries": ["Javascript", "Node", "HTML", "CSS", "Bootstrap", "JQuery", "SQLite"],
+    "libraries": [
+      "Javascript",
+      "Node",
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "JQuery",
+      "SQLite"
+    ],
     "githubUrl": "https://github.com/ncastaldo/wecare-website-project"
   },
   {
     "id": "council-of-four",
     "name": "Council of Four",
-    "imageSrc": "/assets/img/projects/council-of-four.png",
+    "imageSrc": "assets/img/projects/council-of-four.png",
     "description": "A Java implementation of a multi-player board game.",
-    "libraries": ["Java", "RMI", "Socket"],
+    "libraries": [
+      "Java",
+      "RMI",
+      "Socket"
+    ],
     "githubUrl": "https://github.com/lccambiaghi/Council-of-Four"
   }
 ]

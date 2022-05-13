@@ -5,6 +5,8 @@ import ContactsTextChart from "./ContactsTextChart.vue";
 import BaseIconLink from "../base/BaseIconLink.vue";
 import { computed } from "@vue/reactivity";
 
+const CV_URL = import.meta.env.BASE_URL + "assets/files/NICOLA_CASTALDO_CV.pdf";
+
 export default {
   components: {
     BaseSection,
@@ -30,7 +32,7 @@ export default {
       }
     });
 
-    return { email, showEmail, copy, copied };
+    return { email, showEmail, copy, copied, CV_URL };
   },
 };
 </script>
@@ -43,7 +45,7 @@ export default {
         <div class="contacts-content-text">
           Click
           <BaseIconLink
-            url="/assets/files/NICOLA_CASTALDO_CV.pdf"
+            :url="CV_URL"
             :icon="['fa', 'link']"
             color="#1f1f1f"
             class="contacts-content-icon"

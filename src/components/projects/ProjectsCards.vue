@@ -16,6 +16,7 @@ export default {
           icon: ["fab", "github"],
         },
       ].filter((project) => project.url !== undefined);
+      project.imageSrc = import.meta.env.BASE_URL + project.imageSrc;
     });
 
     return {

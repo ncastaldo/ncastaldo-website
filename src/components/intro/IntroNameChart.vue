@@ -15,7 +15,7 @@ import { select, pointer } from "d3-selection";
 import { shuffle } from "d3-array";
 import { forceSimulation, forceManyBody, forceX, forceY } from "d3-force";
 
-const FONT_URL = "/assets/fonts/register.ttf";
+const FONT_URL = import.meta.env.BASE_URL + "assets/fonts/register.ttf";
 
 export default {
   props: {

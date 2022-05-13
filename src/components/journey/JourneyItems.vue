@@ -39,6 +39,9 @@ export default {
       work: ["fa", "briefcase"],
     };
 
+    const getPeriodLogo = (period) =>
+      import.meta.env.BASE_URL + period.detail.logo;
+
     const getPeriodIcon = (period) =>
       period.detail.type in iconsMap ? iconsMap[period.detail.type] : null;
 
@@ -74,6 +77,7 @@ export default {
 
     return {
       periods,
+      getPeriodLogo,
       getPeriodCaption,
       getPeriodIcon,
       setPeriodRef,
@@ -93,7 +97,7 @@ export default {
     <BaseItem>
       <template #logo>
         <BaseLogo
-          :src="period.detail.logo"
+          :src="getPeriodLogo(period)"
           :current="currentPeriod === period"
         />
       </template>
