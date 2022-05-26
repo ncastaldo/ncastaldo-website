@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build",
+    "build": "vite build --mode production",
     "preview": "vite preview",
     "deploy": "npm run build && gh-pages -d dist",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
