@@ -210,7 +210,7 @@ export default {
             </li>\
             <li>\
               I experimented and applied different\
-              <b>full-stack development</b> technologies, using both <i>SWL</i> and\
+              <b>full-stack development</b> technologies, using both <i>SQL</i> and\
               <i>NoSQL</i> databases, web back-end frameworks and front-end libraries\
             </li>\
             <li>\
