@@ -92,7 +92,10 @@ export default {
     v-for="(period, i) in periods"
     :key="period.id"
     :ref="setPeriodRef"
+    v-motion
     :data-period-id="period.id"
+    :initial="{ opacity: 0 }"
+    :enter="{ opacity: 1 }"
   >
     <BaseItem>
       <template #logo>

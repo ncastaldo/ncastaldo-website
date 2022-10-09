@@ -15,6 +15,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faObservable } from "./plugins/icons";
 
 import VueFullscreen from "vue-fullscreen";
+import { MotionPlugin } from "@vueuse/motion";
 
 import App from "./App.vue";
 import "./assets/style/index.css";
@@ -29,5 +30,6 @@ library.add(faGithub, faLinkedin, faObservable);
 
 createApp(App)
   .use(VueFullscreen)
+  .use(MotionPlugin)
   .component("fa", FontAwesomeIcon)
   .mount("#app");

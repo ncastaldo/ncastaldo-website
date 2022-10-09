@@ -7,7 +7,10 @@ import { scaleLinear, scaleTime } from "d3-scale";
 import { min, max } from "d3-array";
 import { axisBottom } from "d3-axis";
 
-import { useDebounceFn, useEventListener } from "@vueuse/core";
+import {
+  useContainerSize,
+  useIntersectionObserverOnce,
+} from "../../composables/view";
 
 import journey from "../../store/journey";
 
@@ -23,12 +26,15 @@ export default {
 
     const period = computed(journey.getPeriod);
 
+    const maxDate = new Date();
+    maxDate.setMonth(maxDate.getMonth() + 2); // 2 months more
+
     const intervals = journey
       .getPeriods()
       .map((period) =>
         period.intervals.map((interval) => ({
           fromDate: interval.from ? new Date(interval.from) : null,
-          toDate: interval.to ? new Date(interval.to) : new Date(),
+          toDate: interval.to ? new Date(interval.to) : maxDate,
           periodId: period.id,
         }))
       )
@@ -42,11 +48,11 @@ export default {
       }));
     });
 
-    const { height } = toRefs(props);
-    const width = ref(0);
-
     const divRef = ref(null);
     const svgRef = ref(null);
+
+    const { height } = toRefs(props);
+    const { width } = useContainerSize(divRef);
 
     const colorScale = (d) => (d.current ? "#42a07e" : "#ccc");
 
@@ -66,7 +72,7 @@ export default {
         const updateTransition = transition().duration(250);
 
         xScale
-          .domain([min(data, (d) => d.fromDate), max(data, (d) => d.toDate)])
+          .domain([min(data, (d) => d.fromDate), maxDate]) // before: max(data, (d) => d.toDate)
           .range([0 + padding.left, width - padding.right]);
 
         xAxis.ticks(width > 500 ? 10 : 5);
@@ -115,15 +121,7 @@ export default {
       });
     };
 
-    const updateWidth = () => {
-      width.value = divRef.value.getBoundingClientRect().width;
-    };
-
-    useEventListener(window, "resize", useDebounceFn(updateWidth, 250));
-
     onMounted(() => {
-      updateWidth();
-
       select(svgRef.value).call(useChart);
     });
 

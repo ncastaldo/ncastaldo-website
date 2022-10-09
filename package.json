@@ -16,6 +16,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "@turf/turf": "^6.5.0",
     "@vueuse/core": "^7.6.1",
+    "@vueuse/motion": "^2.0.0-beta.12",
     "d3-array": "^3.1.1",
     "d3-axis": "^3.0.0",
     "d3-force": "^3.0.0",

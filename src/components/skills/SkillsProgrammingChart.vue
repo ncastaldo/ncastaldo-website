@@ -7,7 +7,10 @@ import { scaleLinear, scaleBand } from "d3-scale";
 import { select } from "d3-selection";
 import { transition } from "d3-transition";
 
-import { useContainerSize } from "../../composables/view";
+import {
+  useContainerSize,
+  useIntersectionObserverOnce,
+} from "../../composables/view";
 
 export default {
   props: {
@@ -121,7 +124,7 @@ export default {
       });
     };
 
-    onMounted(() => {
+    useIntersectionObserverOnce(divRef, () => {
       select(svgRef.value).call(useChart);
     });
 

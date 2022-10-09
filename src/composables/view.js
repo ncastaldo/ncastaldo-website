@@ -1,6 +1,10 @@
 import { onMounted, ref } from "vue";
 
-import { useDebounceFn, useEventListener } from "@vueuse/core";
+import {
+  useDebounceFn,
+  useEventListener,
+  useIntersectionObserver,
+} from "@vueuse/core";
 
 export const useContainerSize = (target, { debounce = 250 } = {}) => {
   const height = ref(0);
@@ -22,6 +26,15 @@ export const useContainerSize = (target, { debounce = 250 } = {}) => {
     width,
     height,
   };
+};
+
+export const useIntersectionObserverOnce = (target, callback) => {
+  const { stop } = useIntersectionObserver(target, ([{ isIntersecting }]) => {
+    if (isIntersecting) {
+      callback();
+      stop();
+    }
+  });
 };
 
 export const useClosestRef = (refs = []) => {

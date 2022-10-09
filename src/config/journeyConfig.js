@@ -36,6 +36,15 @@ export default {
         title: "Trento, Italy",
       },
     },
+    {
+      id: 5,
+      code: "zurich",
+      lat: 47.37,
+      long: 8.55,
+      detail: {
+        title: "Zürich, Switzerland",
+      },
+    },
   ],
   periods: [
     {
@@ -239,11 +248,11 @@ export default {
       id: 7,
       code: "overit",
       from: "2021-05-01",
-      to: null,
+      to: "2022-09-30",
       intervals: [
         {
           from: "2021-05-01",
-          to: null,
+          to: "2022-09-30",
         },
       ],
       detail: {
@@ -254,31 +263,31 @@ export default {
         type: "work",
         html: "\
           <p>\
-            I work as a <b>Technical Analyst</b> in the\
+            I worked as a <b>Technical Analyst</b> in the\
             <i>Geocall Product Development Group</i> at <i>OverIT</i>.\
           </p>\
           <p>In particular:</p>\
           <ul>\
             <li>\
-              I perform in-depth <b>technical analysis</b> of data, business logic and\
+              I performed in-depth <b>technical analysis</b> of data, business logic and\
               view layers of the existing software solution\
             </li>\
             <li>\
-              I work closely with business analysts to <b>define</b> the\
+              I worked closely with business analysts to <b>define</b> the\
               <b>requirements</b> of new software functionalities to be integrated in\
               the <i>Product</i>, applying <b>Agile</b> methodologies such as Kanban and <b>Scrum</b>\
             </li>\
             <li>\
-              I collaborate with the development teams to <b>design</b> the data and\
+              I collaborated with the development teams to <b>design</b> the data and\
               object models, process flows, user experience, page layouts and system\
               integration structures based on <i>SOAP</i> and <i>REST</i>\
             </li>\
             <li>\
-              I define and distribute <b>development tasks</b> among the developers\
-              and I carry on <b>code reviews</b> on their outputs\
+              I defined and distribute <b>development tasks</b> among the developers\
+              and I carried on <b>code reviews</b> on their outputs\
             </li>\
             <li>\
-              I test and improve technical documents and conduct\
+              I tested and improved technical documents and conduct\
               <b>practical sessions</b> with international partners to technically\
               introduce them to the <i>Product</i>\
             </li>\
@@ -287,6 +296,32 @@ export default {
         url: "https://www.overit.it/",
       },
       locationId: 1,
+    },
+    {
+      id: 8,
+      code: "apple",
+      from: "2022-10-01",
+      to: null,
+      intervals: [
+        {
+          from: "2022-10-01",
+          to: null,
+        },
+      ],
+      detail: {
+        title: "Full Stack Engineer",
+        place: "Apple Inc.",
+        location: "Zürich, Switzerland",
+        logo: "assets/img/journey/apple-logo.png",
+        type: "work",
+        html: "\
+          <p>\
+            On a new <b>adventure</b>!\
+          </p>\
+        ",
+        url: "https://www.apple.com/",
+      },
+      locationId: 5,
     },
   ],
 };
